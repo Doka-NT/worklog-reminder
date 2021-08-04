@@ -36,16 +36,16 @@ class Storage {
         return getValue(LS_USERNAME)
     }
 
-    setNotificationInterval(interval, isSecondsProvided = false) {
-        const value = Number(interval) * (isSecondsProvided ? 1000 : 1)
+    setNotificationInterval(interval, isMinutesProvided = false) {
+        const value = Number(interval) * (isMinutesProvided ? 1000 * 60 : 1)
 
         localStorage.setItem(LS_INTERVAL, `${value}`)
     }
 
-    getNotificationInterval(useSeconds = false) {
+    getNotificationInterval(useMinutes = false) {
         const value = Number(localStorage.getItem(LS_INTERVAL))
 
-        return (value > 0 ? value : DEFAULT_INTERVAL) / (useSeconds ? 1000 : 1)
+        return (value > 0 ? value : DEFAULT_INTERVAL) / (useMinutes ? 1000 * 60 : 1)
     }
 }
 
