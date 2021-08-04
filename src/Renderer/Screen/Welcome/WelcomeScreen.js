@@ -112,6 +112,12 @@ class WelcomeScreen extends AbstractScreen {
 
                 ons.notification.toast('✅ All done! Your are awesome!', {timeout: 2000})
                 this.sm.showScreen(SCREEN_DICT.ISSUES)
+
+                const notification = new Notification("Worklog Reminder", {body: "Setup is finished! I hope this app will be useful for you!" });
+
+                notification.addEventListener('click', () => {
+                    EventEmitter.getInstance().send(Event.SHOW_MAIN_WINDOW)
+                });
             })
             .catch(() => {
                 ons.notification.toast('🚫 <b>Error!</b><p>Check credentials and Jira URL</p>In some cases it could be permission issue', {
