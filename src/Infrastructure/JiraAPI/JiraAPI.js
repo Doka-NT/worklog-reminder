@@ -11,8 +11,13 @@ class JiraAPI {
     /**
      * @return {Promise<*[]>}
      */
-    searchIssues() {
-        return this._fetch('/rest/api/2/search?jql=order%20by%20lastViewed')
+    searchIssues(searchText) {
+        this.flushCache()
+
+        const searchQuery = searchText ? `summary ~ "${searchText}" OR text ~ "${searchText}"` : ''
+        const jql = `${searchQuery} order by lastViewed`
+
+        return this._fetch(`/rest/api/2/search?jql=${encodeURI(jql)}`)
             .then(result => {
                 const issues = []
 

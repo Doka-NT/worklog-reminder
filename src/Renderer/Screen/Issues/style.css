@@ -43,3 +43,11 @@ ons-page .page__content {
     margin: 0;
     padding: 16px 24px;
 }
+
+.search-input {
+    border-radius: 0;
+}
+
+.progress-wrapper {
+    background: #ffffff;
+}

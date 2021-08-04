@@ -14,6 +14,9 @@ const DIALOG_COMMENT = 'comment-dialog'
 const BTN_ADD_COMMENT = 'btnAddComment'
 const FIELD_COMMENT = 'fieldComment'
 
+const FIELD_SEARCH = 'fieldSearch'
+const SEARCH_PROGRESS = 'searchProgress'
+
 const TEXT_BTN_ADD_COMMENT = 'Add comment'
 const TEXT_BTN_WITHOUT_COMMENT = 'Ok'
 
@@ -42,12 +45,13 @@ class IssuesScreen extends AbstractScreen {
         this.__setupPullHook()
         this.__setupTimeButtonsHandler()
         this.__setupCommentDialogHandlers()
+        this.__setupSearchHandler()
     }
 
-    _loadAndRenderIssues() {
+    _loadAndRenderIssues(searchText = '') {
         const issueListRoot = document.getElementById('issues-list')
 
-        return this.__loadIssues().then(issueListEl => {
+        return this.__loadIssues(searchText).then(issueListEl => {
             issueListRoot.innerHTML = ''
             issueListRoot.appendChild(issueListEl)
 
@@ -55,8 +59,8 @@ class IssuesScreen extends AbstractScreen {
         })
     }
 
-    __loadIssues() {
-        return jiraAPI.searchIssues().then(issues => {
+    __loadIssues(searchText) {
+        return jiraAPI.searchIssues(searchText).then(issues => {
             IssuesScreen.issues = issues
 
             const listItems = issues.map(issue => this.__createListItem(issue))
@@ -179,7 +183,7 @@ class IssuesScreen extends AbstractScreen {
         const pullHook = document.getElementById('pull-hook');
 
         pullHook.addEventListener('changestate', function(event) {
-            var message = '';
+            let message = '';
 
             switch (event.state) {
                 case 'initial':
@@ -200,6 +204,21 @@ class IssuesScreen extends AbstractScreen {
             jiraAPI.flushCache()
             this._loadAndRenderIssues().then(done)
         };
+    }
+
+    __setupSearchHandler()
+    {
+        const progress = document.getElementById(SEARCH_PROGRESS)
+
+        document.getElementById(FIELD_SEARCH)
+            .addEventListener('change', e => {
+                progress.style.opacity = "1"
+
+                this._loadAndRenderIssues(e.target.value)
+                    .then(() => {
+                        progress.style.opacity = "0"
+                    })
+            })
     }
 }
 
