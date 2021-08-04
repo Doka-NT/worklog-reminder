@@ -8,12 +8,14 @@ jobs:
       - checkout
       - run:
           name: Update NPM
-          command: "sudo npm install -g npm"
+          command: "curl -o- -L https://yarnpkg.com/install.sh | bash"
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: Install Dependencies
-          command: npm install
+          command: yarn install --immutable
       - run:
           name: Install dpkg and fakeroot
           command: |
@@ -21,14 +23,17 @@ jobs:
             sudo apt-get install -y dpkg fakeroot
 
       - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
-            - ./node_modules
+            - .yarn/cache
+            - .yarn/unplugged
       - run:
-          name: Generate Builds
-          command: |
-            npm run make -p darwin
-            npm run make -p linux
+          name: Generate MacOs Build
+          command: yarn make -p mas
+      - run:
+          name: Generate Linux Build
+          command: yarn make -p linux
 
       - store_artifacts:
           path: ~/repo/out/make
