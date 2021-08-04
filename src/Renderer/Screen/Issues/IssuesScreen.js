@@ -5,6 +5,8 @@ import SCREEN_DICT from "../../Screen";
 import JiraAPI from "../../../Infrastructure/JiraAPI/JiraAPI";
 import Worklog from "../../../Domain/Worklog/Worklog";
 import './style.css'
+import EventEmitter from "../../../Event/EventEmitter";
+import Event from "../../../Domain/Dictionary/Event";
 
 const DIALOG_TIME = 'time-dialog'
 const DIALOG_COMMENT = 'comment-dialog'
@@ -16,6 +18,7 @@ const TEXT_BTN_ADD_COMMENT = 'Add comment'
 const TEXT_BTN_WITHOUT_COMMENT = 'Ok'
 
 const jiraAPI = new JiraAPI()
+const eventEmitter = new EventEmitter()
 
 class IssuesScreen extends AbstractScreen {
     static issues = []
@@ -69,7 +72,7 @@ class IssuesScreen extends AbstractScreen {
 <ons-list-item data-issue-key="${issue.key}">
     <div class="content">
         <img src="${issue.typeIcon}"/>
-        <ons-button modifier="quiet" class="issue-link">${issue.key}</ons-button>
+        <ons-button modifier="quiet" data-role="issue-link" class="issue-link">${issue.key}</ons-button>
         <span class="issue-summary">${issue.summary}</span>
     </div>
 </ons-list-item>`)
@@ -90,6 +93,13 @@ class IssuesScreen extends AbstractScreen {
 
     __setupListHandler() {
         const modal = document.querySelector(`#${DIALOG_TIME}`)
+
+        document.querySelectorAll('ons-list-item [data-role="issue-link"]').forEach(el => {
+            el.addEventListener('click', e => {
+                eventEmitter.send(Event.OPEN_IN_SHELL, jiraAPI.getIssueUrl(e.target.innerText))
+                e.stopPropagation()
+            })
+        })
 
         document.querySelectorAll('ons-list-item').forEach(el => {
             el.addEventListener('click', e => {

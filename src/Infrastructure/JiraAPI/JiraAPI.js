@@ -55,6 +55,11 @@ class JiraAPI {
         JiraAPI.__cache = {}
     }
 
+    getIssueUrl(issueKey)
+    {
+        return `${storage.getSchemeAndHost()}/browse/${issueKey}`
+    }
+
     _fetch(path, method = 'GET', options = {}) {
         // todo move to another class
         const cacheKey = this.__getCacheKey([path, method, options])

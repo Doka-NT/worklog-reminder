@@ -27,6 +27,12 @@ ons-page .page__content {
     font-size: 15px;
     margin-bottom: 2px;
     line-height: 80%;
+    cursor: pointer;
+}
+
+.issue-link:hover {
+    border-bottom: 1px solid;
+    border-radius: 0;
 }
 
 .issue-summary {
