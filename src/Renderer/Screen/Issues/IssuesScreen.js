@@ -34,22 +34,28 @@ class IssuesScreen extends AbstractScreen {
     _afterRender() {
         super._afterRender();
 
+        this._loadAndRenderIssues();
+
+        document.getElementById('btnSettings')
+            .addEventListener('click', () => this.sm.showScreen(SCREEN_DICT.ACCESS_TOKEN))
+
+        this.__setupPullHook()
+        this.__setupTimeButtonsHandler()
+        this.__setupCommentDialogHandlers()
+    }
+
+    _loadAndRenderIssues() {
         const issueListRoot = document.getElementById('issues-list')
-        this.__loadIssues().then(issueListEl => {
+
+        return this.__loadIssues().then(issueListEl => {
             issueListRoot.innerHTML = ''
             issueListRoot.appendChild(issueListEl)
 
             this.__setupListHandler()
         })
-
-        document.getElementById('btnSettings')
-            .addEventListener('click', () => this.sm.showScreen(SCREEN_DICT.ACCESS_TOKEN))
-
-        this.__setupTimeButtonsHandler()
-        this.__setupCommentDialogHandlers()
     }
 
-     __loadIssues() {
+    __loadIssues() {
         return jiraAPI.searchIssues().then(issues => {
             IssuesScreen.issues = issues
 
@@ -166,6 +172,34 @@ class IssuesScreen extends AbstractScreen {
                 })
             })
         })
+    }
+
+    __setupPullHook()
+    {
+        const pullHook = document.getElementById('pull-hook');
+
+        pullHook.addEventListener('changestate', function(event) {
+            var message = '';
+
+            switch (event.state) {
+                case 'initial':
+                    message = 'Pull to refresh';
+                    break;
+                case 'preaction':
+                    message = 'Release';
+                    break;
+                case 'action':
+                    message = 'Loading...';
+                    break;
+            }
+
+            pullHook.innerHTML = message;
+        });
+
+        pullHook.onAction = done => {
+            jiraAPI.flushCache()
+            this._loadAndRenderIssues().then(done)
+        };
     }
 }
 

@@ -7,3 +7,18 @@
     display: block;
     text-align: center;
 }
+
+.text-input {
+    font-size: 13px;
+}
+
+.btn-link {
+    font-size: 13px;
+    cursor: pointer;
+    border-radius: 0;
+    opacity: 0.9;
+}
+
+.btn-link:hover {
+    opacity: 1;
+}
