@@ -1,0 +1,9 @@
+
+.screen__access-token ons-input {
+    display: block;
+}
+
+.screen__access-token ons-button.button {
+    display: block;
+    text-align: center;
+}

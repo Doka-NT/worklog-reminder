@@ -1,0 +1,48 @@
+{
+  "name": "worklog-reminder",
+  "productName": "Worklog Reminder",
+  "version": "0.0.1",
+  "description": "Tool for easily search and add worklog to JIRA issues",
+  "main": ".webpack/main",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\""
+  },
+  "keywords": [],
+  "author": {
+    "name": "Soshnikov Artem",
+    "email": "213036@skobka.com"
+  },
+  "license": "AGPL-3.0",
+  "config": {
+    "forge": "./forge.config.js"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.58",
+    "@electron-forge/maker-deb": "^6.0.0-beta.58",
+    "@electron-forge/maker-dmg": "^6.0.0-beta.59",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.58",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.58",
+    "@electron-forge/maker-zip": "^6.0.0-beta.58",
+    "@electron-forge/plugin-webpack": "6.0.0-beta.58",
+    "@vercel/webpack-asset-relocator-loader": "1.6.0",
+    "css-loader": "^6.0.0",
+    "electron": "13.1.7",
+    "node-loader": "^2.0.0",
+    "style-loader": "^3.0.0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.14.8",
+    "@babel/preset-env": "^7.14.8",
+    "babel-loader": "^8.2.2",
+    "copy-webpack-plugin": "^9.0.1",
+    "electron-squirrel-startup": "^1.0.0",
+    "html-loader": "^2.1.2",
+    "object-hash": "^2.2.0",
+    "onsenui": "^2.11.2",
+    "path-browserify": "^1.0.1"
+  }
+}
