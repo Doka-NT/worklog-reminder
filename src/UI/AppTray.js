@@ -49,7 +49,10 @@ class AppTray
             mainWindow = this.windowManager.getMainWindow()
         }
 
-        if (mainWindow.isVisible()) {
+        if (mainWindow.isVisible() && !mainWindow.isFocused()) {
+            mainWindow.show()
+            mainWindow.focus()
+        } else if (mainWindow.isVisible()) {
             mainWindow.hide();
         } else {
             mainWindow.show();
