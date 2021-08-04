@@ -69,8 +69,8 @@ class IssuesScreen extends AbstractScreen {
 <ons-list-item data-issue-key="${issue.key}">
     <div class="content">
         <img src="${issue.typeIcon}"/>
-        <ons-button modifier="quiet">${issue.key}</ons-button>
-        ${issue.summary}
+        <ons-button modifier="quiet" class="issue-link">${issue.key}</ons-button>
+        <span class="issue-summary">${issue.summary}</span>
     </div>
 </ons-list-item>`)
     }
