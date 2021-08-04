@@ -7,6 +7,8 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
   app.quit();
 }
 
+app.dock.hide()
+
 const windowManager = new WindowManager()
 
 // This method will be called when Electron has finished

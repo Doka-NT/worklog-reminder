@@ -32,6 +32,7 @@ class WindowManager {
             fullscreenable: false,
             resizable: false,
             transparent: false,
+            skipTaskbar: true,
             webPreferences: {
                 // Prevents renderer process code from not running when window is
                 // hidden
