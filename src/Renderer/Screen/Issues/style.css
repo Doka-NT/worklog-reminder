@@ -1,0 +1,21 @@
+ons-page .page__content {
+    background: #FFF;
+}
+
+.button.time-button {
+    padding: 4px 5px;
+    margin: 0 5px 5px 0;
+    font-size: 12px;
+    width: 66px;
+    text-align: center;
+}
+
+.content {
+    font-size: 15px;
+}
+
+.content img {
+    height: 16px;
+    display: inline-block;
+    margin-bottom: -3px;
+}

@@ -1,0 +1,37 @@
+<!-- SCREEN ACCESS-TOKEN  -->
+<section class="screen screen__access-token">
+    <ons-page>
+        <ons-toolbar>
+            <div class="left">
+                <ons-back-button id="btnBack">Back</ons-back-button>
+            </div>
+            <div class="center">Settings</div>
+        </ons-toolbar>
+        <ons-card>
+            <div class="title">
+                Provide your JIRA credentials
+            </div>
+            <div class="content">
+                <ons-input id="textFieldSchemeAndHost" modifier="underbar" placeholder="https://example.atlassian.net"
+                           float></ons-input>
+                <ons-input id="textFieldUsername" modifier="underbar" placeholder="foobar@example.com" float></ons-input>
+                <ons-input type="password"
+                           id="textFieldAccessToken" modifier="underbar"
+                           placeholder="Your Access Token" float></ons-input>
+                <ons-button id="btnCreateToken" modifier="quiet">Click here to create token</ons-button>
+            </div>
+
+            <div class="title">
+                Other settings
+            </div>
+            <div class="content">
+                <label>Notification interval, seconds:</label>
+                <ons-input id="notificationInterval" modifier="underbar" placeholder="Seconds between notifications"></ons-input>
+            </div>
+            <p></p>
+            <div class="content">
+                <ons-button id="btnSaveAccessToken" modifier="btnSaveAccessToken">Ok</ons-button>
+            </div>
+        </ons-card>
+    </ons-page>
+</section>
