@@ -156,24 +156,34 @@ class IssuesScreen extends AbstractScreen {
         const btnAddCommentEl = document.querySelector(`#${BTN_ADD_COMMENT}`)
         const fieldComment = document.querySelector(`#${FIELD_COMMENT}`);
 
+        fieldComment.addEventListener('keypress', e => {
+            if (e.keyCode !== 13) {
+                return
+            }
+
+            this.__saveWorklogComment()
+        })
         fieldComment.addEventListener('keyup', e => {
             btnAddCommentEl.innerText = e.target.value === '' ? TEXT_BTN_WITHOUT_COMMENT : TEXT_BTN_ADD_COMMENT
         })
 
-        btnAddCommentEl.addEventListener('click', () => {
-            const dialogComment = document.querySelector(`#${DIALOG_COMMENT}`);
-            const isCommentProvided = fieldComment.value !== ''
+        btnAddCommentEl.addEventListener('click', () => this.__saveWorklogComment())
+    }
 
-            if (!isCommentProvided) {
-                dialogComment.hide()
-                return
-            }
+    __saveWorklogComment()
+    {
+        const dialogComment = document.querySelector(`#${DIALOG_COMMENT}`);
+        const isCommentProvided = fieldComment.value !== ''
 
-            jiraAPI.updateWorklog(IssuesScreen.lastWorklogEntity, fieldComment.value).then(() => {
-                dialogComment.hide()
-                ons.notification.toast('Worklog comment has been saved', {
-                    timeout: 2000
-                })
+        if (!isCommentProvided) {
+            dialogComment.hide()
+            return
+        }
+
+        jiraAPI.updateWorklog(IssuesScreen.lastWorklogEntity, fieldComment.value).then(() => {
+            dialogComment.hide()
+            ons.notification.toast('Worklog comment has been saved', {
+                timeout: 2000
             })
         })
     }

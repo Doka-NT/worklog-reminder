@@ -13,8 +13,8 @@ This app will help you with:
 - Schedule notifications
 
 ## Main Features
-- You need only 2 click to track time
-- Search thourg last viewed issues
+- You need only 2 clicks to track time
+- Search through last viewed issues
 - Tray based application
 - Minimalistic interface
 - Schedule interval notifications as you want (1, 2, 3, .., 60 minutes and etc)
