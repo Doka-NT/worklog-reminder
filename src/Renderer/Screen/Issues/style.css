@@ -60,6 +60,10 @@ ons-list {
     border-radius: 0;
 }
 
+.search-input::-webkit-search-cancel-button {
+    display: block;
+}
+
 .progress-wrapper {
     background: #ffffff;
     height: 2px;

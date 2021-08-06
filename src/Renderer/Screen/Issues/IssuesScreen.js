@@ -236,9 +236,9 @@ class IssuesScreen extends AbstractScreen {
     }
 
     __setupSearchHandler()
-    {
+    {   
         document.getElementById(FIELD_SEARCH)
-            .addEventListener('change', e => {
+            .addEventListener('search', e => {
                 this.__showProgressBar()
 
                 this._loadAndRenderIssues(e.target.value, true)

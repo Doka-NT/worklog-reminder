@@ -20,7 +20,11 @@ class MainWindow extends BrowserWindow {
     }
 
     setHandlers() {
-        this.on('blur', () => { this.hide() })
+        this.on('blur', () => { 
+            if (!this.webContents.isDevToolsOpened()) {
+                this.hide()
+            }
+         })
     }
 
     _getWindowPosition() {
