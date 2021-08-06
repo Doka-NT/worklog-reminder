@@ -8,6 +8,8 @@ import './style.css'
 import EventEmitter from "../../../Event/EventEmitter";
 import Event from "../../../Domain/Dictionary/Event";
 
+const BTN_RELOAD = 'btnReload'
+
 const DIALOG_TIME = 'time-dialog'
 const DIALOG_COMMENT = 'comment-dialog'
 
@@ -46,12 +48,13 @@ class IssuesScreen extends AbstractScreen {
         this.__setupTimeButtonsHandler()
         this.__setupCommentDialogHandlers()
         this.__setupSearchHandler()
+        this.__setupReloadHandler()
     }
 
-    _loadAndRenderIssues(searchText = '') {
+    _loadAndRenderIssues(searchText = '', forceReload = false) {
         const issueListRoot = document.getElementById('issues-list')
 
-        return this.__loadIssues(searchText).then(issueListEl => {
+        return this.__loadIssues(searchText, forceReload).then(issueListEl => {
             issueListRoot.innerHTML = ''
             issueListRoot.appendChild(issueListEl)
 
@@ -59,7 +62,11 @@ class IssuesScreen extends AbstractScreen {
         })
     }
 
-    __loadIssues(searchText) {
+    __loadIssues(searchText, forceReload) {
+        if (forceReload) {
+            jiraAPI.flushCache()
+        }
+
         return jiraAPI.searchIssues(searchText).then(issues => {
             IssuesScreen.issues = issues
 
@@ -213,11 +220,19 @@ class IssuesScreen extends AbstractScreen {
         });
 
         pullHook.onAction = done => {
-            jiraAPI.flushCache()
-            this._loadAndRenderIssues()
+            this._loadAndRenderIssues('', true)
                 .then(() => this.__hideProgressBar())
                 .then(done)
         };
+    }
+
+    __setupReloadHandler()
+    {
+        document.getElementById(BTN_RELOAD)
+            .addEventListener('click', () => {
+                this.__showProgressBar();
+                this._loadAndRenderIssues('', true).then(() => this.__hideProgressBar())
+            })
     }
 
     __setupSearchHandler()
@@ -226,7 +241,7 @@ class IssuesScreen extends AbstractScreen {
             .addEventListener('change', e => {
                 this.__showProgressBar()
 
-                this._loadAndRenderIssues(e.target.value)
+                this._loadAndRenderIssues(e.target.value, true)
                     .then(() => {
                         this.__hideProgressBar()
                     })
