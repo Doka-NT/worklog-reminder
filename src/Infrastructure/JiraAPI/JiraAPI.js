@@ -1,6 +1,7 @@
 import Storage from "../Storage/Storage";
 import Issue from "../../Domain/Issue/Issue";
 import hash from 'object-hash'
+
 const storage = new Storage()
 
 const cacheTtl = 30
@@ -8,12 +9,31 @@ const cacheTtl = 30
 class JiraAPI {
     static __cache = {}
 
+    searchByKeyOrText(searchText)
+    {
+        if (!searchText) {
+            return this.searchIssues('')
+        }
+
+        return this
+            ._fetch(`/rest/api/2/issue/${encodeURI(searchText)}?fields=summary,issuetype`)
+            .then(result => {
+                const summary = result.fields?.summary
+
+                if (!summary) {
+                    return this.searchIssues(searchText)
+                }
+
+                return [new Issue(result.key, summary, result.fields.issuetype.iconUrl)]
+            })
+    }
+
     /**
      * @return {Promise<*[]>}
      */
     searchIssues(searchText)
     {
-        const searchQuery = searchText ? `summary ~ "${searchText}" OR text ~ "${searchText}"` : ''
+        const searchQuery = searchText ? `summary ~ "${searchText}"` : ''
         const jql = `${searchQuery} order by lastViewed`
 
         return this._fetch(`/rest/api/2/search?jql=${encodeURI(jql)}`)
@@ -91,10 +111,6 @@ class JiraAPI {
 
         return fetch(`${schemeAndHost}${path}`, options)
             .then(response => {
-                console.log(
-                    `Response: ${response.status} ${response.statusText}`
-                );
-
                 const result = response.json()
 
                 this.__setCache(cacheKey, result)

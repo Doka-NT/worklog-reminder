@@ -67,7 +67,7 @@ class IssuesScreen extends AbstractScreen {
             jiraAPI.flushCache()
         }
 
-        return jiraAPI.searchIssues(searchText).then(issues => {
+        return jiraAPI.searchByKeyOrText(searchText).then(issues => {
             IssuesScreen.issues = issues
 
             const listItems = issues.map(issue => this.__createListItem(issue))
@@ -236,7 +236,7 @@ class IssuesScreen extends AbstractScreen {
     }
 
     __setupSearchHandler()
-    {   
+    {
         document.getElementById(FIELD_SEARCH)
             .addEventListener('search', e => {
                 this.__showProgressBar()
