@@ -15,6 +15,10 @@ ons-page .page__content {
     line-height: 120%;
 }
 
+ons-list {
+    background-image: none!important;
+}
+
 .content img {
     height: 16px;
     display: inline-block;

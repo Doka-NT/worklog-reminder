@@ -192,7 +192,7 @@ class IssuesScreen extends AbstractScreen {
     {
         const pullHook = document.getElementById('pull-hook');
 
-        pullHook.addEventListener('changestate', function(event) {
+        pullHook.addEventListener('changestate', event => {
             let message = '';
 
             switch (event.state) {
@@ -204,6 +204,7 @@ class IssuesScreen extends AbstractScreen {
                     break;
                 case 'action':
                     message = 'Loading...';
+                    this.__showProgressBar()
                     break;
             }
 
@@ -212,23 +213,38 @@ class IssuesScreen extends AbstractScreen {
 
         pullHook.onAction = done => {
             jiraAPI.flushCache()
-            this._loadAndRenderIssues().then(done)
+            this._loadAndRenderIssues()
+                .then(() => this.__hideProgressBar())
+                .then(done)
         };
     }
 
     __setupSearchHandler()
     {
-        const progress = document.getElementById(SEARCH_PROGRESS)
-
         document.getElementById(FIELD_SEARCH)
             .addEventListener('change', e => {
-                progress.style.opacity = "1"
+                this.__showProgressBar()
 
                 this._loadAndRenderIssues(e.target.value)
                     .then(() => {
-                        progress.style.opacity = "0"
+                        this.__hideProgressBar()
                     })
             })
+    }
+
+    __getProgressBar()
+    {
+        return document.getElementById(SEARCH_PROGRESS)
+    }
+
+    __showProgressBar()
+    {
+        this.__getProgressBar().style.opacity = "1"
+    }
+
+    __hideProgressBar()
+    {
+        this.__getProgressBar().style.opacity = "0"
     }
 }
 
