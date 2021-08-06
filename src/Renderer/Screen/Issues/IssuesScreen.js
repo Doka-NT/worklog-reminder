@@ -142,6 +142,7 @@ class IssuesScreen extends AbstractScreen {
                     .then(() => {
                         document.querySelector(`#${DIALOG_TIME}`).hide()
                         document.querySelector(`#${DIALOG_COMMENT}`).show()
+                        document.getElementById(FIELD_COMMENT).focus()
 
                         IssuesScreen.lastWorklogId = worklog.id
                         IssuesScreen.lastWorklogEntity = worklog
@@ -239,12 +240,12 @@ class IssuesScreen extends AbstractScreen {
 
     __showProgressBar()
     {
-        this.__getProgressBar().style.opacity = "1"
+        this.__getProgressBar().style.display = "block"
     }
 
     __hideProgressBar()
     {
-        this.__getProgressBar().style.opacity = "0"
+        this.__getProgressBar().style.display = "none"
     }
 }
 

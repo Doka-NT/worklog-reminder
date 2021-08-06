@@ -1,3 +1,11 @@
+.issue-page {
+    background: #ffffff
+}
+
+.issue-page .page__background {
+    background-color: #ffffff;
+}
+
 ons-page .page__content {
     background: #FFF;
 }
@@ -54,4 +62,5 @@ ons-list {
 
 .progress-wrapper {
     background: #ffffff;
+    height: 2px;
 }
