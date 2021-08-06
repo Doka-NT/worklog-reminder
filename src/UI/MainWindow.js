@@ -19,6 +19,10 @@ class MainWindow extends BrowserWindow {
         this.focus()
     }
 
+    setHandlers() {
+        this.on('blur', () => { this.hide() })
+    }
+
     _getWindowPosition() {
         const windowBounds = this.getBounds()
         const trayBounds = this.windowManager.getTray().tray.getBounds()
