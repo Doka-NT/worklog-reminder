@@ -1,86 +1,81 @@
-<!-- SCREEN WELCOME   -->
 <section class="screen screen__welcome">
 <ons-page>
+    
     <ons-progress-bar id="progressBar" value="0"></ons-progress-bar>
-    <ons-carousel fullscreen swipeable id="carousel">
-        <!--
-            Welcome
-            What is the URL of JIRA
-            Your username
-            Create API Token
-            Provide API Token
-            Finish
-        -->
-        <ons-carousel-item>
-            <ons-card>
-                <div class="title">Worklog Reminder</div>
-                <div class="content">
-                    <ul>
-                        <li>Watch through your last issues</li>
-                        <li>Track time in 1-2 clicks</li>
-                        <li>Schedule notifications</li>
-                    </ul>
 
-                    <p></p>
+    <div class="carousel-wrapper">
+        <ons-carousel fullscreen swipeable id="carousel">
+            <ons-carousel-item>
+                <ons-card>
+                    <div class="title">Worklog Reminder</div>
+                    <div class="content">
+                        <ul>
+                            <li>Watch through your last issues</li>
+                            <li>Track time in 1-2 clicks</li>
+                            <li>Schedule notifications</li>
+                        </ul>
 
-                    <div style="text-align: center;">
-                        <ons-button modifier="large" data-role="nav-button" data-direction="next">Let's start
-                        </ons-button>
+                        <p></p>
+
+                        <div style="text-align: center;">
+                            <ons-button modifier="large" data-role="nav-button" data-direction="next">Let's start</ons-button>
+                        </div>
                     </div>
-                </div>
-            </ons-card>
-        </ons-carousel-item>
-        <ons-carousel-item>
-            <ons-card>
-                <div class="title">Provide JIRA url</div>
-                <div class="content">
-                    You can find this value in your browser by copying URL
-                    <ons-input style="width: 100%" id="fieldSchemeAndHost" modifier="underbar" placeholder="https://myCompany.atlassian.net"></ons-input>
-<p></p>
-                    <ons-button modifier="large" data-role="nav-button" data-direction="next">Next &raquo;</ons-button>
-                    <ons-button modifier="quiet" data-role="nav-button" data-direction="prev">&laquo; go back</ons-button>
-                </div>
-            </ons-card>
-        </ons-carousel-item>
-        <ons-carousel-item>
-            <ons-card>
-                <div class="title">What is your username?</div>
-                <div class="content">
-                    Mostly it is your email address
-                    <ons-input style="width: 100%" id="fieldUsername" modifier="underbar" placeholder="jsmith@examaple.com"></ons-input>
-                    <p></p>
-                    <ons-button modifier="large" data-role="nav-button" data-direction="next">Next &raquo;</ons-button>
-                    <ons-button modifier="quiet" data-role="nav-button" data-direction="prev">&laquo; go back</ons-button>
-                </div>
-            </ons-card>
-        </ons-carousel-item>
-        <ons-carousel-item>
-            <ons-card>
-                <div class="title">One more step!</div>
-                <div class="content">
-                    <p>Now let's create an API token for this application.</p>
-                    <p>Just press button bellow, and you will be redirected to the Token management page</p>
+                </ons-card>
+            </ons-carousel-item>
 
-                    <ons-button id="btnCreateToken" modifier="large" data-role="nav-button" data-direction="next">Create token</ons-button>
-                    <p></p>
-                    <ons-button modifier="large outline" data-role="nav-button" data-direction="next">I already have token</ons-button>
-                    <ons-button modifier="quiet" data-role="nav-button" data-direction="prev">&laquo; go back</ons-button>
-                </div>
-            </ons-card>
-        </ons-carousel-item>
+            <ons-carousel-item>
+                <ons-card>
+                    <div class="title">Provide JIRA url</div>
+                    <div class="content">
+                        You can find this value in your browser by copying URL
+                        <ons-input style="width: 100%" id="fieldSchemeAndHost" modifier="underbar" placeholder="https://myCompany.atlassian.net"></ons-input>
+                        <p></p>
+                        <ons-button modifier="large" data-role="nav-button" data-direction="next">Next &raquo;</ons-button>
+                        <ons-button modifier="quiet" data-role="nav-button" data-direction="prev">&laquo; go back</ons-button>
+                    </div>
+                </ons-card>
+            </ons-carousel-item>
+            <ons-carousel-item>
+                <ons-card>
+                    <div class="title">What is your username?</div>
+                    <div class="content">
+                        Mostly it is your email address
+                        <ons-input style="width: 100%" id="fieldUsername" modifier="underbar" placeholder="jsmith@examaple.com"></ons-input>
+                        <p></p>
+                        <ons-button modifier="large" data-role="nav-button" data-direction="next">Next &raquo;</ons-button>
+                        <ons-button modifier="quiet" data-role="nav-button" data-direction="prev">&laquo; go back</ons-button>
+                    </div>
+                </ons-card>
+            </ons-carousel-item>
+            <ons-carousel-item>
+                <ons-card>
+                    <div class="title">One more step!</div>
+                    <div class="content">
+                        <p>Now let's create an API token for this application.</p>
+                        <p>Just press button bellow, and you will be redirected to the Token management page</p>
 
-        <ons-carousel-item>
-            <ons-card>
-                <div class="title">Almost done!</div>
-                <div class="content">
-                    Enter your token bellow and we are done
-                    <ons-input style="width: 100%" id="fieldToken" type="password" modifier="underbar" placeholder="API Token"></ons-input>
-                    <p></p>
-                    <ons-button id="btnFinish" modifier="large">Finish!</ons-button>
-                    <ons-button modifier="quiet" data-role="nav-button" data-direction="prev">&laquo; go back</ons-button>
-                </div>
-            </ons-card>
-        </ons-carousel-item>
-    </ons-carousel>
+                        <ons-button id="btnCreateToken" modifier="large" data-role="nav-button" data-direction="next">Create token</ons-button>
+                        <p></p>
+                        <ons-button modifier="large outline" data-role="nav-button" data-direction="next">I already have token</ons-button>
+                        <ons-button modifier="quiet" data-role="nav-button" data-direction="prev">&laquo; go back</ons-button>
+                    </div>
+                </ons-card>
+            </ons-carousel-item>
+
+            <ons-carousel-item>
+                <ons-card>
+                    <div class="title">Almost done!</div>
+                    <div class="content">
+                        Enter your token bellow and we are done
+                        <ons-input style="width: 100%" id="fieldToken" type="password" modifier="underbar" placeholder="API Token"></ons-input>
+                        <p></p>
+                        <ons-button id="btnFinish" modifier="large">Finish!</ons-button>
+                        <ons-button modifier="quiet" data-role="nav-button" data-direction="prev">&laquo; go back</ons-button>
+                    </div>
+                </ons-card>
+            </ons-carousel-item>
+        </ons-carousel>
+    </div>
 </ons-page>
 </section>
