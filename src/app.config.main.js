@@ -2,11 +2,12 @@
  * Config file for main process
  */
 
+import path from "path";
+import {app} from 'electron'
 import Event from './Domain/Dictionary/Event'
 import OpenInShellHandler from "./EventHandler/OpenInShellHandler";
-import path from "path";
 import ShowMainWindowHandler from "./EventHandler/ShowMainWindowHandler";
-import {app} from 'electron'
+import SyncIsWindowVisible from "./EventHandler/SyncIsWindowVisible";
 
 const APP_ROOT = app.getAppPath()
 
@@ -18,6 +19,9 @@ export default {
         ],
         [Event.SHOW_MAIN_WINDOW]: [
             new ShowMainWindowHandler()
-        ]
+        ],
+        [Event.SYNC_IS_WINDOW_VISIBLE]: [
+            new SyncIsWindowVisible()
+        ],
     }
 }

@@ -1,4 +1,4 @@
-import { ipcMain } from 'electron'
+import {ipcMain} from 'electron'
 import config from "../app.config.main";
 
 class EventHandler
@@ -8,7 +8,9 @@ class EventHandler
         for (const [eventName, handlers] of Object.entries(config.eventHandlers)) {
             ipcMain.on(eventName, (event, payload) => {
                 console.info(`Handle event {${eventName}}`)
-                handlers.forEach(handler => handler.handle({payload, originEvent: event}))
+                handlers.forEach(handler => {
+                    event.returnValue = handler.handle({payload, originEvent: event})
+                })
             })
         }
     }

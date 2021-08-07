@@ -17,8 +17,7 @@ class CheckTokenScreen extends AbstractScreen
         const checkToken = () => {
 
             jiraAPI.searchIssues()
-                .then(issues => {
-                    console.log(issues)
+                .then(() => {
                     this.sm.showScreen(SCREEN_DICT.ISSUES)
                 })
                 .catch(err => {

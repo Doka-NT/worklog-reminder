@@ -30,6 +30,7 @@ class IssuesScreen extends AbstractScreen {
     static selectedIssue = null
     static lastWorklogId = ''
     static lastWorklogEntity = null
+    static intervalUpdateHandlers = []
 
     _beforeRender() {
         super._beforeRender();
@@ -49,16 +50,20 @@ class IssuesScreen extends AbstractScreen {
         this.__setupCommentDialogHandlers()
         this.__setupSearchHandler()
         this.__setupReloadHandler()
+        this.__setupIntervalUpdate()
     }
 
     _loadAndRenderIssues(searchText = '', forceReload = false) {
         const issueListRoot = document.getElementById('issues-list')
+
+        this.__showProgressBar()
 
         return this.__loadIssues(searchText, forceReload).then(issueListEl => {
             issueListRoot.innerHTML = ''
             issueListRoot.appendChild(issueListEl)
 
             this.__setupListHandler()
+            this.__hideProgressBar()
         })
     }
 
@@ -106,6 +111,29 @@ class IssuesScreen extends AbstractScreen {
         items.forEach(item => list.appendChild(item))
 
         return list
+    }
+
+    __setupIntervalUpdate()
+    {
+        const { ipcRenderer } = window.require('electron')
+
+        this.constructor.intervalUpdateHandlers
+            .forEach(l => document.removeEventListener(Event.RELOAD_ISSUES, l))
+
+        const listener = () => {
+            const isScreenVisible = document.querySelectorAll('.screen-issues').length > 0
+            const isWindowVisible = ipcRenderer.sendSync(Event.SYNC_IS_WINDOW_VISIBLE)
+
+            if (!isScreenVisible || isWindowVisible) {
+                return
+            }
+
+            this._loadAndRenderIssues('', true)
+                .then(r => r)
+        }
+
+        this.constructor.intervalUpdateHandlers.push(listener)
+        document.addEventListener(Event.RELOAD_ISSUES, listener)
     }
 
     __setupListHandler() {

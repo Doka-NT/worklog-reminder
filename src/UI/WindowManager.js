@@ -3,6 +3,10 @@ import MainWindow from "./MainWindow";
 
 class WindowManager {
     /**
+     * @private {WindowManager}
+     */
+    static __instance
+    /**
      * @private {AppTray}
      */
     static __tray
@@ -10,6 +14,18 @@ class WindowManager {
      * @private {MainWindow}
      */
     static __mainWindow
+
+    /**
+     * @return {WindowManager}
+     */
+    static getInstance()
+    {
+        if (!WindowManager.__instance) {
+            WindowManager.__instance = new WindowManager()
+        }
+
+        return WindowManager.__instance
+    }
 
     createTray() {
         const appTray = new AppTray(this)

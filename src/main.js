@@ -9,7 +9,7 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 
 app.dock.hide()
 
-const windowManager = new WindowManager()
+const windowManager = WindowManager.getInstance()
 
 // This method will be called when Electron has finished
 // initialization and is ready to setHandlers browser windows.

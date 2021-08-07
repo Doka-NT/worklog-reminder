@@ -16,7 +16,10 @@ class EventEmitter {
     }
 
     send(eventName, payload) {
+        console.debug(`Event: ${eventName}, with payload:`, payload)
+
         ipcRenderer.send(eventName, payload)
+        document.dispatchEvent(new CustomEvent(eventName, {detail: payload}))
     }
 }
 

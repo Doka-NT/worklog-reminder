@@ -1,9 +1,11 @@
 const LS_SCHEME_AND_HOST = 'scheme-and-host'
 const LS_TOKEN = 'access-token'
 const LS_USERNAME = 'username'
-const LS_INTERVAL = 'interval'
+const LS_NOTIFICATION_INTERVAL = 'notification-interval'
+const LS_UPDATE_INTERVAL = 'update-interval'
 
-const DEFAULT_INTERVAL = 1000 * 60 * 60 // 1 hour
+const DEFAULT_NOTIFICATION_INTERVAL = 1000 * 60 * 60 // 1 hour
+const DEFAULT_UPDATE_INTERVAL = 1000 * 60 * 5 // 5 minutes
 
 const getValue = key => {
     const value = localStorage.getItem(key)
@@ -39,13 +41,25 @@ class Storage {
     setNotificationInterval(interval, isMinutesProvided = false) {
         const value = Number(interval) * (isMinutesProvided ? 1000 * 60 : 1)
 
-        localStorage.setItem(LS_INTERVAL, `${value}`)
+        localStorage.setItem(LS_NOTIFICATION_INTERVAL, `${value}`)
     }
 
     getNotificationInterval(useMinutes = false) {
-        const value = Number(localStorage.getItem(LS_INTERVAL))
+        const value = Number(localStorage.getItem(LS_NOTIFICATION_INTERVAL))
 
-        return (value > 0 ? value : DEFAULT_INTERVAL) / (useMinutes ? 1000 * 60 : 1)
+        return (value > 0 ? value : DEFAULT_NOTIFICATION_INTERVAL) / (useMinutes ? 1000 * 60 : 1)
+    }
+
+    setUpdateInterval(interval, isMinutesProvided = false) {
+        const value = Number(interval) * (isMinutesProvided ? 1000 * 60 : 1)
+
+        localStorage.setItem(LS_UPDATE_INTERVAL, `${value}`)
+    }
+
+    getUpdateInterval(useMinutes = false) {
+        const value = Number(localStorage.getItem(LS_UPDATE_INTERVAL))
+
+        return (value > 0 ? value : DEFAULT_UPDATE_INTERVAL) / (useMinutes ? 1000 * 60 : 1)
     }
 }
 

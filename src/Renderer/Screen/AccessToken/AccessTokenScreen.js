@@ -10,6 +10,7 @@ import Storage from "../../../Infrastructure/Storage/Storage";
 import EventEmitter from "../../../Event/EventEmitter";
 import IntervalNotification from "../../IntervalNotification";
 import JiraAPI from "../../../Infrastructure/JiraAPI/JiraAPI";
+import ReloadIssuesTask from "../../IntervalTask/ReloadIssuesTask";
 
 const BTN_OK = 'btnSaveAccessToken'
 const BTN_BACK = 'btnBack'
@@ -18,7 +19,8 @@ const BTN_CREATE_TOKEN = 'btnCreateToken'
 const FIELD_TOKEN = 'textFieldAccessToken'
 const FIELD_SCHEME_AND_HOST = 'textFieldSchemeAndHost'
 const FIELD_USERNAME = 'textFieldUsername'
-const FIELD_INTERVAL = 'notificationInterval'
+const FIELD_NOTIFICATION_INTERVAL = 'notificationInterval'
+const FIELD_UPDATE_INTERVAL = 'updateInterval'
 
 const storage = new Storage()
 const eventEmitter = EventEmitter.getInstance()
@@ -51,7 +53,8 @@ class AccessTokenScreen extends AbstractScreen
         getElement(FIELD_SCHEME_AND_HOST).value = storage.getSchemeAndHost()
         getElement(FIELD_USERNAME).value = storage.getUserName()
         getElement(FIELD_TOKEN).value = storage.getApiToken()
-        getElement(FIELD_INTERVAL).value = storage.getNotificationInterval(true)
+        getElement(FIELD_NOTIFICATION_INTERVAL).value = storage.getNotificationInterval(true)
+        getElement(FIELD_UPDATE_INTERVAL).value = storage.getUpdateInterval(true)
     }
 
     __setupHandlers() {
@@ -64,8 +67,11 @@ class AccessTokenScreen extends AbstractScreen
         getElement(FIELD_USERNAME)
             .addEventListener('keyup', e => storage.setUserName(e.target.value))
 
-        getElement(FIELD_INTERVAL)
+        getElement(FIELD_NOTIFICATION_INTERVAL)
             .addEventListener('keyup', e => storage.setNotificationInterval(e.target.value, true))
+
+        getElement(FIELD_UPDATE_INTERVAL)
+            .addEventListener('keyup', e => storage.setUpdateInterval(e.target.value, true))
 
         getElement(BTN_OK)
             .addEventListener('click', this.__btnOkClickHandler.bind(this))
@@ -85,9 +91,10 @@ class AccessTokenScreen extends AbstractScreen
         const schemeAndHost = getElement(FIELD_SCHEME_AND_HOST)?.value
         const username = getElement(FIELD_USERNAME)?.value
         const token = getElement(FIELD_TOKEN)?.value
-        const interval = getElement(FIELD_INTERVAL)?.value
+        const notificationInterval = getElement(FIELD_NOTIFICATION_INTERVAL)?.value
+        const updateInterval = getElement(FIELD_NOTIFICATION_INTERVAL)?.value
 
-        return schemeAndHost && username && token && interval
+        return schemeAndHost && username && token && notificationInterval && updateInterval
     }
 
     __btnOkClickHandler() {
@@ -98,6 +105,7 @@ class AccessTokenScreen extends AbstractScreen
 
         jiraAPI.flushCache()
         new IntervalNotification(this.sm).restart(storage.getNotificationInterval())
+        new ReloadIssuesTask().restart(storage.getUpdateInterval())
 
         this.sm.showScreen(Screen.CHECK_TOKEN)
 
