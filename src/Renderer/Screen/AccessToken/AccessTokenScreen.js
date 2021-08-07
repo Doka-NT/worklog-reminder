@@ -8,7 +8,7 @@ import Event from '../../../Domain/Dictionary/Event'
 import UrlDict from "../../../Domain/Dictionary/UrlDict";
 import Storage from "../../../Infrastructure/Storage/Storage";
 import EventEmitter from "../../../Event/EventEmitter";
-import IntervalNotification from "../../IntervalNotification";
+import NotificationTask from "../../IntervalTask/NotificationTask";
 import JiraAPI from "../../../Infrastructure/JiraAPI/JiraAPI";
 import ReloadIssuesTask from "../../IntervalTask/ReloadIssuesTask";
 
@@ -104,7 +104,7 @@ class AccessTokenScreen extends AbstractScreen
         }
 
         jiraAPI.flushCache()
-        new IntervalNotification(this.sm).restart(storage.getNotificationInterval())
+        new NotificationTask(this.sm).restart(storage.getNotificationInterval())
         new ReloadIssuesTask().restart(storage.getUpdateInterval())
 
         this.sm.showScreen(Screen.CHECK_TOKEN)

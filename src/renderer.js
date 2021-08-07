@@ -31,16 +31,14 @@ import 'onsenui/css/onsenui.css'
 import 'onsenui/css/onsen-css-components.css'
 import './index.css'
 import ScreenManager from "./Renderer/ScreenManager"
-import IntervalNotification from "./Renderer/IntervalNotification";
 import Storage from "./Infrastructure/Storage/Storage";
+import NotificationTask from "./Renderer/IntervalTask/NotificationTask";
 import ReloadIssuesTask from "./Renderer/IntervalTask/ReloadIssuesTask";
 
 const sm = new ScreenManager('root', path.join(__dirname, 'screen'), 'template.html')
-const intervalNotification = new IntervalNotification(sm)
-const reloadIssuesTask = new ReloadIssuesTask()
 const storage = new Storage()
 
 sm.showScreen(sm.getInitialScreenName())
 
-intervalNotification.start(storage.getNotificationInterval())
-reloadIssuesTask.start(storage.getUpdateInterval())
+new NotificationTask(sm).start(storage.getNotificationInterval())
+new ReloadIssuesTask().start(storage.getUpdateInterval())
