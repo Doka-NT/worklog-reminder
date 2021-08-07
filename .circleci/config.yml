@@ -34,9 +34,6 @@ jobs:
       - run:
           name: Generate Linux Build
           command: yarn make -p linux
-      - run:
-          name: Generate Windows Build
-          command: yarn make -p win32
 
       - store_artifacts:
           path: ~/repo/out/make
