@@ -64,6 +64,9 @@ class IssuesScreen extends AbstractScreen {
 
             this.__setupListHandler()
             this.__hideProgressBar()
+
+            // todo: find out how to focus search input by event
+            setTimeout(() => document.getElementById(FIELD_SEARCH).focus(), 100)
         })
     }
 
@@ -274,8 +277,6 @@ class IssuesScreen extends AbstractScreen {
                         this.__hideProgressBar()
                     })
             })
-        // todo: find out how to focus search input by event
-        setTimeout(() => document.getElementById(FIELD_SEARCH).focus(), 100)
     }
 
     __getProgressBar()
