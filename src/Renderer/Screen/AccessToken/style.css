@@ -12,13 +12,41 @@
     font-size: 13px;
 }
 
-.btn-link {
+.screen__access-token .btn-link {
     font-size: 13px;
     cursor: pointer;
     border-radius: 0;
     opacity: 0.9;
+    margin: 0;
 }
 
 .btn-link:hover {
     opacity: 1;
+}
+
+.screen__access-token .list-item {
+    font-size: 13px;
+}
+
+.screen__access-token .list-item__left {
+    width: 50px;
+}
+
+.screen__access-token .list-item__center {
+    padding: 0
+}
+
+.screen__access-token ons-button {
+    margin: 10px 0;
+    border-radius: 0;
+}
+
+#btnSaveAccessToken {
+    height: 45px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: 0;
+    line-height: 200%;
 }

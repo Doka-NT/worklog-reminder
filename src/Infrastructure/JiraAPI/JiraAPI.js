@@ -31,7 +31,7 @@ class JiraAPI {
     /**
      * @return {Promise<*[]>}
      */
-    searchIssues(searchText)
+    searchIssues(searchText = '')
     {
         const searchQuery = searchText ? `summary ~ "${searchText}"` : ''
         const jql = `${searchQuery} order by lastViewed`
