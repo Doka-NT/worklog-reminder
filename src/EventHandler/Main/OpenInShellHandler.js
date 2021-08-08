@@ -1,4 +1,4 @@
-import AbstractHandler from "./AbstractHandler";
+import AbstractHandler from "../AbstractHandler";
 
 const shell = require('electron').shell
 

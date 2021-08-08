@@ -6,7 +6,7 @@ import JiraAPI from "../../../Infrastructure/JiraAPI/JiraAPI";
 import Worklog from "../../../Domain/Worklog/Worklog";
 import './style.css'
 import EventEmitter from "../../../Event/EventEmitter";
-import Event from "../../../Domain/Dictionary/Event";
+import EventDict from "../../../Domain/Dictionary/EventDict";
 
 const BTN_RELOAD = 'btnReload'
 
@@ -121,11 +121,11 @@ class IssuesScreen extends AbstractScreen {
         const { ipcRenderer } = window.require('electron')
 
         this.constructor.intervalUpdateHandlers
-            .forEach(l => document.removeEventListener(Event.RELOAD_ISSUES, l))
+            .forEach(l => document.removeEventListener(EventDict.RELOAD_ISSUES, l))
 
         const listener = () => {
             const isScreenVisible = document.querySelectorAll('.screen-issues').length > 0
-            const isWindowVisible = ipcRenderer.sendSync(Event.SYNC_IS_WINDOW_VISIBLE)
+            const isWindowVisible = ipcRenderer.sendSync(EventDict.SYNC_IS_WINDOW_VISIBLE)
 
             if (!isScreenVisible || isWindowVisible) {
                 return
@@ -136,7 +136,7 @@ class IssuesScreen extends AbstractScreen {
         }
 
         this.constructor.intervalUpdateHandlers.push(listener)
-        document.addEventListener(Event.RELOAD_ISSUES, listener)
+        document.addEventListener(EventDict.RELOAD_ISSUES, listener)
     }
 
     __setupListHandler() {
@@ -144,7 +144,7 @@ class IssuesScreen extends AbstractScreen {
 
         document.querySelectorAll('ons-list-item [data-role="issue-link"]').forEach(el => {
             el.addEventListener('click', e => {
-                eventEmitter.send(Event.OPEN_IN_SHELL, jiraAPI.getIssueUrl(e.target.innerText))
+                eventEmitter.send(EventDict.OPEN_IN_SHELL, jiraAPI.getIssueUrl(e.target.innerText))
                 e.stopPropagation()
             })
         })

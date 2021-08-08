@@ -1,6 +1,6 @@
 import html from './template.html'
 import AbstractScreen from "../AbstractScreen";
-import Event from '../../../Domain/Dictionary/Event'
+import EventDict from '../../../Domain/Dictionary/EventDict'
 import UrlDict from "../../../Domain/Dictionary/UrlDict";
 import EventEmitter from "../../../Event/EventEmitter";
 import Storage from "../../../Infrastructure/Storage/Storage";
@@ -41,7 +41,7 @@ class WelcomeScreen extends AbstractScreen {
 
         document.getElementById(BTN_CREATE_TOKEN)
             .addEventListener('click', () => {
-                eventEmitter.send(Event.OPEN_IN_SHELL, UrlDict.URL_MANAGE_TOKEN)
+                eventEmitter.send(EventDict.OPEN_IN_SHELL, UrlDict.URL_MANAGE_TOKEN)
             })
 
         document.getElementById(BTN_FINISH)
@@ -116,7 +116,7 @@ class WelcomeScreen extends AbstractScreen {
                 const notification = new Notification("Worklog Reminder", {body: "Setup is finished! I hope this app will be useful for you!" });
 
                 notification.addEventListener('click', () => {
-                    EventEmitter.getInstance().send(Event.SHOW_MAIN_WINDOW)
+                    EventEmitter.getInstance().send(EventDict.SHOW_MAIN_WINDOW)
                 });
             })
             .catch(() => {

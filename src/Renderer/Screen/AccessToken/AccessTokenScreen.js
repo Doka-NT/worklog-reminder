@@ -4,7 +4,7 @@ import Screen from "../../Screen";
 import SCREEN_DICT from "../../Screen";
 import './style.css'
 import ons from "onsenui";
-import Event from '../../../Domain/Dictionary/Event'
+import EventDict from '../../../Domain/Dictionary/EventDict'
 import UrlDict from "../../../Domain/Dictionary/UrlDict";
 import Storage from "../../../Infrastructure/Storage/Storage";
 import EventEmitter from "../../../Event/EventEmitter";
@@ -84,7 +84,7 @@ class AccessTokenScreen extends AbstractScreen
             })
 
         getElement(BTN_CREATE_TOKEN)
-            .addEventListener('click', () => eventEmitter.send(Event.OPEN_IN_SHELL, UrlDict.URL_MANAGE_TOKEN))
+            .addEventListener('click', () => eventEmitter.send(EventDict.OPEN_IN_SHELL, UrlDict.URL_MANAGE_TOKEN))
     }
 
     __validateForm() {

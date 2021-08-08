@@ -1,6 +1,6 @@
 import JiraAPI from "../../Infrastructure/JiraAPI/JiraAPI";
 import EventEmitter from "../../Event/EventEmitter";
-import Event from "../../Domain/Dictionary/Event";
+import EventDict from "../../Domain/Dictionary/EventDict";
 import SCREEN_DICT from "../Screen";
 import AbstractTask from "./AbstractTask";
 
@@ -28,7 +28,7 @@ class NotificationTask extends AbstractTask
         const notification = new Notification("Worklog Reminder", {body: "Is's time to log time of your work" });
 
         notification.addEventListener('click', () => {
-            EventEmitter.getInstance().send(Event.SHOW_MAIN_WINDOW)
+            EventEmitter.getInstance().send(EventDict.SHOW_MAIN_WINDOW)
             this.sm.showScreen(SCREEN_DICT.ISSUES)
         });
     }
