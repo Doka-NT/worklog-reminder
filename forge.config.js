@@ -8,7 +8,7 @@ module.exports = {
         {
             "name": "@electron-forge/maker-squirrel",
             "config": {
-                "name": "Worklog Reminder"
+                "name": "worklog-reminder"
             }
         },
         {
