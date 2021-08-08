@@ -40,6 +40,7 @@
     "babel-loader": "^8.2.2",
     "copy-webpack-plugin": "^9.0.1",
     "electron-squirrel-startup": "^1.0.0",
+    "electron-traywindow-positioner": "^1.1.0",
     "html-loader": "^2.1.2",
     "object-hash": "^2.2.0",
     "onsenui": "^2.11.2",
