@@ -2,6 +2,7 @@ import path from "path";
 import {app, Menu, Tray} from 'electron'
 import config from '../app.config.main'
 import OpenInShellHandler from "../EventHandler/Main/OpenInShellHandler";
+import os from "os";
 
 class AppTray
 {
@@ -10,18 +11,18 @@ class AppTray
      */
     constructor(windowManager) {
         this.windowManager = windowManager
-        this.tray = new Tray(path.join(config.assetsDir, 'appIconTemplate.png'))
+        this.tray = new Tray(this._resolveIcon())
     }
 
     setHandlers()
     {
-        this.tray.on('double-click', this.__toggleWindow.bind(this))
+        this.tray.on('double-click', this._toggleWindow.bind(this))
         this.tray.on('click', event => {
             this.tray.setContextMenu(null)
 
             const mainWindow = this.windowManager.getMainWindow()
 
-            this.__toggleWindow()
+            this._toggleWindow()
 
             if (mainWindow.isVisible() && process.defaultApp && event.metaKey) {
                 mainWindow.openDevTools({mode: 'detach'})
@@ -41,7 +42,18 @@ class AppTray
         })
     }
 
-    __toggleWindow() {
+    _resolveIcon()
+    {
+        let iconPath = 'appIcon.png'
+
+        if (os.platform() === 'darwin') {
+            iconPath = 'appIconTemplate.png'
+        }
+
+        return path.join(config.assetsDir, iconPath)
+    }
+
+    _toggleWindow() {
         let mainWindow = this.windowManager.getMainWindow();
 
         if (!mainWindow) {
