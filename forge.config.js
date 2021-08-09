@@ -6,13 +6,7 @@ module.exports = {
     },
     "makers": [
         {
-            "name": "@electron-forge/maker-squirrel",
-            "config": {
-                "name": "worklog-reminder"
-            }
-        },
-        {
-            "name": "@electron-forge/maker-zip",
+            name: '@electron-forge/maker-dmg',
         },
     ],
     plugins: [
