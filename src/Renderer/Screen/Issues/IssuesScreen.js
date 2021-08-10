@@ -226,6 +226,8 @@ class IssuesScreen extends AbstractScreen {
     __saveWorklogComment()
     {
         const dialogComment = document.querySelector(`#${DIALOG_COMMENT}`);
+        const fieldComment = document.querySelector(`#${FIELD_COMMENT}`);
+
         const isCommentProvided = fieldComment.value !== ''
 
         if (!isCommentProvided) {
@@ -235,6 +237,7 @@ class IssuesScreen extends AbstractScreen {
 
         jiraAPI.updateWorklog(IssuesScreen.lastWorklogEntity, fieldComment.value).then(() => {
             dialogComment.hide()
+            fieldComment.value = ""
             ons.notification.toast('Worklog comment has been saved', {
                 timeout: 2000
             })
