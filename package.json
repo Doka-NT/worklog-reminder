@@ -1,6 +1,6 @@
 {
   "name": "worklog-reminder",
-  "productName": "Worklog Reminder",
+  "productName": "worklog-reminder",
   "version": "0.0.1",
   "description": "Tool for easily search and add worklog to JIRA issues",
   "main": ".webpack/main",
@@ -21,13 +21,13 @@
     "forge": "./forge.config.js"
   },
   "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.58",
-    "@electron-forge/maker-deb": "^6.0.0-beta.58",
+    "@electron-forge/cli": "^6.0.0-beta.59",
+    "@electron-forge/maker-deb": "^6.0.0-beta.59",
     "@electron-forge/maker-dmg": "^6.0.0-beta.59",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.58",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.58",
-    "@electron-forge/maker-zip": "^6.0.0-beta.58",
-    "@electron-forge/plugin-webpack": "6.0.0-beta.58",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.59",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.59",
+    "@electron-forge/maker-zip": "^6.0.0-beta.59",
+    "@electron-forge/plugin-webpack": "6.0.0-beta.59",
     "@vercel/webpack-asset-relocator-loader": "1.6.0",
     "css-loader": "^6.0.0",
     "electron": "13.1.7",

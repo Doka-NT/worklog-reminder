@@ -22,6 +22,12 @@ This app will help you with:
 
 ## Installation
 
+### Requirements
+- NodeJS >= 12
+- Yarn
+- Git (optional). You also can [download zip](https://github.com/Doka-NT/worklog-reminder/archive/refs/heads/main.zip)
+
+### Install via git
 ```bash
 git clone git@github.com:Doka-NT/worklog-reminder.git && cd worklog-reminder && yarn
 ```
@@ -29,8 +35,19 @@ git clone git@github.com:Doka-NT/worklog-reminder.git && cd worklog-reminder && 
 ### Compile ready-to-use app
 To create ready-to-use application run the following command
 
+#### Windows
 ```bash
-yarn make
+yarn make -p win32
+```
+
+#### Linux
+```bash
+yarn make -p linux
+```
+
+#### MacOs
+```bash
+yarn make -p mas
 ```
 
 After that go to the `out/make` directory and find a version for you platform
