@@ -21,15 +21,6 @@ module.exports = {
             }
         },
         {
-            name: '@electron-forge/maker-rpm',
-            config: {
-                options: {
-                    maintainer: 'Soshnikov Artem',
-                    homepage: 'https://github.com/Doka-NT/worklog-reminder'
-                }
-            }
-        },
-        {
             name: '@electron-forge/maker-zip'
         }
     ],
