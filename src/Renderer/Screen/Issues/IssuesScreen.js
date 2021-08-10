@@ -149,9 +149,23 @@ class IssuesScreen extends AbstractScreen {
             })
         })
 
+        const findListItemFromChildren = el => {
+            let currentEl = el
+            const maxDepth = 4
+            let currDepth = 0
+
+            while (currentEl.tagName.toLowerCase() !== 'ons-list-item' && currDepth < maxDepth) {
+                currentEl = currentEl.parentElement
+                currDepth++
+            }
+
+            return currentEl
+        }
+
         document.querySelectorAll('ons-list-item').forEach(el => {
             el.addEventListener('click', e => {
-                const issueKey = e.target.getAttribute('data-issue-key')
+                const el = findListItemFromChildren(e.target)
+                const issueKey = el.getAttribute('data-issue-key')
 
                 IssuesScreen.selectedIssue = IssuesScreen.issues.reduce((prev, next) => {
                     let result = prev;
