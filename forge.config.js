@@ -1,10 +1,10 @@
 const path = require('path')
 
 module.exports = {
-    "packagerConfig": {
-        'icon': path.join(__dirname, 'static', 'appIcon')
+    packagerConfig: {
+        icon: path.join(__dirname, 'static', 'appIcon'),
     },
-    "makers": [
+    makers: [
         {
             name: '@electron-forge/maker-dmg',
         },
