@@ -30,7 +30,7 @@ jobs:
             - .yarn/unplugged
       - run:
           name: Generate Linux Build
-          command: yarn make -p linux
+          command: yarn make
 
       - store_artifacts:
           path: ~/repo/out/make
