@@ -11,6 +11,15 @@ module.exports = {
         {
             name: '@electron-forge/maker-squirrel',
         },
+        {
+            name: '@electron-forge/maker-deb',
+            config: {
+                options: {
+                    maintainer: 'Soshnikov Artem',
+                    homepage: 'https://github.com/Doka-NT/worklog-reminder'
+                }
+            }
+        }
     ],
     plugins: [
         ['@electron-forge/plugin-webpack', {
