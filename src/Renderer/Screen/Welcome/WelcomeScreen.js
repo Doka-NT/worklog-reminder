@@ -7,6 +7,7 @@ import Storage from "../../../Infrastructure/Storage/Storage";
 import JiraAPI from "../../../Infrastructure/JiraAPI/JiraAPI";
 import SCREEN_DICT from "../../Screen";
 import ons from 'onsenui'
+import './style.css'
 
 const CAROUSEL = 'carousel'
 const CAROUSEL_NAV_BUTTON_SELECTOR = '[data-role="nav-button"]'
@@ -82,6 +83,15 @@ class WelcomeScreen extends AbstractScreen {
 
         carousel.addEventListener('postchange', e => {
             bar.value = itemWidth * (e.activeIndex)
+
+            const slideIndex = e.activeIndex + 1
+            const slideInputSelector = `.slide-${slideIndex} input`;
+
+            const input = document.querySelector(slideInputSelector)
+
+            if (input) {
+                input.focus()
+            }
         })
     }
 
@@ -93,6 +103,17 @@ class WelcomeScreen extends AbstractScreen {
             .addEventListener('change', e => storage.setUserName(e.target.value))
         document.getElementById(FIELD_TOKEN)
             .addEventListener('change', e => storage.setApiToken(e.target.value))
+
+        let fields = [FIELD_SCHEME_AND_HOST, FIELD_USERNAME, FIELD_TOKEN]
+
+        fields.forEach(id => {
+            document.getElementById(id).addEventListener('keypress', e => {
+                if (e.code.toLowerCase() === 'enter') {
+                    document.getElementById(CAROUSEL).next()
+                }
+            })
+        })
+
     }
 
     __handleBtnFinish()

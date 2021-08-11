@@ -1,79 +1,92 @@
 <section class="screen screen__welcome">
 <ons-page>
-    
+
     <ons-progress-bar id="progressBar" value="0"></ons-progress-bar>
 
     <div class="carousel-wrapper">
-        <ons-carousel swipeable id="carousel">
+        <ons-carousel id="carousel">
             <ons-carousel-item>
-                <ons-card>
+                <div class="slide slide-1">
                     <div class="title">Worklog Reminder</div>
                     <div class="content">
-                        <ul>
-                            <li>Watch through your last issues</li>
-                            <li>Track time in 1-2 clicks</li>
-                            <li>Schedule notifications</li>
-                        </ul>
-
-                        <p></p>
-
-                        <div style="text-align: center;">
-                            <ons-button modifier="large" data-role="nav-button" data-direction="next">Let's start</ons-button>
+                        <div class="row">
+                            <ons-icon class="icon" icon="fa-tasks"></ons-icon>
+                            <span class="icon-description">Watch through your last viewed JIRA issues</span>
+                        </div>
+                        <div class="row">
+                            <ons-icon class="icon" icon="fa-mouse-pointer"></ons-icon>
+                            <span class="icon-description">Track time in 1-2 clicks. Optionally provide a comment</span>
+                        </div>
+                        <div class="row">
+                            <ons-icon class="icon" icon="fa-clock"></ons-icon>
+                            <span class="icon-description">Schedule notifications to keep worklog actual</span>
                         </div>
                     </div>
-                </ons-card>
+                    <div class="buttons">
+                        <ons-button class="btn-next" data-role="nav-button" data-direction="next">Start</ons-button>
+                    </div>
+                </div>
             </ons-carousel-item>
 
             <ons-carousel-item>
-                <ons-card>
-                    <div class="title">Provide JIRA url</div>
+                <div class="slide slide-2">
+                    <div class="title">Step 1. Jira URL</div>
                     <div class="content">
-                        You can find this value in your browser by copying URL
-                        <ons-input style="width: 100%" id="fieldSchemeAndHost" modifier="underbar" placeholder="https://myCompany.atlassian.net"></ons-input>
-                        <p></p>
-                        <ons-button modifier="large" data-role="nav-button" data-direction="next">Next &raquo;</ons-button>
-                        <ons-button modifier="quiet" data-role="nav-button" data-direction="prev">&laquo; go back</ons-button>
+                        <p>Provide your JIRA server URL</p>
+                        <p>You can find this value in your browser by copying URL</p>
+                        <ons-input style="width: 100%" id="fieldSchemeAndHost" modifier="underbar" placeholder="https://my-company.atlassian.net"></ons-input>
                     </div>
-                </ons-card>
+                    <div class="buttons">
+                        <ons-button class="btn-prev" modifier="quiet" data-role="nav-button" data-direction="prev">prev</ons-button>
+                        <ons-button class="btn-next" data-role="nav-button" data-direction="next">Next</ons-button>
+                    </div>
+                </div>
             </ons-carousel-item>
             <ons-carousel-item>
-                <ons-card>
-                    <div class="title">What is your username?</div>
+                <div class="slide slide-3">
+                    <div class="title">Step 2. Username</div>
                     <div class="content">
-                        Mostly it is your email address
+                        <p>Provide your JIRA username</p>
+                        <p>In most cases it is your email address</p>
                         <ons-input style="width: 100%" id="fieldUsername" modifier="underbar" placeholder="jsmith@examaple.com"></ons-input>
-                        <p></p>
-                        <ons-button modifier="large" data-role="nav-button" data-direction="next">Next &raquo;</ons-button>
-                        <ons-button modifier="quiet" data-role="nav-button" data-direction="prev">&laquo; go back</ons-button>
                     </div>
-                </ons-card>
+                    <div class="buttons">
+                        <ons-button class="btn-prev" modifier="quiet" data-role="nav-button" data-direction="prev">prev</ons-button>
+                        <ons-button class="btn-next" data-role="nav-button" data-direction="next">Next</ons-button>
+                    </div>
+                </div>
             </ons-carousel-item>
             <ons-carousel-item>
-                <ons-card>
-                    <div class="title">One more step!</div>
+                <div class="slide slide-4">
+                    <div class="title">Step 3. API Token</div>
                     <div class="content">
-                        <p>Now let's create an API token for this application.</p>
-                        <p>Just press button bellow, and you will be redirected to the Token management page</p>
+                        <p>Now let's create an API token for this application</p>
+                        <p>Just press "Create token" button bellow, and you will be redirected to the token management page</p>
 
-                        <ons-button id="btnCreateToken" modifier="large" data-role="nav-button" data-direction="next">Create token</ons-button>
-                        <p></p>
-                        <ons-button modifier="large outline" data-role="nav-button" data-direction="next">I already have token</ons-button>
-                        <ons-button modifier="quiet" data-role="nav-button" data-direction="prev">&laquo; go back</ons-button>
+                        <ons-button class="btn-token-exists" modifier="quiet" data-role="nav-button" data-direction="next">Click here if you already have a token</ons-button>
                     </div>
-                </ons-card>
+                    <div class="buttons">
+                        <ons-button class="btn-prev" modifier="quiet" data-role="nav-button" data-direction="prev">prev</ons-button>
+                        <ons-button class="btn-next" id="btnCreateToken" data-role="nav-button" data-direction="next">Create token</ons-button>
+                    </div>
+                </div>
             </ons-carousel-item>
 
             <ons-carousel-item>
-                <ons-card>
-                    <div class="title">Almost done!</div>
+                <div class="slide slide-5">
+                    <div class="title">Almost done</div>
                     <div class="content">
-                        Enter your token bellow and we are done
+                        <div class="finish-icon-block">
+                            <ons-icon class="icon" icon="fa-thumbs-up" style="height: 40px"></ons-icon>
+                        </div>
+                        <p>Enter your newly created token bellow to finish setup</p>
                         <ons-input style="width: 100%" id="fieldToken" type="password" modifier="underbar" placeholder="API Token"></ons-input>
-                        <p></p>
-                        <ons-button id="btnFinish" modifier="large">Finish!</ons-button>
-                        <ons-button modifier="quiet" data-role="nav-button" data-direction="prev">&laquo; go back</ons-button>
                     </div>
-                </ons-card>
+                    <div class="buttons">
+                        <ons-button class="btn-prev" modifier="quiet" data-role="nav-button" data-direction="prev">prev</ons-button>
+                        <ons-button class="btn-next" id="btnFinish">Finish!</ons-button>
+                    </div>
+                </div>
             </ons-carousel-item>
         </ons-carousel>
     </div>
