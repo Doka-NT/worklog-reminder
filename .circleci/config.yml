@@ -1,14 +1,11 @@
 version: 2.1
 jobs:
-  build:
+  build-deb:
     working_directory: ~/repo
     docker:
-      - image: circleci/node:12
+      - image: skobka/worklog-reminder-ci:deb
     steps:
       - checkout
-      - run:
-          name: Update NPM
-          command: "curl -o- -L https://yarnpkg.com/install.sh | bash"
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
@@ -16,11 +13,6 @@ jobs:
       - run:
           name: Install Dependencies
           command: yarn install --immutable
-      - run:
-          name: Install dpkg and fakeroot
-          command: |
-            sudo apt-get update -y
-            sudo apt-get install -y dpkg fakeroot rpm
 
       - save_cache:
           name: Save Yarn Package Cache
@@ -29,8 +21,8 @@ jobs:
             - .yarn/cache
             - .yarn/unplugged
       - run:
-          name: Generate Linux Build
-          command: yarn make -p linux
+          name: Generate deb package
+          command: yarn make --platform=linux --targets=@electron-forge/maker-deb
 
       - store_artifacts:
           path: ~/repo/out/make
