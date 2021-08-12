@@ -12,3 +12,5 @@ ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Moscow
 
 RUN apt update && apt -y install git dpkg fakeroot
+RUN apt update && apt -y install rpm
+RUN apt update && apt -y install zip
