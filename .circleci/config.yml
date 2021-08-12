@@ -26,3 +26,8 @@ jobs:
 
       - store_artifacts:
           path: ~/repo/out/make
+
+workflows:
+  build-packages:
+    jobs:
+      - build-deb
