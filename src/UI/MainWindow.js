@@ -22,7 +22,11 @@ class MainWindow extends BrowserWindow
     setHandlers() {
         this.on('blur', () => {
             if (!this.webContents.isDevToolsOpened()) {
-                this.hide()
+                if (process.platform === 'linux') {
+                    this.minimize()
+                } else {
+                    this.hide()
+                }
             }
          })
     }

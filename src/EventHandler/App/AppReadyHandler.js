@@ -8,5 +8,7 @@ export default class AppReadyHandler extends AbstractHandler
 
         wm.createTray()
         wm.createMainWindow()
+
+        wm.getMainWindow().show()
     }
 }
