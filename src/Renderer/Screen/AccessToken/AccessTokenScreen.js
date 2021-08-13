@@ -8,9 +8,9 @@ import EventDict from '../../../Domain/Dictionary/EventDict'
 import UrlDict from "../../../Domain/Dictionary/UrlDict";
 import Storage from "../../../Infrastructure/Storage/Storage";
 import EventEmitter from "../../../Event/EventEmitter";
-import NotificationTask from "../../IntervalTask/NotificationTask";
 import JiraAPI from "../../../Infrastructure/JiraAPI/JiraAPI";
-import ReloadIssuesTask from "../../IntervalTask/ReloadIssuesTask";
+import NotificationTask from "../../../Task/Renderer/NotificationTask";
+import ReloadIssuesTask from "../../../Task/Renderer/ReloadIssuesTask";
 
 const BTN_OK = 'btnSaveAccessToken'
 const BTN_BACK = 'btnBack'

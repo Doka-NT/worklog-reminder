@@ -1,13 +1,12 @@
 import JiraAPI from "../../Infrastructure/JiraAPI/JiraAPI";
+import AbstractIntervalTask from "../AbstractIntervalTask";
 import EventEmitter from "../../Event/EventEmitter";
 import EventDict from "../../Domain/Dictionary/EventDict";
-import SCREEN_DICT from "../Screen";
-import AbstractTask from "./AbstractTask";
+import SCREEN_DICT from "../../Renderer/Screen";
 
 const jiraAPI = new JiraAPI()
 
-class NotificationTask extends AbstractTask
-{
+class NotificationTask extends AbstractIntervalTask {
     static __interval
 
     /**
@@ -18,14 +17,13 @@ class NotificationTask extends AbstractTask
         this.sm = sm
     }
 
-    _iteration()
-    {
+    _iteration() {
         jiraAPI.searchIssues()
             .then(() => this._showNotification())
     }
 
     _showNotification() {
-        const notification = new Notification("Worklog Reminder", {body: "Is's time to log time of your work" });
+        const notification = new Notification("Worklog Reminder", {body: "Is's time to log time of your work"});
 
         notification.addEventListener('click', () => {
             EventEmitter.getInstance().send(EventDict.SHOW_MAIN_WINDOW)
@@ -34,4 +32,4 @@ class NotificationTask extends AbstractTask
     }
 }
 
-export default NotificationTask
+export default NotificationTask;

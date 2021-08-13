@@ -1,20 +1,17 @@
 /**
  * @abstract
  */
-class AbstractTask
-{
+class AbstractIntervalTask {
     static __interval
 
     /**
      * @param {Number} intervalSeconds
      */
-    start(intervalSeconds)
-    {
+    start(intervalSeconds) {
         this.constructor.__interval = setInterval(this._iteration.bind(this), intervalSeconds)
     }
 
-    stop()
-    {
+    stop() {
         if (!this.constructor.__interval) {
             return
         }
@@ -22,8 +19,7 @@ class AbstractTask
         clearInterval(this.constructor.__interval);
     }
 
-    restart(intervalSeconds)
-    {
+    restart(intervalSeconds) {
         this.stop()
         this.start(intervalSeconds)
     }
@@ -32,10 +28,9 @@ class AbstractTask
      * @abstract
      * @protected
      */
-    _iteration()
-    {
+    _iteration() {
         throw new Error('You have to implement iteration method')
     }
 }
 
-export default AbstractTask
+export default AbstractIntervalTask;

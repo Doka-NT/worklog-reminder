@@ -32,8 +32,8 @@ import 'onsenui/css/onsen-css-components.css'
 import './index.css'
 import ScreenManager from "./Renderer/ScreenManager"
 import Storage from "./Infrastructure/Storage/Storage";
-import NotificationTask from "./Renderer/IntervalTask/NotificationTask";
-import ReloadIssuesTask from "./Renderer/IntervalTask/ReloadIssuesTask";
+import NotificationTask from "./Task/Renderer/NotificationTask";
+import ReloadIssuesTask from "./Task/Renderer/ReloadIssuesTask";
 
 const sm = new ScreenManager('root', path.join(__dirname, 'screen'), 'template.html')
 const storage = new Storage()
