@@ -1,5 +1,6 @@
 import AbstractHandler from "../AbstractHandler";
 import WindowManager from "../../UI/WindowManager";
+import CheckForUpdatesTask from "../../Task/Main/CheckForUpdatesTask";
 
 export default class AppReadyHandler extends AbstractHandler
 {
@@ -13,11 +14,9 @@ export default class AppReadyHandler extends AbstractHandler
         // wait tray to be created, so we can detect it bounds
         setTimeout(() => wm.getMainWindow().show(), 1000)
 
-        // new UpdaterTask().start(1000)
-        // https://update.electronjs.org/Doka-NT/worklog-reminder/darwin-x64/0.0.1
-        // 204 - up to date
-        // 404 - no updates at all
-        // 400 - invalid sem version
-        // 200 - updates available
+        const checkForUpdatesTask = new CheckForUpdatesTask();
+        checkForUpdatesTask.start(15 * 60 * 1000)
+        // check for updates at application startup
+        checkForUpdatesTask._iteration();
     }
 }
