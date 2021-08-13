@@ -4,6 +4,20 @@ module.exports = {
     packagerConfig: {
         icon: path.join(__dirname, 'static', 'appIconColored'),
     },
+    plugins: [
+        ['@electron-forge/plugin-webpack', {
+            mainConfig: './webpack.main.config.js',
+            renderer: {
+                config: './webpack.renderer.config.js',
+                entryPoints: [{
+                    name: 'main_window',
+                    html: './src/index.html',
+                    js: './src/renderer.js'
+                }]
+            },
+            devContentSecurityPolicy: `default-src 'self' 'unsafe-inline' 'unsafe-eval' data: https://*.atlassian.net`,
+        }]
+    ],
     makers: [
         {
             name: '@electron-forge/maker-dmg',
@@ -57,18 +71,4 @@ module.exports = {
             name: '@electron-forge/maker-zip'
         }
     ],
-    plugins: [
-        ['@electron-forge/plugin-webpack', {
-            mainConfig: './webpack.main.config.js',
-            renderer: {
-                config: './webpack.renderer.config.js',
-                entryPoints: [{
-                    name: 'main_window',
-                    html: './src/index.html',
-                    js: './src/renderer.js'
-                }]
-            },
-            devContentSecurityPolicy: `default-src 'self' 'unsafe-inline' 'unsafe-eval' data: https://*.atlassian.net`,
-        }]
-    ]
 }
