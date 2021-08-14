@@ -20,10 +20,17 @@ class AppTray
     {
         this.tray.on('double-click', this._toggleWindow.bind(this))
         this.tray.on('click', event => {
+            if (process.platform === 'darwin') {
+                this.tray.setContextMenu(null)
+            }
+
             this._showMainWindow(event)
         })
         
         this.tray.on('right-click', () => {
+            if (process.platform === 'darwin') {
+                this.tray.setContextMenu(this._createContextMenu())
+            }
             this.tray.popUpContextMenu()
         })
     
