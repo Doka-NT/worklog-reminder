@@ -5,13 +5,16 @@
 
 # Worklog Reminder for JIRA
 
-
-
 This app will help you with:
 
 - Watch through your last issues
 - Track time in 1-2 clicks
 - Schedule notifications
+- Runs on Windows, MacOS and Linux
+
+<a href="https://github.com/Doka-NT/worklog-reminder/releases/latest">
+  <img src="./docs/images/platforms.png"/>  
+</a>
 
 ## Overview
 <table>
@@ -25,7 +28,7 @@ This app will help you with:
       <td>
         Setup app in 4 simple steps:
         <ul>
-          <li>Provide your JIRA server URL</li>
+          <li>Provide your JIRA URL</li>
           <li>Enter your username</li>
           <li>Create or paste API token</li>
           <li>Done!</li>
@@ -33,10 +36,12 @@ This app will help you with:
       </td>
       <td><img src="./docs/images/issues-screen.gif" height="250"/></td>
       <td>
-        Work with issues in 1-2 clicks%
+        Work with issues in 1-2 clicks:
         <ul>
-          <li>Find issue in the list or use search bar</li>
-          <li>Click on issue row and choose time</li>
+          <li>Look through last viewed</li>
+          <li>Search for issues</li>
+          <li>Open issues in browser</li>
+          <li>Click on issue and choose time</li>
           <li>Optionaly: provide a comment</li>
           <li>Done!</li>
         </ul>
@@ -45,12 +50,16 @@ This app will help you with:
   </tbody>
 </table>
 
+## Download
+To [download](https://github.com/Doka-NT/worklog-reminder/releases) the application please visit [latest release page](https://github.com/Doka-NT/worklog-reminder/releases) and click on file for your platform
+
 ## Main Features
 - You need only 2 clicks to track time
 - Search through last viewed issues
 - Tray based application
 - Minimalistic interface
 - Schedule interval notifications as you want (1, 2, 3, .., 60 minutes and etc)
+- Auto update issue list in background
 - Electron based application works on every desktop platform: Windows, Linux and MacOS
 
 ## Installation
