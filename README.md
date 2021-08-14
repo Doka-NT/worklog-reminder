@@ -16,42 +16,32 @@ This app will help you with:
   <img src="./docs/images/platforms.png"/>  
 </a>
 
-## Overview
-<table>
-  <thead>
-    <th colspan="2">Easy setup</th>
-    <th colspan="2">Easy to use</th>
-  </thead>  
-  <tbody>
-    <tr>
-      <td><img src="./docs/images/welcome-screen.gif" height="250"/></td>
-      <td>
-        Setup app in 4 simple steps:
-        <ul>
-          <li>Provide your JIRA URL</li>
-          <li>Enter your username</li>
-          <li>Create or paste API token</li>
-          <li>Done!</li>
-        </ul>
-      </td>
-      <td><img src="./docs/images/issues-screen.gif" height="250"/></td>
-      <td>
-        Work with issues in 1-2 clicks:
-        <ul>
-          <li>Look through last viewed</li>
-          <li>Search for issues</li>
-          <li>Open issues in browser</li>
-          <li>Click on issue and choose time</li>
-          <li>Optionaly: provide a comment</li>
-          <li>Done!</li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
 ## Download
 To [download](https://github.com/Doka-NT/worklog-reminder/releases) the application please visit [latest release page](https://github.com/Doka-NT/worklog-reminder/releases) and click on file for your platform
+
+## Overview
+
+### Easy setup
+Setup **Worklog Reminder** in 4 simple steps:
+<ul>
+  <li>Provide your JIRA URL</li>
+  <li>Enter your username</li>
+  <li>Create or paste API token</li>
+  <li>Done!</li>
+</ul>
+<img src="./docs/images/welcome-screen.gif" height="250"/>
+
+### Easy to use
+Work with issues in 1-2 clicks:
+<ul>
+  <li>Look through last viewed</li>
+  <li>Search for issues</li>
+  <li>Open issues in browser</li>
+  <li>Click on issue and choose time</li>
+  <li>Optionaly: provide a comment</li>
+  <li>Done!</li>
+</ul>
+<img src="./docs/images/issues-screen.gif" height="250"/>
 
 ## Main Features
 - You need only 2 clicks to track time
