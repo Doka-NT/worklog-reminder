@@ -1,10 +1,38 @@
 [![CircleCI](https://circleci.com/gh/Doka-NT/worklog-reminder/tree/main.svg?style=svg)](https://circleci.com/gh/Doka-NT/worklog-reminder/tree/main)
 
-# Worklog Reminder
+# Worklog Reminder for JIRA
 
-<a href="./docs/images/screenshot-picker.png"><img src="./docs/images/screenshot-picker.png" height="100"/></a>
-<a href="./docs/images/screenshot-comment.png"><img src="./docs/images/screenshot-comment.png" height="100"/></a>
-<a href="./docs/images/screenshot-settings.png"><img src="./docs/images/screenshot-settings.png" height="100"/></a>
+<table>
+  <thead>
+    <th colspan="2">Easy setup</th>
+    <th colspan="2">Easy to use</th>
+  </thead>  
+  <tbody>
+    <tr>
+      <td><img src="./docs/images/welcome-screen.gif" height="250"/></td>
+      <td>
+        Setup app in 4 simple steps:
+        <ul>
+          <li>Provide your JIRA server URL</li>
+          <li>Enter your username</li>
+          <li>Create or paste API token</li>
+          <li>Done!</li>
+        </ul>
+      </td>
+      <td><img src="./docs/images/issues-screen.gif" height="250"/></td>
+      <td>
+        Work with issues in 1-2 clicks%
+        <ul>
+          <li>Find issue in the list or use search bar</li>
+          <li>Click on issue row and choose time</li>
+          <li>Optionaly: provide a comment</li>
+          <li>Done!</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 
 This app will help you with:
 
