@@ -1,7 +1,19 @@
-[![CircleCI](https://circleci.com/gh/Doka-NT/worklog-reminder/tree/main.svg?style=svg)](https://circleci.com/gh/Doka-NT/worklog-reminder/tree/main)
+<p align="center">
+  <img src="./static/appIconColored.png" height="64"/><br/>
+  <a href="https://circleci.com/gh/Doka-NT/worklog-reminder/tree/main"><img src="https://circleci.com/gh/Doka-NT/worklog-reminder/tree/main.svg?style=svg"/></a>
+</p>
 
 # Worklog Reminder for JIRA
 
+
+
+This app will help you with:
+
+- Watch through your last issues
+- Track time in 1-2 clicks
+- Schedule notifications
+
+## Overview
 <table>
   <thead>
     <th colspan="2">Easy setup</th>
@@ -32,13 +44,6 @@
     </tr>
   </tbody>
 </table>
-
-
-This app will help you with:
-
-- Watch through your last issues
-- Track time in 1-2 clicks
-- Schedule notifications
 
 ## Main Features
 - You need only 2 clicks to track time
