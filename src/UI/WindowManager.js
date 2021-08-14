@@ -1,5 +1,7 @@
 import AppTray from "./AppTray";
 import MainWindow from "./MainWindow";
+import config from '../app.config.main';
+import path from 'path';
 
 class WindowManager {
     /**
@@ -48,7 +50,8 @@ class WindowManager {
             fullscreenable: false,
             resizable: false,
             transparent: false,
-            skipTaskbar: true,
+            skipTaskbar: process.platform !== 'linux',
+            icon: path.join(config.assetsDir, process.platform !== 'win32' ? 'appIconColored.png' : 'appIconColored.ico'),
             webPreferences: {
                 // Prevents renderer process code from not running when window is
                 // hidden

@@ -12,34 +12,63 @@ class AppTray
     constructor(windowManager) {
         this.windowManager = windowManager
         this.tray = new Tray(this._resolveIcon())
+        this.tray.setContextMenu(this._createContextMenu())
+        this.tray.closeContextMenu()
     }
 
     setHandlers()
     {
         this.tray.on('double-click', this._toggleWindow.bind(this))
         this.tray.on('click', event => {
-            this.tray.setContextMenu(null)
-
-            const mainWindow = this.windowManager.getMainWindow()
-
-            this._toggleWindow()
-
-            if (mainWindow.isVisible() && process.defaultApp && event.metaKey) {
-                mainWindow.openDevTools({mode: 'detach'})
+            if (process.platform === 'darwin') {
+                this.tray.setContextMenu(null)
             }
-        })
-        this.tray.on('right-click', () => {
-            const contextMenu = Menu.buildFromTemplate([
-                {
-                    label: 'Help', click: () => {
-                        new OpenInShellHandler().handle({payload: 'https://github.com/Doka-NT/worklog-reminder'})
-                    }
-                },
-                {label: 'Quit', click: () => app.quit()},
-            ])
 
-            this.tray.setContextMenu(contextMenu)
+            this._showMainWindow(event)
         })
+        
+        this.tray.on('right-click', () => {
+            if (process.platform === 'darwin') {
+                this.tray.setContextMenu(this._createContextMenu())
+            }
+            this.tray.popUpContextMenu()
+        })
+    
+    }
+
+    _showMainWindow(event)
+    {
+        const mainWindow = this.windowManager.getMainWindow()
+
+        this._toggleWindow()
+
+        if (mainWindow.isVisible() && process.defaultApp && event.metaKey) {
+            mainWindow.openDevTools({mode: 'detach'})
+        }
+    }
+
+    _createContextMenu()
+    {
+        const menuItems = [
+            {
+                label: 'Help',
+                click: () => {
+                    new OpenInShellHandler().handle({payload: 'https://github.com/Doka-NT/worklog-reminder'})
+                }
+            },
+            {label: 'Quit', click: () => app.quit()},
+        ]
+
+        if (process.platform === 'linux') {
+            menuItems.unshift({
+                label: 'Toggle Window',
+                click: (event) => {
+                    this._showMainWindow(event)
+                }
+            })
+        }
+        
+        return Menu.buildFromTemplate(menuItems)
     }
 
     _resolveIcon()
