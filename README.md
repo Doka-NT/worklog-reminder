@@ -73,7 +73,7 @@ To create ready-to-use application run the following command
 yarn make
 ```
 
-After that go to the `out/make` directory and find a version for you platform
+After that go to the `out/make` directory and find a version for your platform
 
 ## Support
 If you have any question feel free to [create new issue](https://github.com/Doka-NT/worklog-reminder/issues/new)
