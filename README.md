@@ -9,7 +9,7 @@ This app will help you with:
 
 - Watch through your last issues
 - Track time in 1-2 clicks
-- Schedule notifications
+- **Scheduled notifications**
 - Runs on Windows, MacOS and Linux
 
 <a href="https://github.com/Doka-NT/worklog-reminder/releases/latest">
@@ -32,7 +32,7 @@ Setup **Worklog Reminder** in 4 simple steps:
 <img src="./docs/images/welcome-screen.gif" height="250"/>
 
 ### Easy to use
-Work with issues in 1-2 clicks:
+Work with issues in 2 clicks:
 <ul>
   <li>Look through last viewed</li>
   <li>Search for issues</li>
@@ -52,40 +52,28 @@ Work with issues in 1-2 clicks:
 - Auto update issue list in background
 - Electron based application works on every desktop platform: Windows, Linux and MacOS
 
-## Installation
+## Development
 
 ### Requirements
 - NodeJS >= 12
 - Yarn
-- Git (optional). You also can [download zip](https://github.com/Doka-NT/worklog-reminder/archive/refs/heads/main.zip)
 
-### Install via git
+### Install
 ```bash
-git clone git@github.com:Doka-NT/worklog-reminder.git && cd worklog-reminder && yarn
+git clone git@github.com:Doka-NT/worklog-reminder.git
+cd worklog-reminder
+yarn
+yarn start
 ```
 
 ### Compile ready-to-use app
 To create ready-to-use application run the following command
 
-#### Windows
 ```bash
-yarn make -p win32
-```
-
-#### Linux
-```bash
-yarn make -p linux
-```
-
-#### MacOs
-```bash
-yarn make -p mas
+yarn make
 ```
 
 After that go to the `out/make` directory and find a version for you platform
 
-### Run in dev mode
-
-```bash
-yarn start
-```
+## Support
+If you have any question feel free to [create new issue](https://github.com/Doka-NT/worklog-reminder/issues/new)
