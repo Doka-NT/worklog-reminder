@@ -3,12 +3,23 @@ const webpack = require("webpack");
 
 rules.push({
     test: /\.css$/,
-    use: [{loader: 'style-loader'}, {loader: 'css-loader'}],
+    use: [
+        { loader: 'style-loader' },
+        { loader: 'css-loader' },
+    ],
 });
 
 rules.push({
     test: /\.html$/i,
     loader: 'html-loader',
+})
+
+rules.push({
+    test: /\.m?js$/,
+    exclude: /(node_modules|bower_components)/,
+    use: {
+        loader: "babel-loader"
+    }
 })
 
 module.exports = {
@@ -21,6 +32,9 @@ module.exports = {
         }
     },
     plugins: [
+        new webpack.ProvidePlugin({
+            'React': 'react',
+        }),
         new webpack.IgnorePlugin({
             resourceRegExp: /electron/,
             contextRegExp: /.*/,

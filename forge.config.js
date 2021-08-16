@@ -11,8 +11,8 @@ module.exports = {
                 config: './webpack.renderer.config.js',
                 entryPoints: [{
                     name: 'main_window',
-                    html: './src/index.html',
-                    js: './src/renderer.js'
+                    html: './src-react/index.html',
+                    js: './src-react/renderer.js'
                 }]
             },
             devContentSecurityPolicy: `default-src 'self' 'unsafe-inline' 'unsafe-eval' data: https://*.atlassian.net`,

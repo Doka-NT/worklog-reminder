@@ -27,6 +27,7 @@
   "devDependencies": {
     "@babel/core": "^7.14.8",
     "@babel/preset-env": "^7.14.8",
+    "@babel/preset-react": "^7.14.5",
     "@electron-forge/cli": "^6.0.0-beta.59",
     "@electron-forge/maker-deb": "^6.0.0-beta.59",
     "@electron-forge/maker-dmg": "^6.0.0-beta.59",
@@ -50,6 +51,17 @@
     "node-fetch": "^2.6.1",
     "object-hash": "^2.2.0",
     "onsenui": "^2.11.2",
-    "path-browserify": "^1.0.1"
+    "path-browserify": "^1.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-onsenui": "^1.11.4",
+    "react-redux": "^7.2.4",
+    "redux": "^4.1.1"
+  },
+  "babel": {
+    "presets": [
+      "@babel/env",
+      "@babel/react"
+    ]
   }
 }
