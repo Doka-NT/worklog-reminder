@@ -6,11 +6,7 @@ rules.push({
     use: [
         { loader: 'style-loader' },
         {
-            loader: 'css-loader',
-            options: {
-                importLoaders: 1,
-                modules: true
-            }
+            loader: 'css-loader'
         },
     ],
 });
@@ -23,10 +19,6 @@ rules.push({
         },
         {
             loader: "css-loader",
-            options: {
-                importLoaders: 1,
-                modules: true
-            }
         },
         {
             loader: "less-loader"
