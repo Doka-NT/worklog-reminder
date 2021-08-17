@@ -1,8 +1,8 @@
 import { CarouselItem, Button } from "react-onsenui"
 import { useDispatch } from "react-redux"
-import EventDict from "../../../../Domain/Dictionary/EventDict"
-import UrlDict from "../../../../Domain/Dictionary/UrlDict"
-import EventEmitter from "../../../../../src/Event/EventEmitter"
+import EventDict from "../../../../../Domain/Dictionary/EventDict"
+import UrlDict from "../../../../../Domain/Dictionary/UrlDict"
+import EventEmitter from "../../../../../Domain/EventEmitter"
 import NavButtons from "../components/NavButtons"
 import { showNext } from "../slice"
 

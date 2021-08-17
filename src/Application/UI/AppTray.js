@@ -1,8 +1,8 @@
 import path from "path";
 import {app, Menu, Tray} from 'electron'
-import config from '../app.config.main'
-import OpenInShellHandler from "../EventHandler/Main/OpenInShellHandler";
+import config from '../../app.config.main'
 import os from "os";
+import OpenInShellHandler from "../Event/MainHandler/OpenInShellHandler";
 
 class AppTray
 {

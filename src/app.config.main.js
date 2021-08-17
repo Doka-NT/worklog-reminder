@@ -5,14 +5,14 @@
 import path from "path";
 import {app} from 'electron'
 import EventDict from './Domain/Dictionary/EventDict'
-import OpenInShellHandler from "./EventHandler/Main/OpenInShellHandler";
-import ShowMainWindowHandler from "./EventHandler/Main/ShowMainWindowHandler";
-import SyncIsWindowVisible from "./EventHandler/Main/SyncIsWindowVisible";
-import AppReadyHandler from "./EventHandler/App/AppReadyHandler";
-import UserAgentHandler from "./EventHandler/App/UserAgentHandler";
-import WindowAllClosedHandler from "./EventHandler/App/WindowAllClosedHandler";
-import ActivateHandler from "./EventHandler/App/ActivateHandler";
-import HideMacOsDockHandler from "./EventHandler/App/HideMacOsDockHandler";
+import OpenInShellHandler from './Application/Event/MainHandler/OpenInShellHandler'
+import ShowMainWindowHandler from "./Application/Event/MainHandler/ShowMainWindowHandler";
+import SyncIsWindowVisible from "./Application/Event/MainHandler/SyncIsWindowVisible";
+import AppReadyHandler from "./Application/Event/RendererHandler/AppReadyHandler";
+import UserAgentHandler from "./Application/Event/RendererHandler/UserAgentHandler";
+import WindowAllClosedHandler from "./Application/Event/RendererHandler/WindowAllClosedHandler";
+import ActivateHandler from "./Application/Event/RendererHandler/ActivateHandler";
+import HideMacOsDockHandler from "./Application/Event/RendererHandler/HideMacOsDockHandler";
 
 const APP_ROOT = app.getAppPath()
 

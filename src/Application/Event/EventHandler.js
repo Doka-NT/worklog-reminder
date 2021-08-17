@@ -1,5 +1,5 @@
 import {ipcMain} from 'electron'
-import config from "../app.config.main";
+import config from "../../app.config.main";
 
 class EventHandler
 {

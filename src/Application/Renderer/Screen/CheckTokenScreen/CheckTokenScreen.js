@@ -1,4 +1,4 @@
-import imgSpinner from '../../../../static/spinner.gif'
+import imgSpinner from '../../../../../static/spinner.gif'
 
 export default function CheckTokenScreen() {
     return (

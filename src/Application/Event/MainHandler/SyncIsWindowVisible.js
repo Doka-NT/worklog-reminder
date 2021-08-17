@@ -1,5 +1,6 @@
-import AbstractHandler from "../AbstractHandler";
 import WindowManager from "../../UI/WindowManager";
+import AbstractHandler from "../AbstractHandler";
+
 
 export default class SyncIsWindowVisible extends AbstractHandler
 {

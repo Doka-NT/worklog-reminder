@@ -1,6 +1,6 @@
 import AppTray from "./AppTray";
 import MainWindow from "./MainWindow";
-import config from '../app.config.main';
+import config from '../../app.config.main';
 import path from 'path';
 
 class WindowManager {

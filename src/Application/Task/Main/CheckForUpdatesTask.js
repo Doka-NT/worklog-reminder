@@ -2,7 +2,7 @@ import path from 'path'
 import {app, dialog, shell} from 'electron'
 import AbstractIntervalTask from "../AbstractIntervalTask";
 import fetch from "node-fetch";
-import config from "../../app.config.main";
+import config from "../../../app.config.main";
 
 const repositoryName = 'Doka-NT/worklog-reminder'
 const githubHost = 'https://github.com'
