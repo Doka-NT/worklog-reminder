@@ -14,8 +14,6 @@ export default function NextButton(_props) {
 
     const props = {...defaults, ..._props}
 
-console.log('NEXT', _props, props)
-
     return (
         <Button {...props}>
             {props.text}

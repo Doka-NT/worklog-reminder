@@ -8,7 +8,6 @@ export default function NavButtons(_props) {
     }
 
     const props = {..._defaults, ..._props}
-    console.log('NAV', _props, props)
 
     return (
         <div className="buttons">
