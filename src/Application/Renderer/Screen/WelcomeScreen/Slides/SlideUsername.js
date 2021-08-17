@@ -1,9 +1,18 @@
 import { CarouselItem, Input } from "react-onsenui"
+import { useDispatch, useSelector } from "react-redux"
+import { selectUsername, setUsername } from "../../../Store/settingsSlice"
 import NavButtons from "../components/NavButtons"
 import SlideInput from "../components/SlideInput"
 
 
 export default function SlideUsername(props) {
+    const dispatch = useDispatch()
+    const username = useSelector(selectUsername)
+
+    const onChange = e => {
+        dispatch(setUsername(e.value))    
+    }
+
     return (
         <CarouselItem>
             <div className="slide slide-3">
@@ -12,6 +21,8 @@ export default function SlideUsername(props) {
                     <p>Provide your JIRA username</p>
                     <p>In most cases it is your email address</p>
                     <SlideInput
+                        value={username}
+                        onChange={onChange}
                         focusedOnIndex={props.index}
                         placeholder="jsmith@examaple.com"
                     />

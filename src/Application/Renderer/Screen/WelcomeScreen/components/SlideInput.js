@@ -9,7 +9,8 @@ export default function SlideInput(_props) {
         autoFocus: false,
         style: {
             width: '100%'
-        }
+        },
+        onChange: () => {},
     }
 
     const props = { ...defaults, ..._props }
@@ -28,9 +29,27 @@ export default function SlideInput(_props) {
         dispatch(showNext())
     }
 
+    const preventTab = e => {
+        if (e.code.toLowerCase() === 'tab') {
+            e.preventDefault()
+        }
+    }
+
     useEffect(() => {
         if (autofocus) {
             inputRef?.current.focus()
+        } else {
+            inputRef?.current.blur()
+        }
+
+        inputRef.current.onchange = e => {
+            const event = {
+                type: e.type,
+                value: e.target.value,
+                originEvent: e,
+            }
+            
+            props.onChange(event)
         }
     }, [autofocus])
 
@@ -39,6 +58,7 @@ export default function SlideInput(_props) {
             ref={inputRef}
             {...props}
             onKeyPress={onEnter}
+            onKeyDown={preventTab}
         />
     )
 }

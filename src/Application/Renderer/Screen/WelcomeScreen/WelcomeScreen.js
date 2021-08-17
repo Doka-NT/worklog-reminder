@@ -1,14 +1,14 @@
-import { useEffect, useRef } from 'react'
-import { Page, Carousel, CarouselItem, Icon, Input, Button, ProgressBar } from 'react-onsenui'
+import { useRef } from 'react'
+import { Carousel, Page, ProgressBar } from 'react-onsenui'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectIndex, selectVisibleSlide, setSlide, showNext, slideBecomeVisible } from './slice'
-import SlideAboutToken from './Slides/SlideAboutToken'
-import SlideBegin from './Slides/SlideBegin'
-import SlideHost from './Slides/SlideHost'
-import SlideToken from './Slides/SlideToken'
-import SlideUsername from './Slides/SlideUsername'
-
+import { selectIndex, slideBecomeVisible } from './slice'
+import SlideAboutToken from './slides/SlideAboutToken'
+import SlideBegin from './slides/SlideBegin'
+import SlideHost from './slides/SlideHost'
+import SlideToken from './slides/SlideToken'
+import SlideUsername from './slides/SlideUsername'
 import './style.less'
+
 
 export function WelcomeScreen() {
     const carouselRef = useRef(null)

@@ -1,8 +1,17 @@
 import { CarouselItem, Icon, Input } from "react-onsenui"
+import { useDispatch, useSelector } from "react-redux"
+import { selectToken, setToken } from "../../../Store/settingsSlice"
 import NavButtons from "../components/NavButtons"
 import SlideInput from "../components/SlideInput"
 
 export default function SlideToken(props) {
+    const dispatch = useDispatch()
+    const token = useSelector(selectToken)
+
+    const onChange = e => {
+        dispatch(setToken(e.value))
+    }
+
     const onBtnClick = () => {
 
     }
@@ -17,6 +26,8 @@ export default function SlideToken(props) {
                     </div>
                     <p>Enter your newly created token bellow to finish setup</p>
                     <SlideInput
+                        value={token}
+                        onChange={onChange}
                         focusedOnIndex={props.index}
                         type="password"
                         placeholder="API Token" />

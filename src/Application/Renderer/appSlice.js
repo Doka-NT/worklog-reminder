@@ -8,7 +8,7 @@ const appSlice = createSlice({
     reducers: {
         showScreen: (state, action) => {
             state.screenName = action.payload
-        }
+        },
     }
 })
 
