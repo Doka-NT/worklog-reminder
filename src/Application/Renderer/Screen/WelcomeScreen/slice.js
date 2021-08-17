@@ -4,6 +4,7 @@ const welcomeScreenSlice = createSlice({
     name: 'welcomeScreen',
     initialState: {
         index: 0,
+        visibleSlideIndex: 0,
     },
     reducers: {
         setSlide: (state, action) => {
@@ -14,6 +15,9 @@ const welcomeScreenSlice = createSlice({
         },
         showPrev: state => {
             state.index--
+        },
+        slideBecomeVisible: (state, action) => {
+            state.visibleSlideIndex = action.payload
         }
     },
 })
@@ -21,14 +25,17 @@ const welcomeScreenSlice = createSlice({
 const welcomeScreenReducer = welcomeScreenSlice.reducer
 
 const selectIndex = (state) => state.welcomeScreen.index
+const selectVisibleSlide = (state) => state.welcomeScreen.visibleSlideIndex
 
-const {setSlide, showNext, showPrev} = welcomeScreenSlice.actions
+const {setSlide, showNext, showPrev, slideBecomeVisible} = welcomeScreenSlice.actions
 
 export {
     welcomeScreenReducer,
     welcomeScreenSlice,
     selectIndex,
+    selectVisibleSlide,
     setSlide,
     showNext,
     showPrev,
+    slideBecomeVisible,
 }

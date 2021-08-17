@@ -1,7 +1,8 @@
 import { CarouselItem, Icon, Input } from "react-onsenui"
 import NavButtons from "../components/NavButtons"
+import SlideInput from "../components/SlideInput"
 
-export default function SlideToken() {
+export default function SlideToken(props) {
     const onBtnClick = () => {
 
     }
@@ -15,7 +16,10 @@ export default function SlideToken() {
                         <Icon className="icon" icon="fa-thumbs-up" style={{ height: "40px" }}></Icon>
                     </div>
                     <p>Enter your newly created token bellow to finish setup</p>
-                    <Input style={{ width: '100%' }} id="fieldToken" type="password" modifier="underbar" placeholder="API Token"></Input>
+                    <SlideInput
+                        focusedOnIndex={props.index}
+                        type="password"
+                        placeholder="API Token" />
                 </div>
 
                 <NavButtons

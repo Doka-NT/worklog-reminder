@@ -1,8 +1,9 @@
 import { CarouselItem, Input } from "react-onsenui"
 import NavButtons from "../components/NavButtons"
+import SlideInput from "../components/SlideInput"
 
 
-export default function SlideUsername() {
+export default function SlideUsername(props) {
     return (
         <CarouselItem>
             <div className="slide slide-3">
@@ -10,11 +11,10 @@ export default function SlideUsername() {
                 <div className="content">
                     <p>Provide your JIRA username</p>
                     <p>In most cases it is your email address</p>
-                    <Input
-                        style={{ width: '100%' }}
-                        id="fieldUsername"
-                        modifier="underbar"
-                        placeholder="jsmith@examaple.com"/>
+                    <SlideInput
+                        focusedOnIndex={props.index}
+                        placeholder="jsmith@examaple.com"
+                    />
                 </div>
 
                 <NavButtons />
