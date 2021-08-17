@@ -23,7 +23,15 @@ module.exports = [
         presets: ["@babel/preset-env"]
       }
     }
-  }
+  },
+  {
+    test: /\.(png|jpe?g|gif)$/i,
+    use: [
+      {
+        loader: 'file-loader',
+      },
+    ],
+  },
   // Put your webpack loader rules in this array.  This is where you would put
   // your ts-loader configuration for instance:
   /**
