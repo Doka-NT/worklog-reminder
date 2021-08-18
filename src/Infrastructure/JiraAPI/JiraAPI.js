@@ -1,13 +1,24 @@
-import Storage from "../Storage/Storage";
 import Issue from "../../Domain/Issue/Issue";
 import hash from 'object-hash'
+import AbstractStorage from "../Storage/AbstractStorage";
 
-const storage = new Storage()
 
 const cacheTtl = 30
 
 class JiraAPI {
     static __cache = {}
+    static __instance
+
+    static flushCache() {
+        JiraAPI.__cache = {}
+    }
+
+    /**
+     * @param {AbstractStorage} storage 
+     */
+    constructor(storage) {
+        this.storage = storage
+    }
 
     searchByKeyOrText(searchText)
     {
@@ -76,12 +87,12 @@ class JiraAPI {
 
     flushCache()
     {
-        JiraAPI.__cache = {}
+        JiraAPI.flushCache()
     }
 
     getIssueUrl(issueKey)
     {
-        return `${storage.getSchemeAndHost()}/browse/${issueKey}`
+        return `${this.storage.getSchemeAndHost()}/browse/${issueKey}`
     }
 
     _fetch(path, method = 'GET', options = {}) {
@@ -94,9 +105,9 @@ class JiraAPI {
         }
 
         // end todo
-        const schemeAndHost = storage.getSchemeAndHost();
-        const userName = storage.getUserName()
-        const apiToken = storage.getApiToken()
+        const schemeAndHost = this.storage.getSchemeAndHost();
+        const userName = this.storage.getUserName()
+        const apiToken = this.storage.getApiToken()
 
         const headers = new Headers({
             'Authorization': `Basic ${Buffer.from(`${userName}:${apiToken}`).toString('base64')}`,

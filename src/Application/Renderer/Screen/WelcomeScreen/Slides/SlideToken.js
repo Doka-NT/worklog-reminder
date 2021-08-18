@@ -1,8 +1,12 @@
 import { CarouselItem, Icon, Input } from "react-onsenui"
 import { useDispatch, useSelector } from "react-redux"
+import { showScreen } from "../../../appSlice"
 import { selectToken, setToken } from "../../../Store/settingsSlice"
+import ScreenDict from "../../ScreenDict"
 import NavButtons from "../components/NavButtons"
 import SlideInput from "../components/SlideInput"
+import { resetWelcomeScreen } from "../slice"
+import JiraAPI from "../../../../../Infrastructure/JiraAPI/JiraAPI"
 
 export default function SlideToken(props) {
     const dispatch = useDispatch()
@@ -13,7 +17,9 @@ export default function SlideToken(props) {
     }
 
     const onBtnClick = () => {
-
+        JiraAPI.flushCache()
+        dispatch(showScreen(ScreenDict.CHECK_TOKEN))
+        dispatch(resetWelcomeScreen())
     }
 
     return (

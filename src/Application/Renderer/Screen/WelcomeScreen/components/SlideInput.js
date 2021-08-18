@@ -37,10 +37,8 @@ export default function SlideInput(_props) {
 
     useEffect(() => {
         if (autofocus) {
-            inputRef?.current.focus()
-        } else {
-            inputRef?.current.blur()
-        }
+            inputRef.current._input.focus()
+        } 
 
         inputRef.current.onchange = e => {
             const event = {

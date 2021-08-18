@@ -4,8 +4,7 @@ const LS_USERNAME = 'username'
 const LS_NOTIFICATION_INTERVAL = 'notification-interval'
 const LS_UPDATE_INTERVAL = 'update-interval'
 
-const DEFAULT_NOTIFICATION_INTERVAL = 1000 * 60 * 60 // 1 hour
-const DEFAULT_UPDATE_INTERVAL = 1000 * 60 * 5 // 5 minutes
+
 
 const getValue = key => {
     const value = localStorage.getItem(key)
