@@ -1,17 +1,14 @@
-import { ListHeader, ListItem } from "react-onsenui"
 import 'onsenui'
-import TextInput from "./TextInput"
+import { ListHeader, ListItem } from "react-onsenui"
 import { useSelector } from "react-redux"
-import { selectNotificationInterval, selectUpdateInterval } from "../../../Store/settingsSlice"
-import AbstractStorage from "../../../../../Infrastructure/Storage/AbstractStorage"
+import TextInput from "./TextInput"
+import { selectSettings } from '../../../Store/settingsSlice'
+import StateStorage from '../../../../../Infrastructure/Storage/StateStorage'
 
 export default function OtherSettings() {
 
-    let notificationInterval = useSelector(selectNotificationInterval)
-    let updateInterval = useSelector(selectUpdateInterval)
-
-    notificationInterval = notificationInterval ? notificationInterval : AbstractStorage.DEFAULT_NOTIFICATION_INTERVAL
-    updateInterval = updateInterval ? updateInterval : AbstractStorage.DEFAULT_UPDATE_INTERVAL
+    const state = useSelector(selectSettings)
+    const storage = new StateStorage(state)
 
     return (
         <>
@@ -19,13 +16,17 @@ export default function OtherSettings() {
             <ListItem>
                 <div className="center">Notification interval, minutes:</div>
                 <div className="right">
-                    <TextInput placeholder="Minutes between notifications" value={notificationInterval}/>
+                    <TextInput
+                        placeholder="Minutes between notifications"
+                        value={storage.getNotificationInterval(true)} />
                 </div>
             </ListItem>
             <ListItem>
                 <div className="center">Issue update interval, minutes:</div>
                 <div className="right">
-                    <TextInput placeholder="Minutes between updates" value={updateInterval}/>
+                    <TextInput
+                        placeholder="Minutes between updates"
+                        value={storage.getUpdateInterval(true)} />
                 </div>
             </ListItem>
         </>
