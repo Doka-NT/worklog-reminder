@@ -17,13 +17,10 @@ export default function CheckTokenScreen() {
     const checkToken = () => {
         jiraAPI.searchIssues()
             .then(() => {
-                console.log('TOKEN IS VALID')
-                dispatch(showScreen(ScreenDict.ACCESS_TOKEN))
+                dispatch(showScreen(ScreenDict.ISSUES))
             })
             .catch(err => {
-                console.error(err)
                 dispatch(showScreen(ScreenDict.ACCESS_TOKEN))
-                console.error('TOKEN IS INVALID')
             });
     }
 
