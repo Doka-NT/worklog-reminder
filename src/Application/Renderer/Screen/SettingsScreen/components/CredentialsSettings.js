@@ -1,14 +1,26 @@
 import 'onsenui'
 import { Button, ListHeader, ListItem } from "react-onsenui"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import StateStorage from "../../../../../Infrastructure/Storage/StateStorage"
-import { selectSettings } from "../../../Store/settingsSlice"
+import { selectSettings, setHost, setToken, setUsername } from "../../../Store/settingsSlice"
 import WideTextInput from "./WideTextInput"
+import EventEmitter from '../../../../../Domain/EventEmitter'
+import EventDict from '../../../../../Domain/Dictionary/EventDict'
+import UrlDict from '../../../../../Domain/Dictionary/UrlDict'
 
 export default function CredentialsSettings() {
+    const dispatch = useDispatch()
 
     const state = useSelector(selectSettings)
     const storage = new StateStorage(state)
+
+    const onCreateTokenClick = () => {
+        EventEmitter.getInstance().send(EventDict.OPEN_IN_SHELL, UrlDict.URL_MANAGE_TOKEN)
+    }
+
+    const onHostChange = e => dispatch(setHost(e.value))
+    const onUserChange = e => dispatch(setUsername(e.value))
+    const onTokenChange = e => dispatch(setToken(e.value))
 
     return (
         <>
@@ -19,6 +31,7 @@ export default function CredentialsSettings() {
                     <WideTextInput
                         placeholder="https://example.atlassian.net"
                         value={storage.getSchemeAndHost()}
+                        onChange={onHostChange}
                     />
                 </div>
             </ListItem>
@@ -28,6 +41,7 @@ export default function CredentialsSettings() {
                     <WideTextInput
                         placeholder="foobar@example.com"
                         value={storage.getUserName()}
+                        onChange={onUserChange}
                     />
                 </div>
             </ListItem>
@@ -38,13 +52,14 @@ export default function CredentialsSettings() {
                         type="password"
                         placeholder="Paste your API Token here"
                         value={storage.getApiToken()}
+                        onChange={onTokenChange}
                     />
                 </div>
             </ListItem>
             <ListItem>
                 <div className="left" style={{ width: 'auto' }}></div>
                 <div className="center">
-                    <Button modifier="quiet" class="btn-link">Click here to create token</Button>
+                    <Button modifier="quiet" class="btn-link" onClick={onCreateTokenClick}>Click here to create token</Button>
                 </div>
             </ListItem>
         </>

@@ -1,3 +1,12 @@
+
+export function getMilliseconds(minutes) {
+    return Number(minutes) * 1000 * 60
+}
+
+export function getMinutes(milliseconds) {
+    return milliseconds / (1000 * 60)
+}
+
 /**
  * @abstract
  */
@@ -9,72 +18,56 @@ class AbstractStorage {
      * @abstract
      * @param {string} schemeAndHost 
      */
-    setSchemeAndHost(schemeAndHost) {}
+    setSchemeAndHost(schemeAndHost) { }
     /**
      * @abstract
      * @returns {string}
      */
-    getSchemeAndHost() {}
+    getSchemeAndHost() { }
 
     /**
      * @abstract
      * @param {string} token 
      */
-    setApiToken(token) {}
+    setApiToken(token) { }
     /**
      * @returns {string}
      */
-    getApiToken() {}
+    getApiToken() { }
 
     /**
      * @abstract
      * @param {string} username 
      */
-    setUserName(username) {}
+    setUserName(username) { }
     /**
      * @abstract
      */
-    getUserName() {}
+    getUserName() { }
 
     /**
      * @abstract
      * @param {number} interval 
      * @param {bool} isMinutesProvided 
      */
-    setNotificationInterval(interval, isMinutesProvided = false) {}
+    setNotificationInterval(interval, isMinutesProvided = false) { }
     /**
      * @abstract
      * @param {bool} useMinutes 
      */
-    getNotificationInterval(useMinutes = false) {}
+    getNotificationInterval(useMinutes = false) { }
 
     /**
      * @abstract
      * @param {number} interval 
      * @param {bool} isMinutesProvided 
      */
-    setUpdateInterval(interval, isMinutesProvided = false) {}
+    setUpdateInterval(interval, isMinutesProvided = false) { }
     /**
      * @abstract
      * @param {bool} useMinutes 
      */
-    getUpdateInterval(useMinutes = false) {}
-
-    /**
-     * @param {number} interval 
-     * @param {bool} isMinutesProvided 
-     */
-    _getMilliseconds(interval, isMinutesProvided) {
-        return Number(interval) * (isMinutesProvided ? 1000 * 60 : 1)
-    }
-
-    /**
-     * @param {bool} isMillisecondsProvided 
-     * @returns {number}
-     */
-    _getMinutes(isMillisecondsProvided) {
-        return isMillisecondsProvided ? 1000 * 60 : 1
-    }
+    getUpdateInterval(useMinutes = false) { }
 }
 
 export default AbstractStorage

@@ -1,4 +1,4 @@
-import 'onsenui'
+import Input from '../../../components/Input'
 
 export default function TextInput(_props) {
     const predefined = {
@@ -8,6 +8,9 @@ export default function TextInput(_props) {
     const props = {...predefined, ..._props}
 
     return (
-        <ons-input modifier="underbar" {...props}></ons-input>
+        <Input
+            modifier="underbar"
+            {...props}
+        />
     )
 }
