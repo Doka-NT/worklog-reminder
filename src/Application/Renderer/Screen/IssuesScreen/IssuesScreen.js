@@ -1,42 +1,33 @@
-import { useEffect, useRef } from "react"
-import { Page, PullHook, SearchInput, ProgressBar } from "react-onsenui"
+import { useEffect } from "react"
+import { Page, ProgressBar, PullHook } from "react-onsenui"
 import { useDispatch, useSelector } from "react-redux"
-import JiraAPI from "../../../../Infrastructure/JiraAPI/JiraAPI"
-import StateStorage from "../../../../Infrastructure/Storage/StateStorage"
-import { selectSettings } from "../../Store/settingsSlice"
+import Spinner from "../../components/Spinner"
 import CommentDialog from "./components/CommentDialog/CommentDialog"
 import IssueList from "./components/IssueList/IssueList"
 import IssuesToolbar from "./components/IssuesToolbar"
+import SearchBar from "./components/SearchBar/SearchBar"
 import TimeDialog from "./components/TimeDialog/TimeDialog"
-import Spinner from "../../components/Spinner"
-import { selectIssues, selectSearchQuery, setIssues } from "./slice"
+import { loadIssuesAsync, selectIsProgressBarVisible, selectIssues, selectLastForceReloaded, selectSearchQuery } from "./slice"
 import hash from 'object-hash'
 import './style.less'
-import useAutofocus from "../../Hooks/useAutofocus"
-import SearchBar from "./components/SearchBar/SearchBar"
 
 
 export default function IssuesScreen() {
     const dispatch = useDispatch()
 
-    const settings = useSelector(selectSettings)
     const issueList = useSelector(selectIssues)
     const searchQuery = useSelector(selectSearchQuery)
+    const isProgressBarVisible = useSelector(selectIsProgressBarVisible)
+    const lastForceReloaded = useSelector(selectLastForceReloaded)
 
-    const issueComponent = issueList.length > 0
+    const issueComponent = issueList.length > 0 || searchQuery !== ''
      ? <IssueList issues={issueList}/>
      : <Spinner/>
-    const issueListHash = hash(JSON.stringify(issueList))
 
-    const loadIssues = () => {
-        const storage = new StateStorage(settings)
-        const jiraApi = new JiraAPI(storage)
-
-        console.warn('LOAD ISSUES')
-        jiraApi.searchIssues(searchQuery).then(issues => dispatch(setIssues(issues)))
-    }
-
-    useEffect(loadIssues, [issueListHash, searchQuery])
+    useEffect(() => {
+        console.warn('LOAD ISSUES SEARCH')
+        dispatch(loadIssuesAsync(searchQuery))
+    }, [searchQuery, lastForceReloaded])
 
     return (
         <section className="screen screen-issues">
@@ -51,7 +42,7 @@ export default function IssuesScreen() {
                 <div className="progress-wrapper">
                     <ProgressBar
                         id="searchProgress"
-                        style={{ display: 'none' }}
+                        style={{ display: isProgressBarVisible ? 'block' : 'none' }}
                         indeterminate={true}
                     />
                 </div>

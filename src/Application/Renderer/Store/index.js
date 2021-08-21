@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import thunk from "redux-thunk";
 import { appReducer } from "../appSlice";
 import { welcomeScreenReducer } from "../Screen/WelcomeScreen/slice";
 
@@ -15,6 +16,7 @@ export const store = configureStore({
     },
     middleware: [
         save({states: ['settings']}),
+        thunk,
     ],
     preloadedState: load({states: ['settings']}),
 })

@@ -3,14 +3,15 @@ import { useDispatch } from "react-redux"
 import JiraAPI from "../../../../../Infrastructure/JiraAPI/JiraAPI"
 import { showScreen } from "../../../appSlice"
 import ScreenDict from "../../ScreenDict"
-import { setIssues } from "../slice"
+import { loadIssuesAsync, setForceReload, setIssues, setSearchQuery } from "../slice"
 
 export default function IssuesToolbar() {
     const dispatch = useDispatch()
 
     const onReloadClick = () => {
-        JiraAPI.flushCache()
-        dispatch(setIssues([]))
+        dispatch(setForceReload())
+        dispatch(setSearchQuery(''))
+        dispatch(loadIssuesAsync(''))
     }
 
     const onSettingsClick = () => {
