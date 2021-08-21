@@ -1,8 +1,8 @@
 import { CarouselItem } from "react-onsenui"
 import { useDispatch, useSelector } from "react-redux"
 import { selectHost, setHost } from "../../../Store/settingsSlice"
-import NavButtons from "../components/NavButtons"
-import SlideInput from "../components/SlideInput"
+import NavButtons from "../Components/NavButtons"
+import SlideInput from "../Components/SlideInput"
 
 export default function SlideHost(props) {
     const dispatch = useDispatch()

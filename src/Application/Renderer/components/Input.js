@@ -1,5 +1,5 @@
+import 'onsenui';
 import { useEffect, useRef } from "react";
-import 'onsenui'
 
 export default function Input(_props) {
     const defaults = {

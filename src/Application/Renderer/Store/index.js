@@ -1,11 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { load, save } from "redux-localstorage-simple";
 import thunk from "redux-thunk";
 import { appReducer } from "../appSlice";
-import { welcomeScreenReducer } from "../Screen/WelcomeScreen/slice";
-
-import { save, load } from "redux-localstorage-simple";
-import { settingsReducer } from "./settingsSlice";
 import { issueListReducer } from "../Screen/IssuesScreen/slice";
+import { welcomeScreenReducer } from "../Screen/WelcomeScreen/slice";
+import { settingsReducer } from "./settingsSlice";
 
 export const store = configureStore({
     reducer: {

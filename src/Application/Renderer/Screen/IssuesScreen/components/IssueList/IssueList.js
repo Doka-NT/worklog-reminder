@@ -1,9 +1,4 @@
-import { useSelector } from 'react-redux'
-import { useEffect } from 'react'
-import StateStorage from '../../../../../../Infrastructure/Storage/StateStorage'
-import JiraAPI from '../../../../../../Infrastructure/JiraAPI/JiraAPI'
-import Spinner from '../../../../components/Spinner'
-import { List, ListItem, Button } from 'react-onsenui'
+import { Button, List, ListItem } from 'react-onsenui'
 import Issue from '../../../../../../Domain/Issue/Issue'
 
 export default function IssueList(props) {

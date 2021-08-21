@@ -1,10 +1,10 @@
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import imgSpinner from '../../../../../static/spinner.gif'
-import { selectSettings } from '../../Store/settingsSlice'
-import StateStorage from '../../../../Infrastructure/Storage/StateStorage'
 import JiraAPI from '../../../../Infrastructure/JiraAPI/JiraAPI'
-import { useEffect } from 'react'
+import StateStorage from '../../../../Infrastructure/Storage/StateStorage'
 import { showScreen } from '../../appSlice'
+import { selectSettings } from '../../Store/settingsSlice'
 import ScreenDict from '../ScreenDict'
 
 export default function CheckTokenScreen() {

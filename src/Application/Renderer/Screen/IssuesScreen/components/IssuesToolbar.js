@@ -1,9 +1,8 @@
-import { Toolbar, ToolbarButton, Icon } from "react-onsenui"
+import { Icon, Toolbar, ToolbarButton } from "react-onsenui"
 import { useDispatch } from "react-redux"
-import JiraAPI from "../../../../../Infrastructure/JiraAPI/JiraAPI"
 import { showScreen } from "../../../appSlice"
 import ScreenDict from "../../ScreenDict"
-import { loadIssuesAsync, setForceReload, setIssues, setSearchQuery } from "../slice"
+import { loadIssuesAsync, setForceReload, setSearchQuery } from "../slice"
 
 export default function IssuesToolbar() {
     const dispatch = useDispatch()

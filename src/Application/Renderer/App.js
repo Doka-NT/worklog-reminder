@@ -1,13 +1,11 @@
 
-import 'onsenui/css/onsenui.css'
 import 'onsenui/css/onsen-css-components.css'
-import './App.less'
-
-import { WelcomeScreen } from './Screen/WelcomeScreen/WelcomeScreen'
-import CheckTokenScreen from './Screen/CheckTokenScreen/CheckTokenScreen'
+import 'onsenui/css/onsenui.css'
 import { useSelector } from 'react-redux'
-import createScreen from './Screen/factory'
+import './App.less'
 import { selectScreenName } from './appSlice'
+import createScreen from './Screen/factory'
+
 
 export default function App() {
     const screenName = useSelector(selectScreenName)

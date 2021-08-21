@@ -1,9 +1,8 @@
 import 'onsenui'
 import { useEffect, useRef } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import JiraAPI from '../../../../../../Infrastructure/JiraAPI/JiraAPI'
 import useAutofocus from "../../../../Hooks/useAutofocus"
-import { selectSearchQuery, setForceReload, setSearchQuery } from "../../slice"
+import { selectSearchQuery, setSearchQuery } from "../../slice"
 
 export default function SearchBar() {
     const dispatch = useDispatch()

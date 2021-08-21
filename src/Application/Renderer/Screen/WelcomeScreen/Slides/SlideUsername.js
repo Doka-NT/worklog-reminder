@@ -1,8 +1,8 @@
-import { CarouselItem, Input } from "react-onsenui"
+import { CarouselItem } from "react-onsenui"
 import { useDispatch, useSelector } from "react-redux"
 import { selectUsername, setUsername } from "../../../Store/settingsSlice"
-import NavButtons from "../components/NavButtons"
-import SlideInput from "../components/SlideInput"
+import NavButtons from "../Components/NavButtons"
+import SlideInput from "../Components/SlideInput"
 
 
 export default function SlideUsername(props) {

@@ -1,5 +1,5 @@
 import { CarouselItem, Icon } from "react-onsenui"
-import NextButton from "../components/NextButton"
+import NextButton from "../Components/NextButton"
 
 export default function SlideBegin() {
     return (

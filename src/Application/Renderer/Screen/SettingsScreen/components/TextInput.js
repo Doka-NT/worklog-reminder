@@ -1,4 +1,4 @@
-import Input from '../../../components/Input'
+import Input from '../../../Components/Input'
 
 export default function TextInput(_props) {
     const predefined = {

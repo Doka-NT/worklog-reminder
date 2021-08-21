@@ -1,4 +1,4 @@
-import { Dialog, Card, Button } from "react-onsenui"
+import { Button, Card, Dialog } from "react-onsenui"
 export default function TimeDialog() {
     return (
         <Dialog

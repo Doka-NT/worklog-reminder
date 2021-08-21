@@ -51,4 +51,4 @@ export {
     setToken,
     setNotificationInterval,
     setUpdateInterval,
-}
+};
