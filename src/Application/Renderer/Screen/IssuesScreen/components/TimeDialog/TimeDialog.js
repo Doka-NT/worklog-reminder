@@ -1,10 +1,18 @@
 import { Button, Card, Dialog } from "react-onsenui"
+import { useDispatch, useSelector } from "react-redux"
+import { selectCurrentIssue, setCurrentIssue } from "../../slice"
 export default function TimeDialog() {
+    const dispatch = useDispatch()
+    const issue = useSelector(selectCurrentIssue)
+
+    const onCancel = () => dispatch(setCurrentIssue(null))
+
     return (
         <Dialog
-            isOpen={false}
-            onCancel={() => { }}
-            cancelable>
+            isOpen={issue !== null}
+            onCancel={onCancel}
+            isCancelable={true}
+        >
             <Card>
                 <div className="title">
                     How much time your spent?

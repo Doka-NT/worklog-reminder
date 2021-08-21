@@ -27,6 +27,7 @@ const issueListSlice = createSlice({
         isProgressBarVisible: false,
         issues: [],
         lastForceReloaded: null,
+        currentIssue: null,
     },
     reducers: {
         setSearchQuery: (state, action) => {
@@ -40,7 +41,10 @@ const issueListSlice = createSlice({
             JiraAPI.flushCache()
             state.lastForceReloaded = new Date()
             state.searchQuery = ''
-        }
+        },
+        setCurrentIssue: (state, action) => {
+            state.currentIssue = action.payload
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -60,8 +64,9 @@ const selectIssues = state => state.issueList.issues
 const selectSearchQuery = state => state.issueList.searchQuery
 const selectIsProgressBarVisible = state => state.issueList.isProgressBarVisible
 const selectLastForceReloaded = state => state.issueList.lastForceReloaded
+const selectCurrentIssue = state => state.issueList.currentIssue
 
-const {setIssues, setSearchQuery, setForceReload} = issueListSlice.actions
+const {setIssues, setSearchQuery, setForceReload, setCurrentIssue} = issueListSlice.actions
 
 export {
     issueListReducer,
@@ -70,8 +75,10 @@ export {
     selectSearchQuery,
     selectIsProgressBarVisible,
     selectLastForceReloaded,
+    selectCurrentIssue,
     setIssues,
     setSearchQuery,
     setForceReload,
+    setCurrentIssue,
     loadIssuesAsync,
 }
