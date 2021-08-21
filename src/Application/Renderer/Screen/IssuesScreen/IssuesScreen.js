@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 import { Page, PullHook, SearchInput, ProgressBar } from "react-onsenui"
 import { useDispatch, useSelector } from "react-redux"
 import JiraAPI from "../../../../Infrastructure/JiraAPI/JiraAPI"
@@ -9,17 +9,19 @@ import IssueList from "./components/IssueList/IssueList"
 import IssuesToolbar from "./components/IssuesToolbar"
 import TimeDialog from "./components/TimeDialog/TimeDialog"
 import Spinner from "../../components/Spinner"
-import { selectIssues, setIssues } from "./slice"
+import { selectIssues, selectSearchQuery, setIssues } from "./slice"
 import hash from 'object-hash'
 import './style.less'
+import useAutofocus from "../../Hooks/useAutofocus"
+import SearchBar from "./components/SearchBar/SearchBar"
 
 
 export default function IssuesScreen() {
     const dispatch = useDispatch()
 
     const settings = useSelector(selectSettings)
-
     const issueList = useSelector(selectIssues)
+    const searchQuery = useSelector(selectSearchQuery)
 
     const issueComponent = issueList.length > 0
      ? <IssueList issues={issueList}/>
@@ -31,10 +33,10 @@ export default function IssuesScreen() {
         const jiraApi = new JiraAPI(storage)
 
         console.warn('LOAD ISSUES')
-        jiraApi.searchIssues().then(issues => dispatch(setIssues(issues)))
+        jiraApi.searchIssues(searchQuery).then(issues => dispatch(setIssues(issues)))
     }
 
-    useEffect(loadIssues, [issueListHash])
+    useEffect(loadIssues, [issueListHash, searchQuery])
 
     return (
         <section className="screen screen-issues">
@@ -44,11 +46,7 @@ export default function IssuesScreen() {
             >
                 <PullHook></PullHook>
 
-                <SearchInput
-                    type="search"
-                    style={{ width: '100%' }}
-                    placeholder="Search"
-                />
+                <SearchBar/>
 
                 <div className="progress-wrapper">
                     <ProgressBar
