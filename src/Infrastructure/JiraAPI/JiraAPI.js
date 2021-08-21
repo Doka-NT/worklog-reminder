@@ -55,7 +55,8 @@ class JiraAPI {
                     const issue = new Issue(
                         item.key,
                         item.fields.summary,
-                        item.fields.issuetype.iconUrl
+                        item.fields.issuetype.iconUrl,
+                        `${this.storage.getSchemeAndHost()}/browse/${item.key}`
                     )
 
                     issues.push(issue)
