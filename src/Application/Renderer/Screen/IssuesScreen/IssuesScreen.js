@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { Page, ProgressBar, PullHook } from "react-onsenui"
 import { useDispatch, useSelector } from "react-redux"
+import ProgressLine from "../../Components/ProgressLine"
 import Spinner from "../../Components/Spinner"
 import CommentDialog from "./Components/CommentDialog/CommentDialog"
 import IssueList from "./Components/IssueList/IssueList"
@@ -38,13 +39,7 @@ export default function IssuesScreen() {
 
                 <SearchBar/>
 
-                <div className="progress-wrapper">
-                    <ProgressBar
-                        id="searchProgress"
-                        style={{ display: isProgressBarVisible ? 'block' : 'none' }}
-                        indeterminate={true}
-                    />
-                </div>
+                <ProgressLine isVisible={isProgressBarVisible}/>
 
                 <div id="issues-list" className="center">
                     {issueComponent}
