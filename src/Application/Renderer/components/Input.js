@@ -1,8 +1,11 @@
 import 'onsenui';
 import { useEffect, useRef } from "react";
+import useAutofocus from '../Hooks/useAutofocus';
 
 export default function Input(_props) {
     const defaults = {
+        isFocused: false,
+        value: '',
         onChange: () => {},
         onEnter: () => {},
     }
@@ -29,7 +32,10 @@ export default function Input(_props) {
             
             props.onChange(event)
         }
+        inputRef.current.value = props.value
     })
+
+    useAutofocus(inputRef, props.autofocus)
 
     return (
         <ons-input

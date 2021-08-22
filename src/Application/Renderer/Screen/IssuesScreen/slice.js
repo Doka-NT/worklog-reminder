@@ -31,9 +31,19 @@ const addIssueWorklogAsync = createAsyncThunk(
     async (minutes, thunkApi) => {
         const issue = thunkApi.getState().issueList.currentIssue
         const worklog = new Worklog(issue, minutes)
-console.log('add worklog')
-        return await createJiraApiFromThunkApi(thunkApi)
-            .addWorklog(worklog)
+        const jiraAPI = createJiraApiFromThunkApi(thunkApi)
+
+        return worklog.save(jiraAPI)
+    }
+)
+
+const saveWorklogCommentAsync = createAsyncThunk(
+    'IssueScreen/saveWorklogComment',
+    async (comment, thunkApi) => {
+        const worklog = thunkApi.getState().issueList.currentWorklog
+        const jiraAPI = createJiraApiFromThunkApi(thunkApi)
+
+        return await jiraAPI.updateWorklog(worklog, comment)
     }
 )
 
@@ -47,6 +57,9 @@ const issueListSlice = createSlice({
         lastForceReloaded: null,
         currentIssue: null,
         isTimeProgressVisible: false,
+        isCommentProgressVisible: false,
+        currentWorklog: null,
+        worklogComment: '',
     },
     reducers: {
         setSearchQuery: (state, action) => {
@@ -64,6 +77,13 @@ const issueListSlice = createSlice({
         setCurrentIssue: (state, action) => {
             state.currentIssue = action.payload
         },
+        setCurrentWorklog: (state, action) => {
+            state.currentWorklog = action.payload
+            state.worklogComment = ''
+        },
+        setWorklogComment: (state, action) => {
+            state.worklogComment = action.payload
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -77,11 +97,19 @@ const issueListSlice = createSlice({
             .addCase(addIssueWorklogAsync.pending, state => {
                 state.isTimeProgressVisible = true
             })
-            .addCase(addIssueWorklogAsync.fulfilled, state => {
-                console.log('fulfilled')
+            .addCase(addIssueWorklogAsync.fulfilled, (state, action) => {
                 ons.notification.toast('Worklog added!', { timeout: 1000 })
                 state.currentIssue = null
                 state.isTimeProgressVisible = false
+                state.currentWorklog = action.payload
+            })
+            .addCase(saveWorklogCommentAsync.pending, state => {
+                state.isCommentProgressVisible = true
+            })
+            .addCase(saveWorklogCommentAsync.fulfilled, state => {
+                ons.notification.toast('Worklog comment has been saved', {timeout: 2000})
+                state.isCommentProgressVisible = false
+                state.currentWorklog = null
             })
     },
 })
@@ -94,8 +122,11 @@ const selectIsProgressBarVisible = state => state.issueList.isProgressBarVisible
 const selectLastForceReloaded = state => state.issueList.lastForceReloaded
 const selectCurrentIssue = state => state.issueList.currentIssue
 const selectIsTimeProgressVisible = state => state.issueList.isTimeProgressVisible
+const selectCurrentWorklog = state => state.issueList.currentWorklog
+const selectIsCommentProgressVisible = state => state.issueList.isCommentProgressVisible
+const selectWorklogComment = state => state.issueList.worklogComment
 
-const { setIssues, setSearchQuery, setForceReload, setCurrentIssue } = issueListSlice.actions
+const { setIssues, setSearchQuery, setForceReload, setCurrentIssue, setCurrentWorklog, setWorklogComment } = issueListSlice.actions
 
 export {
     issueListReducer,
@@ -106,10 +137,16 @@ export {
     selectLastForceReloaded,
     selectIsTimeProgressVisible,
     selectCurrentIssue,
+    selectCurrentWorklog,
+    selectIsCommentProgressVisible,
+    selectWorklogComment,
     setIssues,
     setSearchQuery,
     setForceReload,
     setCurrentIssue,
+    setCurrentWorklog,
+    setWorklogComment,
     loadIssuesAsync,
-    addIssueWorklogAsync as addIssueWorklog,
+    addIssueWorklogAsync,
+    saveWorklogCommentAsync,
 };

@@ -1,6 +1,4 @@
-import JiraAPI from "../../Infrastructure/JiraAPI/JiraAPI";
-
-const jiraAPI = new JiraAPI()
+import JiraAPI from "../../Infrastructure/JiraAPI/JiraAPI"
 
 class Worklog {
     /**
@@ -15,13 +13,17 @@ class Worklog {
         this.comment = comment
     }
 
-    save() {
+    /**
+     * @param {JiraAPI} jiraAPI 
+     * @returns {Promise}
+     */
+    save(jiraAPI) {
         return jiraAPI.addWorklog(this)
             .then(result => {
                 console.log(result)
                 this.id = result.id
 
-                return result
+                return this
             })
             .catch(error => console.error(error))
     }

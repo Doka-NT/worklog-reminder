@@ -1,7 +1,7 @@
 import { Button, Card, Dialog } from "react-onsenui"
 import { useDispatch, useSelector } from "react-redux"
 import { selectCurrentIssue, selectIsProgressBarVisible, selectIsTimeProgressVisible, setCurrentIssue } from "../../slice"
-import { addIssueWorklog } from "../../slice"
+import { addIssueWorklogAsync } from "../../slice"
 import ProgressLine from "../../../../Components/ProgressLine"
 
 const timeMap = {
@@ -30,8 +30,7 @@ export default function TimeDialog() {
     const onCancel = () => dispatch(setCurrentIssue(null))
 
     const onClick = minutes => {
-        console.log(minutes)
-        dispatch(addIssueWorklog(minutes))
+        dispatch(addIssueWorklogAsync(minutes))
     }
 
     const buttons = Object.entries(timeMap)
