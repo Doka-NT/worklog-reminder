@@ -124,7 +124,7 @@ const selectCurrentIssue = state => state.issueList.currentIssue
 const selectIsTimeProgressVisible = state => state.issueList.isTimeProgressVisible
 const selectCurrentWorklog = state => state.issueList.currentWorklog
 const selectIsCommentProgressVisible = state => state.issueList.isCommentProgressVisible
-const selectWorklogComment = state => state.issueList.worklogComment
+const selectWorklogComment = state => `${state.issueList.worklogComment}`.trim()
 
 const { setIssues, setSearchQuery, setForceReload, setCurrentIssue, setCurrentWorklog, setWorklogComment } = issueListSlice.actions
 

@@ -12,19 +12,22 @@ import {
 } from "../../slice"
 import './style.less'
 
+
 export default function CommentDialog() {
     const dispatch = useDispatch()
 
     const currentWorklog = useSelector(selectCurrentWorklog)
     const isProgressBarVisible = useSelector(selectIsCommentProgressVisible)
     const worklogComment = useSelector(selectWorklogComment)
+    const isOpen = currentWorklog !== null
+
+    const buttonText = worklogComment.length > 0 ? 'Add comment' : 'Ok'
 
     const onChange = value => {
         dispatch(setWorklogComment(value))
     }
 
     const onEnter = e => {
-        console.log('ON enter', e)
         onChange(e.target.value)
         onSave(e.target.value)
     }
@@ -35,7 +38,10 @@ export default function CommentDialog() {
     }
 
     const onSave = comment => {
-        dispatch(saveWorklogCommentAsync(comment))
+        if (comment.length > 0) {
+            dispatch(saveWorklogCommentAsync(comment))
+        }
+
         onClose()
     }
 
@@ -45,7 +51,7 @@ export default function CommentDialog() {
 
     return (
         <Dialog
-            isOpen={currentWorklog !== null}
+            isOpen={isOpen}
             isCancelable={true}
             onCancel={onCancel}
         >
@@ -57,16 +63,17 @@ export default function CommentDialog() {
                 </div>
                 <div className="content">
                     <Input
-                        isFocused={true}
-                        className="comment-input"
+                        isFocused={isOpen}
+                        class="comment-input"
                         placeholder="Type some comment here"
                         modifier="underbar"
                         value={worklogComment}
                         onChange={e => onChange(e.value)}
                         onEnter={onEnter}
+                        onKeyUp={e => onChange(e.target.value)}
                     />
                     <p></p>
-                    <Button modifier="large" onClick={() => onSave(worklogComment)}>Ok</Button>
+                    <Button modifier="large" onClick={() => onSave(worklogComment)}>{buttonText}</Button>
                 </div>
             </Card>
         </Dialog>
