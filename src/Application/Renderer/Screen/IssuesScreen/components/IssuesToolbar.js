@@ -1,6 +1,6 @@
 import { Icon, Toolbar, ToolbarButton } from "react-onsenui"
 import { useDispatch } from "react-redux"
-import { showScreen } from "../../../appSlice"
+import { showScreen } from "../../../Store/appSlice"
 import ScreenDict from "../../ScreenDict"
 import { loadIssuesAsync, setForceReload, setSearchQuery } from "../slice"
 

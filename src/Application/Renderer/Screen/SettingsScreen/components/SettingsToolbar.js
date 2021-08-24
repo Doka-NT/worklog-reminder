@@ -1,6 +1,6 @@
 import { Toolbar, BackButton } from "react-onsenui"
 import { useDispatch, useSelector } from "react-redux"
-import { showScreen } from "../../../appSlice"
+import { showScreen } from "../../../Store/appSlice"
 import { selectIsSettingsFilled } from "../../../Store/settingsSlice"
 import ScreenDict from "../../ScreenDict"
 

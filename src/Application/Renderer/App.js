@@ -3,7 +3,7 @@ import 'onsenui/css/onsen-css-components.css'
 import 'onsenui/css/onsenui.css'
 import { useSelector } from 'react-redux'
 import './App.less'
-import { selectScreenName } from './appSlice'
+import { selectScreenName } from './Store/appSlice'
 import createScreen from './Screen/factory'
 
 

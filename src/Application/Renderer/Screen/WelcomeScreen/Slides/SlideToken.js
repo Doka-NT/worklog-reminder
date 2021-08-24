@@ -1,7 +1,7 @@
 import { CarouselItem, Icon } from "react-onsenui"
 import { useDispatch, useSelector } from "react-redux"
 import JiraAPI from "../../../../../Infrastructure/JiraAPI/JiraAPI"
-import { showScreen } from "../../../appSlice"
+import { showScreen } from "../../../Store/appSlice"
 import { selectToken, setToken } from "../../../Store/settingsSlice"
 import ScreenDict from "../../ScreenDict"
 import NavButtons from "../Components/NavButtons"

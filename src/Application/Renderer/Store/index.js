@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { load, save } from "redux-localstorage-simple";
 import thunk from "redux-thunk";
-import { appReducer } from "../appSlice";
+import { appReducer } from "../Store/appSlice";
 import { issueListReducer } from "../Screen/IssuesScreen/slice";
 import { welcomeScreenReducer } from "../Screen/WelcomeScreen/slice";
 import { settingsReducer } from "./settingsSlice";
