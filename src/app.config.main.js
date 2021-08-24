@@ -13,6 +13,7 @@ import UserAgentHandler from "./Application/Event/RendererHandler/UserAgentHandl
 import WindowAllClosedHandler from "./Application/Event/RendererHandler/WindowAllClosedHandler";
 import ActivateHandler from "./Application/Event/RendererHandler/ActivateHandler";
 import HideMacOsDockHandler from "./Application/Event/RendererHandler/HideMacOsDockHandler";
+import InstallReactExt from "./Application/Event/MainHandler/InstallReactExt";
 
 const APP_ROOT = app.getAppPath()
 
@@ -28,6 +29,7 @@ export default {
                 new UserAgentHandler(),
                 new AppReadyHandler(),
                 new HideMacOsDockHandler(),
+                new InstallReactExt(),
             ],
             [EventDict.APP_ACTIVATE]: [
                 new ActivateHandler(),
