@@ -2,7 +2,7 @@ import 'onsenui'
 import { useEffect, useRef } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import useAutofocus from "../../../../Hooks/useAutofocus"
-import { selectCurrentIssue, selectCurrentWorklog, selectSearchQuery, setSearchQuery } from "../../slice"
+import { selectSearchQuery, setSearchQuery } from "../../slice"
 
 export default function SearchBar() {
     const dispatch = useDispatch()

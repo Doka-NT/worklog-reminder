@@ -1,6 +1,7 @@
 import { useEffect } from "react"
-import { Page, ProgressBar, PullHook } from "react-onsenui"
+import { Page, PullHook } from "react-onsenui"
 import { useDispatch, useSelector } from "react-redux"
+import EventDict from "../../../../Domain/Dictionary/EventDict"
 import ProgressLine from "../../Components/ProgressLine"
 import Spinner from "../../Components/Spinner"
 import CommentDialog from "./Components/CommentDialog/CommentDialog"
@@ -9,7 +10,6 @@ import IssuesToolbar from "./Components/IssuesToolbar"
 import SearchBar from "./Components/SearchBar/SearchBar"
 import TimeDialog from "./Components/TimeDialog/TimeDialog"
 import { loadIssuesAsync, selectIsProgressBarVisible, selectIssues, selectLastForceReloaded, selectSearchQuery } from "./slice"
-import EventDict from "../../../../Domain/Dictionary/EventDict"
 import './style.less'
 
 const { ipcRenderer } = window.require('electron')

@@ -1,8 +1,7 @@
 import { Button, Card, Dialog } from "react-onsenui"
 import { useDispatch, useSelector } from "react-redux"
-import { selectCurrentIssue, selectIsProgressBarVisible, selectIsTimeProgressVisible, setCurrentIssue } from "../../slice"
-import { addIssueWorklogAsync } from "../../slice"
 import ProgressLine from "../../../../Components/ProgressLine"
+import { addIssueWorklogAsync, selectCurrentIssue, selectIsTimeProgressVisible, setCurrentIssue } from "../../slice"
 
 const timeMap = {
     5: '5m',
