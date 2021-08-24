@@ -14,7 +14,7 @@ export default function IssuesToolbar() {
     }
 
     const onSettingsClick = () => {
-        dispatch(showScreen(ScreenDict.ACCESS_TOKEN))
+        dispatch(showScreen(ScreenDict.SETTINGS))
     }
 
     return (

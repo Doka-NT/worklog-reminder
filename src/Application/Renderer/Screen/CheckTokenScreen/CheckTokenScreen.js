@@ -20,7 +20,7 @@ export default function CheckTokenScreen() {
                 dispatch(showScreen(ScreenDict.ISSUES))
             })
             .catch(err => {
-                dispatch(showScreen(ScreenDict.ACCESS_TOKEN))
+                dispatch(showScreen(ScreenDict.SETTINGS))
             });
     }
 
