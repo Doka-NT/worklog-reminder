@@ -1,7 +1,7 @@
 import 'onsenui'
 import { ListHeader, ListItem } from "react-onsenui"
 import { useSelector } from "react-redux"
-import { getMilliseconds } from '../../../../../Infrastructure/Storage/AbstractStorage'
+import { getMilliseconds } from '../../../../../Domain/AbstractStorage'
 import StateStorage from '../../../../../Infrastructure/Storage/StateStorage'
 import { selectSettings, setNotificationInterval, setUpdateInterval } from '../../../Store/settingsSlice'
 import TextInput from "./TextInput"

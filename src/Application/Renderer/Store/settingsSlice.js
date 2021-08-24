@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import AbstractStorage from "../../../Infrastructure/Storage/AbstractStorage";
+import AbstractStorage from "../../../Domain/AbstractStorage";
 import NotificationTask from "../../Task/Renderer/NotificationTask";
 import ReloadIssuesTask from "../../Task/Renderer/ReloadIssuesTask";
 

@@ -1,7 +1,6 @@
 import Issue from "../../Domain/Issue/Issue";
 import hash from 'object-hash'
-import AbstractStorage from "../Storage/AbstractStorage";
-
+import AbstractStorage from "../../Domain/AbstractStorage";
 
 const cacheTtl = 30
 

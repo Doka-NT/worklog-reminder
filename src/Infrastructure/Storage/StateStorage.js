@@ -1,4 +1,4 @@
-import AbstractStorage from "./AbstractStorage";
+import AbstractStorage from "../../Domain/AbstractStorage"
 
 export default class StateStorage extends AbstractStorage {
     constructor(state) {
