@@ -5,7 +5,6 @@ export default function useAutofocus(inputRef, autofocus) {
         if (autofocus && inputRef.current !== null) {
             setTimeout(() => {
                 // todo: detect why ons-input has lag
-                console.log('autofocus for', inputRef.current)
                 inputRef.current._input.focus()
             }, 500)
             
