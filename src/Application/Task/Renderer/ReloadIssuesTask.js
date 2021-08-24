@@ -1,6 +1,6 @@
 import AbstractIntervalTask from "../AbstractIntervalTask";
-import EventEmitter from "../../Event/EventEmitter";
-import EventDict from "../../Domain/Dictionary/EventDict";
+import EventEmitter from "../../../Domain/EventEmitter";
+import EventDict from "../../../Domain/Dictionary/EventDict";
 
 class ReloadIssuesTask extends AbstractIntervalTask {
     _iteration() {

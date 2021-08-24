@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import AbstractStorage from "../../../Infrastructure/Storage/AbstractStorage";
+import NotificationTask from "../../Task/Renderer/NotificationTask";
+import ReloadIssuesTask from "../../Task/Renderer/ReloadIssuesTask";
 
 const settingsSlice = createSlice({
     name: 'settings',
@@ -14,8 +16,14 @@ const settingsSlice = createSlice({
         setHost: (state, action) => {state.host = action.payload},
         setUsername: (state, action) => {state.username = action.payload},
         setToken: (state, action) => {state.token = action.payload},
-        setNotificationInterval: (state, action) => {state.notificationInterval = action.payload},
-        setUpdateInterval: (state, action) => {state.updateInterval = action.payload},
+        setNotificationInterval: (state, action) => {
+            state.notificationInterval = action.payload
+            new NotificationTask().restart(state.notificationInterval)
+        },
+        setUpdateInterval: (state, action) => {
+            state.updateInterval = action.payload
+            new ReloadIssuesTask().restart(state.updateInterval)
+        },
     }
 })
 

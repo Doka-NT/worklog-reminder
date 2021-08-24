@@ -1,23 +1,17 @@
-import JiraAPI from "../../Infrastructure/JiraAPI/JiraAPI";
-import AbstractIntervalTask from "../AbstractIntervalTask";
-import EventEmitter from "../../Event/EventEmitter";
-import EventDict from "../../Domain/Dictionary/EventDict";
-import SCREEN_DICT from "../../Renderer/Screen";
-
-const jiraAPI = new JiraAPI()
+import AbstractIntervalTask from '../AbstractIntervalTask'
+import StateStorage from '../../../Infrastructure/Storage/StateStorage'
+import JiraAPI from '../../../Infrastructure/JiraAPI/JiraAPI'
+import EventEmitter from '../../../Domain/EventEmitter'
+import EventDict from '../../../Domain/Dictionary/EventDict'
 
 class NotificationTask extends AbstractIntervalTask {
     static __interval
 
-    /**
-     * @param {ScreenManager} sm
-     */
-    constructor(sm) {
-        super()
-        this.sm = sm
-    }
-
     _iteration() {
+        const store = require('../../Renderer/Store').store
+        const storage = new StateStorage(store.getState().settings)
+        const jiraAPI = new JiraAPI(storage)
+
         jiraAPI.searchIssues()
             .then(() => this._showNotification())
     }
@@ -27,7 +21,6 @@ class NotificationTask extends AbstractIntervalTask {
 
         notification.addEventListener('click', () => {
             EventEmitter.getInstance().send(EventDict.SHOW_MAIN_WINDOW)
-            this.sm.showScreen(SCREEN_DICT.ISSUES)
         });
     }
 }

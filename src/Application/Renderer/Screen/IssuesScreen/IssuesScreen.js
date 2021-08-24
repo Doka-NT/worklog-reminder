@@ -9,8 +9,10 @@ import IssuesToolbar from "./Components/IssuesToolbar"
 import SearchBar from "./Components/SearchBar/SearchBar"
 import TimeDialog from "./Components/TimeDialog/TimeDialog"
 import { loadIssuesAsync, selectIsProgressBarVisible, selectIssues, selectLastForceReloaded, selectSearchQuery } from "./slice"
+import EventDict from "../../../../Domain/Dictionary/EventDict"
 import './style.less'
 
+const { ipcRenderer } = window.require('electron')
 
 export default function IssuesScreen() {
     const dispatch = useDispatch()
@@ -21,12 +23,27 @@ export default function IssuesScreen() {
     const lastForceReloaded = useSelector(selectLastForceReloaded)
 
     const issueComponent = issueList.length > 0 || searchQuery !== ''
-     ? <IssueList issues={issueList}/>
-     : <Spinner/>
+        ? <IssueList issues={issueList} />
+        : <Spinner />
+
+    const intervalUpdateListener = () => {
+        const isScreenVisible = document.querySelectorAll('.screen-issues').length > 0
+        const isWindowVisible = ipcRenderer.sendSync(EventDict.SYNC_IS_WINDOW_VISIBLE)
+
+        if (!isScreenVisible || isWindowVisible) {
+            return
+        }
+
+        dispatch(loadIssuesAsync(searchQuery))
+    }
 
     useEffect(() => {
-        console.warn('LOAD ISSUES SEARCH')
+        document.addEventListener(EventDict.RELOAD_ISSUES, intervalUpdateListener)
         dispatch(loadIssuesAsync(searchQuery))
+
+        return () => {
+            document.removeEventListener(EventDict.RELOAD_ISSUES, intervalUpdateListener)
+        }
     }, [searchQuery, lastForceReloaded])
 
     return (
@@ -37,9 +54,9 @@ export default function IssuesScreen() {
             >
                 <PullHook></PullHook>
 
-                <SearchBar/>
+                <SearchBar />
 
-                <ProgressLine isVisible={isProgressBarVisible}/>
+                <ProgressLine isVisible={isProgressBarVisible} />
 
                 <div id="issues-list" className="center">
                     {issueComponent}
