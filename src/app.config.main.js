@@ -1,7 +1,3 @@
-/**
- * Config file for main process
- */
-
 import path from "path";
 import {app} from 'electron'
 import EventDict from './Domain/Dictionary/EventDict'
@@ -14,6 +10,7 @@ import WindowAllClosedHandler from "./Application/Event/RendererHandler/WindowAl
 import ActivateHandler from "./Application/Event/RendererHandler/ActivateHandler";
 import HideMacOsDockHandler from "./Application/Event/RendererHandler/HideMacOsDockHandler";
 import InstallReactExt from "./Application/Event/MainHandler/InstallReactExt";
+import CheckForUpdatesHandler from "./Application/Event/MainHandler/CheckForUpdatesHandler";
 
 const APP_ROOT = app.getAppPath()
 
@@ -30,6 +27,7 @@ export default {
                 new AppReadyHandler(),
                 new HideMacOsDockHandler(),
                 new InstallReactExt(),
+                new CheckForUpdatesHandler(),
             ],
             [EventDict.APP_ACTIVATE]: [
                 new ActivateHandler(),
