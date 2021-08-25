@@ -14,7 +14,7 @@ export default function createScreen(screenName) {
         case ScreenDict.CHECK_TOKEN:
             screen = <CheckTokenScreen />
             break;
-        case ScreenDict.SettingsScreen:
+        case ScreenDict.SETTINGS:
             screen = <SettingsScreen />
             break;
         case ScreenDict.ISSUES:
