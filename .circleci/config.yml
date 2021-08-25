@@ -82,7 +82,7 @@ jobs:
 workflows:
   check-code:
     jobs:
-      - lint
+      - eslint
   build-packages:
     jobs:
       - build-linux
