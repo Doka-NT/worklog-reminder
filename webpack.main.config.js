@@ -15,12 +15,12 @@ module.exports = {
   plugins: [
     new CopyWebpackPlugin({
       patterns:
-          [
-            {
-              from: path.resolve(__dirname, 'static'),
-              to: path.resolve(__dirname, '.webpack/static')
-            },
-          ]
+        [
+          {
+            from: path.resolve(__dirname, 'static'),
+            to: path.resolve(__dirname, '.webpack/static')
+          },
+        ]
     }),
   ]
 };

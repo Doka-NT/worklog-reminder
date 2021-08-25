@@ -5,24 +5,24 @@ import SettingsScreen from "./SettingsScreen/SettingsScreen";
 import { WelcomeScreen } from "./WelcomeScreen/WelcomeScreen";
 
 export default function createScreen(screenName) {
-    let screen
+  let screen
 
-    switch (screenName) {
-        case ScreenDict.WELCOME:
-            screen = <WelcomeScreen />
-            break
-        case ScreenDict.CHECK_TOKEN:
-            screen = <CheckTokenScreen />
-            break;
-        case ScreenDict.SETTINGS:
-            screen = <SettingsScreen />
-            break;
-        case ScreenDict.ISSUES:
-            screen = <IssuesScreen />
-            break;
-        default:
-            screen = <CheckTokenScreen />
-    }
+  switch (screenName) {
+    case ScreenDict.WELCOME:
+      screen = <WelcomeScreen />
+      break
+    case ScreenDict.CHECK_TOKEN:
+      screen = <CheckTokenScreen />
+      break;
+    case ScreenDict.SETTINGS:
+      screen = <SettingsScreen />
+      break;
+    case ScreenDict.ISSUES:
+      screen = <IssuesScreen />
+      break;
+    default:
+      screen = <CheckTokenScreen />
+  }
 
-    return screen
+  return screen
 }

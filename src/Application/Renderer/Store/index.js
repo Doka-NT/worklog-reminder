@@ -7,15 +7,15 @@ import { welcomeScreenReducer } from "../Screen/WelcomeScreen/slice";
 import { settingsReducer } from "./settingsSlice";
 
 export const store = configureStore({
-    reducer: {
-        app: appReducer,
-        settings: settingsReducer,
-        welcomeScreen: welcomeScreenReducer,
-        issueList: issueListReducer,
-    },
-    middleware: [
-        save({states: ['settings']}),
-        thunk,
-    ],
-    preloadedState: load({states: ['settings']}),
+  reducer: {
+    app: appReducer,
+    settings: settingsReducer,
+    welcomeScreen: welcomeScreenReducer,
+    issueList: issueListReducer,
+  },
+  middleware: [
+    save({ states: ['settings'] }),
+    thunk,
+  ],
+  preloadedState: load({ states: ['settings'] }),
 })

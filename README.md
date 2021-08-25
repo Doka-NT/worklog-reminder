@@ -17,12 +17,15 @@ This app will help you with:
 </a>
 
 ## Download
+
 To [download](https://github.com/Doka-NT/worklog-reminder/releases) the application please visit [latest release page](https://github.com/Doka-NT/worklog-reminder/releases) and click on file for your platform
 
 ## Overview
 
 ### Easy setup
+
 Setup **Worklog Reminder** in 4 simple steps:
+
 <ul>
   <li>Provide your JIRA URL</li>
   <li>Enter your username</li>
@@ -32,7 +35,9 @@ Setup **Worklog Reminder** in 4 simple steps:
 <img src="./docs/images/welcome-screen.gif" height="250"/>
 
 ### Easy to use
+
 Work with issues in 2 clicks:
+
 <ul>
   <li>Look through last viewed</li>
   <li>Search for issues</li>
@@ -44,6 +49,7 @@ Work with issues in 2 clicks:
 <img src="./docs/images/issues-screen.gif" height="250"/>
 
 ## Main Features
+
 - You need only 2 clicks to track time
 - Search through last viewed issues
 - Tray based application
@@ -55,10 +61,12 @@ Work with issues in 2 clicks:
 ## Development
 
 ### Requirements
+
 - NodeJS >= 12
 - Yarn
 
 ### Install
+
 ```bash
 git clone git@github.com:Doka-NT/worklog-reminder.git
 cd worklog-reminder
@@ -67,6 +75,7 @@ yarn start
 ```
 
 ### Compile ready-to-use app
+
 To create ready-to-use application run the following command
 
 ```bash
@@ -76,4 +85,5 @@ yarn make
 After that go to the `out/make` directory and find a version for your platform
 
 ## Support
+
 If you have any question feel free to [create new issue](https://github.com/Doka-NT/worklog-reminder/issues/new)

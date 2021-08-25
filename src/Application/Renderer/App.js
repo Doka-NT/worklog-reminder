@@ -11,19 +11,19 @@ import ScreenDict from './Screen/ScreenDict'
 
 
 export default function App() {
-    const screenName = useSelector(selectScreenName)
-    const settings = useSelector(selectSettings)
+  const screenName = useSelector(selectScreenName)
+  const settings = useSelector(selectSettings)
 
-    const storage = new StateStorage(settings)
-    const initialScreen = !storage.getSchemeAndHost() || !storage.getUserName() || !storage.getApiToken() 
-        ? ScreenDict.WELCOME
-        : ScreenDict.CHECK_TOKEN
+  const storage = new StateStorage(settings)
+  const initialScreen = !storage.getSchemeAndHost() || !storage.getUserName() || !storage.getApiToken()
+    ? ScreenDict.WELCOME
+    : ScreenDict.CHECK_TOKEN
 
-    const screen = createScreen(screenName ? screenName : initialScreen)
+  const screen = createScreen(screenName ? screenName : initialScreen)
 
-    return (
-        <div>
-            {screen}
-        </div>
-    )
+  return (
+    <div>
+      {screen}
+    </div>
+  )
 }

@@ -3,16 +3,16 @@ import PrevButton from "./PrevButton"
 
 export default function NavButtons(_props) {
 
-    const _defaults = {
-        nextBtnProps: {},
-    }
+  const _defaults = {
+    nextBtnProps: {},
+  }
 
-    const props = {..._defaults, ..._props}
+  const props = { ..._defaults, ..._props }
 
-    return (
-        <div className="buttons">
-            <PrevButton/>            
-            <NextButton {...props.nextBtnProps}/>
-        </div>
-    )
+  return (
+    <div className="buttons">
+      <PrevButton />
+      <NextButton {...props.nextBtnProps} />
+    </div>
+  )
 }

@@ -8,11 +8,11 @@ import ReloadIssuesTask from '../Task/Renderer/ReloadIssuesTask'
 import StateStorage from '../../Infrastructure/Storage/StateStorage'
 
 ReactDOM.render(
-    <Provider store={store}>
-        <App />
-    </Provider>
-    ,
-    document.getElementById('root')
+  <Provider store={store}>
+    <App />
+  </Provider>
+  ,
+  document.getElementById('root')
 );
 
 const storage = new StateStorage(store.getState().settings)

@@ -1,16 +1,16 @@
 import Input from '../../../Components/Input'
 
 export default function TextInput(_props) {
-    const predefined = {
-        class: 'text-input'
-    }
+  const predefined = {
+    class: 'text-input'
+  }
 
-    const props = {...predefined, ..._props}
+  const props = { ...predefined, ..._props }
 
-    return (
-        <Input
-            modifier="underbar"
-            {...props}
-        />
-    )
+  return (
+    <Input
+      modifier="underbar"
+      {...props}
+    />
+  )
 }

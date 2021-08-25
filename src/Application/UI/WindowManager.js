@@ -4,78 +4,77 @@ import config from '../../app.config.main';
 import path from 'path';
 
 class WindowManager {
-    /**
-     * @private {WindowManager}
-     */
-    static __instance
-    /**
-     * @private {AppTray}
-     */
-    static __tray
-    /**
-     * @private {MainWindow}
-     */
-    static __mainWindow
+  /**
+   * @private {WindowManager}
+   */
+  static __instance
+  /**
+   * @private {AppTray}
+   */
+  static __tray
+  /**
+   * @private {MainWindow}
+   */
+  static __mainWindow
 
-    /**
-     * @return {WindowManager}
-     */
-    static getInstance()
-    {
-        if (!WindowManager.__instance) {
-            WindowManager.__instance = new WindowManager()
-        }
-
-        return WindowManager.__instance
+  /**
+   * @return {WindowManager}
+   */
+  static getInstance() {
+    if (!WindowManager.__instance) {
+      WindowManager.__instance = new WindowManager()
     }
 
-    createTray() {
-        const appTray = new AppTray(this)
+    return WindowManager.__instance
+  }
 
-        appTray.setHandlers(appTray)
+  createTray() {
+    const appTray = new AppTray(this)
 
-        WindowManager.__tray = appTray
-    }
+    appTray.setHandlers(appTray)
 
-    getTray() {
-        return WindowManager.__tray
-    }
+    WindowManager.__tray = appTray
+  }
 
-    createMainWindow() {
-        const mainWindow = new MainWindow(this, {
-            width: 300,
-            height: 450,
-            show: false,
-            frame: false,
-            fullscreenable: false,
-            resizable: false,
-            transparent: false,
-            skipTaskbar: process.platform !== 'linux',
-            icon: path.join(config.assetsDir, process.platform !== 'win32' ? 'appIconColored.png' : 'appIconColored.ico'),
-            webPreferences: {
-                // Prevents renderer process code from not running when window is
-                // hidden
-                backgroundThrottling: false,
-                nodeIntegration: true,
-                contextIsolation: false,
-                enableRemoteModule: true,
-                webSecurity: false,
-            }
-        })
+  getTray() {
+    return WindowManager.__tray
+  }
 
-        // and load the index.html of the app.
-        mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
-        mainWindow.setHandlers()
+  createMainWindow() {
+    const mainWindow = new MainWindow(this, {
+      width: 300,
+      height: 450,
+      show: false,
+      frame: false,
+      fullscreenable: false,
+      resizable: false,
+      transparent: false,
+      skipTaskbar: process.platform !== 'linux',
+      icon: path.join(config.assetsDir, process.platform !== 'win32' ? 'appIconColored.png' : 'appIconColored.ico'),
+      webPreferences: {
+        // Prevents renderer process code from not running when window is
+        // hidden
+        backgroundThrottling: false,
+        nodeIntegration: true,
+        contextIsolation: false,
+        enableRemoteModule: true,
+        webSecurity: false,
+      }
+    })
 
-        WindowManager.__mainWindow = mainWindow
-    }
+    // and load the index.html of the app.
+    mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
+    mainWindow.setHandlers()
 
-    /**
-     * @return {MainWindow}
-     */
-    getMainWindow() {
-        return WindowManager.__mainWindow
-    }
+    WindowManager.__mainWindow = mainWindow
+  }
+
+  /**
+   * @return {MainWindow}
+   */
+  getMainWindow() {
+    return WindowManager.__mainWindow
+  }
 }
 
 export default WindowManager
