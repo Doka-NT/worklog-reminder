@@ -1,9 +1,9 @@
-import AbstractHandler from "../AbstractHandler";
+import AbstractHandler from '../AbstractHandler';
 
-const shell = require('electron').shell
+const { shell } = require('electron');
 
 export default class OpenInShellHandler extends AbstractHandler {
   handle(event) {
-    shell.openExternal(event.payload)
+    shell.openExternal(event.payload);
   }
 }

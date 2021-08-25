@@ -1,4 +1,4 @@
-const { ipcRenderer } = window.require('electron')
+const { ipcRenderer } = window.require('electron');
 
 class EventEmitter {
   static __instance
@@ -8,18 +8,18 @@ class EventEmitter {
    */
   static getInstance() {
     if (!EventEmitter.__instance) {
-      EventEmitter.__instance = new EventEmitter()
+      EventEmitter.__instance = new EventEmitter();
     }
 
-    return EventEmitter.__instance
+    return EventEmitter.__instance;
   }
 
   send(eventName, payload) {
-    console.debug(`Event: ${eventName}, with payload:`, payload)
+    console.debug(`Event: ${eventName}, with payload:`, payload);
 
-    ipcRenderer.send(eventName, payload)
-    document.dispatchEvent(new CustomEvent(eventName, { detail: payload }))
+    ipcRenderer.send(eventName, payload);
+    document.dispatchEvent(new CustomEvent(eventName, { detail: payload }));
   }
 }
 
-export default EventEmitter
+export default EventEmitter;

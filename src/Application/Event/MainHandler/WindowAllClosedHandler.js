@@ -1,5 +1,5 @@
-import AbstractHandler from "../AbstractHandler";
-import { app } from "electron";
+import { app } from 'electron';
+import AbstractHandler from '../AbstractHandler';
 
 export default class WindowAllClosedHandler extends AbstractHandler {
   handle(event) {

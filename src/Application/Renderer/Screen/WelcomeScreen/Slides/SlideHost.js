@@ -1,16 +1,18 @@
-import { CarouselItem } from "react-onsenui"
-import { useDispatch, useSelector } from "react-redux"
-import { selectHost, setHost } from "../../../Store/settingsSlice"
-import NavButtons from "../Components/NavButtons"
-import SlideInput from "../Components/SlideInput"
+import { CarouselItem } from 'react-onsenui';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectHost, setHost } from '../../../Store/settingsSlice';
+import NavButtons from '../Components/NavButtons';
+import SlideInput from '../Components/SlideInput';
 
 export default function SlideHost(props) {
-  const dispatch = useDispatch()
-  const hostname = useSelector(selectHost)
+  const { index } = props;
 
-  const onChange = e => {
-    dispatch(setHost(e.value))
-  }
+  const dispatch = useDispatch();
+  const hostname = useSelector(selectHost);
+
+  const onChange = (e) => {
+    dispatch(setHost(e.value));
+  };
 
   return (
     <CarouselItem>
@@ -22,13 +24,14 @@ export default function SlideHost(props) {
 
           <SlideInput
             value={hostname}
-            focusedOnIndex={props.index}
+            focusedOnIndex={index}
             onChange={onChange}
-            placeholder="https://my-company.atlassian.net" />
+            placeholder="https://my-company.atlassian.net"
+          />
         </div>
 
         <NavButtons />
       </div>
     </CarouselItem>
-  )
+  );
 }

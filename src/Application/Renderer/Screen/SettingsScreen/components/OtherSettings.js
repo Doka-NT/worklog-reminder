@@ -1,25 +1,24 @@
-import 'onsenui'
-import { ListHeader, ListItem } from "react-onsenui"
-import { useSelector } from "react-redux"
-import { getMilliseconds } from '../../../../../Domain/AbstractStorage'
-import StateStorage from '../../../../../Infrastructure/Storage/StateStorage'
-import { selectSettings, setNotificationInterval, setUpdateInterval } from '../../../Store/settingsSlice'
-import TextInput from "./TextInput"
-import { useDispatch } from 'react-redux'
+import 'onsenui';
+import { ListHeader, ListItem } from 'react-onsenui';
+import { useSelector, useDispatch } from 'react-redux';
+import { getMilliseconds } from '../../../../../Domain/AbstractStorage';
+import StateStorage from '../../../../../Infrastructure/Storage/StateStorage';
+import { selectSettings, setNotificationInterval, setUpdateInterval } from '../../../Store/settingsSlice';
+import TextInput from './TextInput';
 
 export default function OtherSettings() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const state = useSelector(selectSettings)
-  const storage = new StateStorage(state)
+  const state = useSelector(selectSettings);
+  const storage = new StateStorage(state);
 
-  const onNotificationIntervalChange = e => {
-    dispatch(setNotificationInterval(getMilliseconds(e.value)))
-  }
+  const onNotificationIntervalChange = (e) => {
+    dispatch(setNotificationInterval(getMilliseconds(e.value)));
+  };
 
-  const onUpdateIntervalChange = e => {
-    dispatch(setUpdateInterval(getMilliseconds(e.value)))
-  }
+  const onUpdateIntervalChange = (e) => {
+    dispatch(setUpdateInterval(getMilliseconds(e.value)));
+  };
 
   return (
     <>
@@ -45,5 +44,5 @@ export default function OtherSettings() {
         </div>
       </ListItem>
     </>
-  )
+  );
 }

@@ -1,17 +1,19 @@
-import AppTray from "./AppTray";
-import MainWindow from "./MainWindow";
-import config from '../../app.config.main';
 import path from 'path';
+import AppTray from './AppTray';
+import MainWindow from './MainWindow';
+import config from '../../app.config.main';
 
 class WindowManager {
   /**
    * @private {WindowManager}
    */
   static __instance
+
   /**
    * @private {AppTray}
    */
   static __tray
+
   /**
    * @private {MainWindow}
    */
@@ -22,22 +24,22 @@ class WindowManager {
    */
   static getInstance() {
     if (!WindowManager.__instance) {
-      WindowManager.__instance = new WindowManager()
+      WindowManager.__instance = new WindowManager();
     }
 
-    return WindowManager.__instance
+    return WindowManager.__instance;
   }
 
   createTray() {
-    const appTray = new AppTray(this)
+    const appTray = new AppTray(this);
 
-    appTray.setHandlers(appTray)
+    appTray.setHandlers(appTray);
 
-    WindowManager.__tray = appTray
+    WindowManager.__tray = appTray;
   }
 
   getTray() {
-    return WindowManager.__tray
+    return WindowManager.__tray;
   }
 
   createMainWindow() {
@@ -59,22 +61,22 @@ class WindowManager {
         contextIsolation: false,
         enableRemoteModule: true,
         webSecurity: false,
-      }
-    })
+      },
+    });
 
     // and load the index.html of the app.
     mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
-    mainWindow.setHandlers()
+    mainWindow.setHandlers();
 
-    WindowManager.__mainWindow = mainWindow
+    WindowManager.__mainWindow = mainWindow;
   }
 
   /**
    * @return {MainWindow}
    */
   getMainWindow() {
-    return WindowManager.__mainWindow
+    return WindowManager.__mainWindow;
   }
 }
 
-export default WindowManager
+export default WindowManager;

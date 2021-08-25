@@ -1,29 +1,25 @@
-import 'onsenui'
-import { useEffect, useRef } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import useAutofocus from "../../../../Hooks/useAutofocus"
-import { selectSearchQuery, setSearchQuery } from "../../slice"
+import 'onsenui';
+import { useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import useAutofocus from '../../../../Hooks/useAutofocus';
+import { selectSearchQuery, setSearchQuery } from '../../slice';
 
 export default function SearchBar() {
-  const dispatch = useDispatch()
-  const inputRef = useRef(null)
-  const searchQuery = useSelector(selectSearchQuery)
+  const dispatch = useDispatch();
+  const inputRef = useRef(null);
+  const searchQuery = useSelector(selectSearchQuery);
 
-  const onChange = (e) => {
-    const searchQuery = e.target.value
+  const onChange = (e) => dispatch(setSearchQuery(e.target.value));
 
-    dispatch(setSearchQuery(searchQuery))
-  }
-
-  useAutofocus(inputRef, true)
+  useAutofocus(inputRef, true);
   useEffect(() => {
-    inputRef.current.addEventListener('search', onChange)
-    inputRef.current.value = searchQuery
+    inputRef.current.addEventListener('search', onChange);
+    inputRef.current.value = searchQuery;
 
     return () => {
-      inputRef.current?.removeEventListener('search', onChange)
-    }
-  })
+      inputRef.current?.removeEventListener('search', onChange);
+    };
+  });
 
   return (
     <ons-search-input
@@ -33,5 +29,5 @@ export default function SearchBar() {
       value={searchQuery}
       placeholder="Search"
     />
-  )
+  );
 }

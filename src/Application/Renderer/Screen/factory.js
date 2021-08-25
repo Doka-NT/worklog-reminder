@@ -1,28 +1,28 @@
-import CheckTokenScreen from "./CheckTokenScreen/CheckTokenScreen";
-import IssuesScreen from "./IssuesScreen/IssuesScreen";
-import ScreenDict from "./ScreenDict";
-import SettingsScreen from "./SettingsScreen/SettingsScreen";
-import { WelcomeScreen } from "./WelcomeScreen/WelcomeScreen";
+import CheckTokenScreen from './CheckTokenScreen/CheckTokenScreen';
+import IssuesScreen from './IssuesScreen/IssuesScreen';
+import ScreenDict from './ScreenDict';
+import SettingsScreen from './SettingsScreen/SettingsScreen';
+import WelcomeScreen from './WelcomeScreen/WelcomeScreen';
 
 export default function createScreen(screenName) {
-  let screen
+  let screen;
 
   switch (screenName) {
     case ScreenDict.WELCOME:
-      screen = <WelcomeScreen />
-      break
+      screen = <WelcomeScreen />;
+      break;
     case ScreenDict.CHECK_TOKEN:
-      screen = <CheckTokenScreen />
+      screen = <CheckTokenScreen />;
       break;
     case ScreenDict.SETTINGS:
-      screen = <SettingsScreen />
+      screen = <SettingsScreen />;
       break;
     case ScreenDict.ISSUES:
-      screen = <IssuesScreen />
+      screen = <IssuesScreen />;
       break;
     default:
-      screen = <CheckTokenScreen />
+      screen = <CheckTokenScreen />;
   }
 
-  return screen
+  return screen;
 }

@@ -1,10 +1,10 @@
-import AbstractIntervalTask from "../AbstractIntervalTask";
-import EventEmitter from "../../../Domain/EventEmitter";
-import EventDict from "../../../Domain/Dictionary/EventDict";
+import AbstractIntervalTask from '../AbstractIntervalTask';
+import EventEmitter from '../../../Domain/EventEmitter';
+import EventDict from '../../../Domain/Dictionary/EventDict';
 
 class ReloadIssuesTask extends AbstractIntervalTask {
   _iteration() {
-    EventEmitter.getInstance().send(EventDict.RELOAD_ISSUES)
+    EventEmitter.getInstance().send(EventDict.RELOAD_ISSUES);
   }
 }
 

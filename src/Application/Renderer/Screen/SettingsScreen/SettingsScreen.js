@@ -1,20 +1,20 @@
-import 'onsenui'
-import { Button, List, Page } from 'react-onsenui'
-import { useDispatch } from 'react-redux'
-import JiraAPI from '../../../../Infrastructure/JiraAPI/JiraAPI'
-import { showScreen } from '../../Store/appSlice'
-import ScreenDict from '../ScreenDict'
-import CredentialsSettings from './Components/CredentialsSettings'
-import OtherSettings from './Components/OtherSettings'
-import SettingsToolbar from './Components/SettingsToolbar'
-import './style.less'
+import 'onsenui';
+import { Button, List, Page } from 'react-onsenui';
+import { useDispatch } from 'react-redux';
+import JiraAPI from '../../../../Infrastructure/JiraAPI/JiraAPI';
+import { showScreen } from '../../Store/appSlice';
+import ScreenDict from '../ScreenDict';
+import CredentialsSettings from './Components/CredentialsSettings';
+import OtherSettings from './Components/OtherSettings';
+import SettingsToolbar from './Components/SettingsToolbar';
+import './style.less';
 
 export default function SettingsScreen() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const onSaveClick = () => {
-    JiraAPI.flushCache()
-    dispatch(showScreen(ScreenDict.CHECK_TOKEN))
-  }
+    JiraAPI.flushCache();
+    dispatch(showScreen(ScreenDict.CHECK_TOKEN));
+  };
 
   return (
     <section className="screen screen__access-token">
@@ -29,8 +29,10 @@ export default function SettingsScreen() {
         <Button
           className="btn-extra-large"
           onClick={onSaveClick}
-        >Save</Button>
+        >
+          Save
+        </Button>
       </Page>
     </section>
-  )
+  );
 }

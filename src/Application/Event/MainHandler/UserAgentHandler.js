@@ -1,5 +1,5 @@
-import { session } from 'electron'
-import AbstractHandler from "../AbstractHandler";
+import { session } from 'electron';
+import AbstractHandler from '../AbstractHandler';
 
 export default class UserAgentHandler extends AbstractHandler {
   handle(event) {

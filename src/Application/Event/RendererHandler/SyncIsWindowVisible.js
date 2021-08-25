@@ -1,6 +1,5 @@
-import WindowManager from "../../UI/WindowManager";
-import AbstractHandler from "../AbstractHandler";
-
+import WindowManager from '../../UI/WindowManager';
+import AbstractHandler from '../AbstractHandler';
 
 export default class SyncIsWindowVisible extends AbstractHandler {
   /**
@@ -8,6 +7,6 @@ export default class SyncIsWindowVisible extends AbstractHandler {
    * @return {boolean}
    */
   handle(event) {
-    return WindowManager.getInstance().getMainWindow().isVisible()
+    return WindowManager.getInstance().getMainWindow().isVisible();
   }
 }

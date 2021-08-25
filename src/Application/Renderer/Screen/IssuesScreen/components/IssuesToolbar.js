@@ -1,21 +1,21 @@
-import { Icon, Toolbar, ToolbarButton } from "react-onsenui"
-import { useDispatch } from "react-redux"
-import { showScreen } from "../../../Store/appSlice"
-import ScreenDict from "../../ScreenDict"
-import { loadIssuesAsync, setForceReload, setSearchQuery } from "../slice"
+import { Icon, Toolbar, ToolbarButton } from 'react-onsenui';
+import { useDispatch } from 'react-redux';
+import { showScreen } from '../../../Store/appSlice';
+import ScreenDict from '../../ScreenDict';
+import { loadIssuesAsync, setForceReload, setSearchQuery } from '../slice';
 
 export default function IssuesToolbar() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const onReloadClick = () => {
-    dispatch(setForceReload())
-    dispatch(setSearchQuery(''))
-    dispatch(loadIssuesAsync(''))
-  }
+    dispatch(setForceReload());
+    dispatch(setSearchQuery(''));
+    dispatch(loadIssuesAsync(''));
+  };
 
   const onSettingsClick = () => {
-    dispatch(showScreen(ScreenDict.SETTINGS))
-  }
+    dispatch(showScreen(ScreenDict.SETTINGS));
+  };
 
   return (
     <Toolbar>
@@ -31,5 +31,5 @@ export default function IssuesToolbar() {
         </ToolbarButton>
       </div>
     </Toolbar>
-  )
+  );
 }

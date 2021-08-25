@@ -1,26 +1,28 @@
-import 'onsenui'
-import { Button, ListHeader, ListItem } from "react-onsenui"
-import { useDispatch, useSelector } from "react-redux"
-import StateStorage from "../../../../../Infrastructure/Storage/StateStorage"
-import { selectSettings, setHost, setToken, setUsername } from "../../../Store/settingsSlice"
-import WideTextInput from "./WideTextInput"
-import EventEmitter from '../../../../../Domain/EventEmitter'
-import EventDict from '../../../../../Domain/Dictionary/EventDict'
-import UrlDict from '../../../../../Domain/Dictionary/UrlDict'
+import 'onsenui';
+import { Button, ListHeader, ListItem } from 'react-onsenui';
+import { useDispatch, useSelector } from 'react-redux';
+import StateStorage from '../../../../../Infrastructure/Storage/StateStorage';
+import {
+  selectSettings, setHost, setToken, setUsername,
+} from '../../../Store/settingsSlice';
+import WideTextInput from './WideTextInput';
+import EventEmitter from '../../../../../Domain/EventEmitter';
+import EventDict from '../../../../../Domain/Dictionary/EventDict';
+import UrlDict from '../../../../../Domain/Dictionary/UrlDict';
 
 export default function CredentialsSettings() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const state = useSelector(selectSettings)
-  const storage = new StateStorage(state)
+  const state = useSelector(selectSettings);
+  const storage = new StateStorage(state);
 
   const onCreateTokenClick = () => {
-    EventEmitter.getInstance().send(EventDict.OPEN_IN_SHELL, UrlDict.URL_MANAGE_TOKEN)
-  }
+    EventEmitter.getInstance().send(EventDict.OPEN_IN_SHELL, UrlDict.URL_MANAGE_TOKEN);
+  };
 
-  const onHostChange = e => dispatch(setHost(e.value))
-  const onUserChange = e => dispatch(setUsername(e.value))
-  const onTokenChange = e => dispatch(setToken(e.value))
+  const onHostChange = (e) => dispatch(setHost(e.value));
+  const onUserChange = (e) => dispatch(setUsername(e.value));
+  const onTokenChange = (e) => dispatch(setToken(e.value));
 
   return (
     <>
@@ -57,11 +59,11 @@ export default function CredentialsSettings() {
         </div>
       </ListItem>
       <ListItem>
-        <div className="left" style={{ width: 'auto' }}></div>
+        <div className="left" style={{ width: 'auto' }} />
         <div className="center">
           <Button modifier="quiet" class="btn-link" onClick={onCreateTokenClick}>Click here to create token</Button>
         </div>
       </ListItem>
     </>
-  )
+  );
 }

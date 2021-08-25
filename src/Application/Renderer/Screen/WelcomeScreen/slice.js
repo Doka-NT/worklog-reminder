@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const welcomeScreenSlice = createSlice({
   name: 'welcomeScreen',
@@ -8,30 +8,32 @@ const welcomeScreenSlice = createSlice({
   },
   reducers: {
     setSlide: (state, action) => {
-      state.index = action.payload
+      state.index = action.payload;
     },
-    showNext: state => {
-      state.index++
+    showNext: (state) => {
+      state.index++;
     },
-    showPrev: state => {
-      state.index--
+    showPrev: (state) => {
+      state.index--;
     },
     slideBecomeVisible: (state, action) => {
-      state.visibleSlideIndex = action.payload
+      state.visibleSlideIndex = action.payload;
     },
-    resetWelcomeScreen: state => {
-      state.index = 0
-      state.visibleSlideIndex = 0
-    }
+    resetWelcomeScreen: (state) => {
+      state.index = 0;
+      state.visibleSlideIndex = 0;
+    },
   },
-})
+});
 
-const welcomeScreenReducer = welcomeScreenSlice.reducer
+const welcomeScreenReducer = welcomeScreenSlice.reducer;
 
-const selectIndex = (state) => state.welcomeScreen.index
-const selectVisibleSlide = (state) => state.welcomeScreen.visibleSlideIndex
+const selectIndex = (state) => state.welcomeScreen.index;
+const selectVisibleSlide = (state) => state.welcomeScreen.visibleSlideIndex;
 
-const { setSlide, showNext, showPrev, slideBecomeVisible, resetWelcomeScreen } = welcomeScreenSlice.actions
+const {
+  setSlide, showNext, showPrev, slideBecomeVisible, resetWelcomeScreen,
+} = welcomeScreenSlice.actions;
 
 export {
   welcomeScreenReducer,
@@ -43,4 +45,4 @@ export {
   showPrev,
   resetWelcomeScreen,
   slideBecomeVisible,
-}
+};

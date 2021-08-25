@@ -1,4 +1,4 @@
-import JiraAPI from "../../Infrastructure/JiraAPI/JiraAPI"
+import JiraAPI from '../../Infrastructure/JiraAPI/JiraAPI';
 
 class Worklog {
   /**
@@ -7,26 +7,26 @@ class Worklog {
    * @param {String} comment
    */
   constructor(issue, time, comment = '') {
-    this.id = ''
-    this.issue = issue
-    this.time = time
-    this.comment = comment
+    this.id = '';
+    this.issue = issue;
+    this.time = time;
+    this.comment = comment;
   }
 
   /**
-   * @param {JiraAPI} jiraAPI 
+   * @param {JiraAPI} jiraAPI
    * @returns {Promise}
    */
   save(jiraAPI) {
     return jiraAPI.addWorklog(this)
-      .then(result => {
-        console.log(result)
-        this.id = result.id
+      .then((result) => {
+        console.log(result);
+        this.id = result.id;
 
-        return this
+        return this;
       })
-      .catch(error => console.error(error))
+      .catch((error) => console.error(error));
   }
 }
 
-export default Worklog
+export default Worklog;

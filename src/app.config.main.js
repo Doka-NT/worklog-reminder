@@ -1,18 +1,18 @@
-import path from "path";
-import { app } from 'electron'
-import EventDict from './Domain/Dictionary/EventDict'
-import OpenInShellHandler from './Application/Event/RendererHandler/OpenInShellHandler'
-import ShowMainWindowHandler from "./Application/Event/RendererHandler/ShowMainWindowHandler";
-import SyncIsWindowVisible from "./Application/Event/RendererHandler/SyncIsWindowVisible";
-import AppReadyHandler from "./Application/Event/MainHandler/AppReadyHandler";
-import UserAgentHandler from "./Application/Event/MainHandler/UserAgentHandler";
-import WindowAllClosedHandler from "./Application/Event/MainHandler/WindowAllClosedHandler";
-import ActivateHandler from "./Application/Event/MainHandler/ActivateHandler";
-import HideMacOsDockHandler from "./Application/Event/MainHandler/HideMacOsDockHandler";
-import InstallReactExt from "./Application/Event/MainHandler/InstallReactExt";
-import CheckForUpdatesHandler from "./Application/Event/MainHandler/CheckForUpdatesHandler";
+import path from 'path';
+import { app } from 'electron';
+import EventDict from './Domain/Dictionary/EventDict';
+import OpenInShellHandler from './Application/Event/RendererHandler/OpenInShellHandler';
+import ShowMainWindowHandler from './Application/Event/RendererHandler/ShowMainWindowHandler';
+import SyncIsWindowVisible from './Application/Event/RendererHandler/SyncIsWindowVisible';
+import AppReadyHandler from './Application/Event/MainHandler/AppReadyHandler';
+import UserAgentHandler from './Application/Event/MainHandler/UserAgentHandler';
+import WindowAllClosedHandler from './Application/Event/MainHandler/WindowAllClosedHandler';
+import ActivateHandler from './Application/Event/MainHandler/ActivateHandler';
+import HideMacOsDockHandler from './Application/Event/MainHandler/HideMacOsDockHandler';
+import InstallReactExt from './Application/Event/MainHandler/InstallReactExt';
+import CheckForUpdatesHandler from './Application/Event/MainHandler/CheckForUpdatesHandler';
 
-const APP_ROOT = app.getAppPath()
+const APP_ROOT = app.getAppPath();
 
 export default {
   assetsDir: path.join(APP_ROOT, '.webpack', 'static'),
@@ -42,14 +42,14 @@ export default {
     renderer: {
       // Events from renderer
       [EventDict.OPEN_IN_SHELL]: [
-        new OpenInShellHandler()
+        new OpenInShellHandler(),
       ],
       [EventDict.SHOW_MAIN_WINDOW]: [
-        new ShowMainWindowHandler()
+        new ShowMainWindowHandler(),
       ],
       [EventDict.SYNC_IS_WINDOW_VISIBLE]: [
-        new SyncIsWindowVisible()
+        new SyncIsWindowVisible(),
       ],
     },
   },
-}
+};

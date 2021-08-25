@@ -1,6 +1,6 @@
-import { useEffect, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { selectVisibleSlide, showNext } from "../slice";
+import { useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectVisibleSlide, showNext } from '../slice';
 
 export default function SlideInput(_props) {
   const defaults = {
@@ -8,48 +8,48 @@ export default function SlideInput(_props) {
     modifier: 'underbar',
     autoFocus: false,
     style: {
-      width: '100%'
+      width: '100%',
     },
     onChange: () => { },
-  }
+  };
 
-  const props = { ...defaults, ..._props }
+  const props = { ...defaults, ..._props };
 
-  const dispatch = useDispatch()
-  const currentSlideIndex = useSelector(selectVisibleSlide)
-  const inputRef = useRef(null)
+  const dispatch = useDispatch();
+  const currentSlideIndex = useSelector(selectVisibleSlide);
+  const inputRef = useRef(null);
 
-  const autofocus = currentSlideIndex === props.focusedOnIndex
+  const autofocus = currentSlideIndex === props.focusedOnIndex;
 
-  const onEnter = e => {
+  const onEnter = (e) => {
     if (e.code.toLowerCase() !== 'enter') {
-      return
+      return;
     }
 
-    dispatch(showNext())
-  }
+    dispatch(showNext());
+  };
 
-  const preventTab = e => {
+  const preventTab = (e) => {
     if (e.code.toLowerCase() === 'tab') {
-      e.preventDefault()
+      e.preventDefault();
     }
-  }
+  };
 
   useEffect(() => {
     if (autofocus) {
-      inputRef.current._input.focus()
+      inputRef.current._input.focus();
     }
 
-    inputRef.current.onchange = e => {
+    inputRef.current.onchange = (e) => {
       const event = {
         type: e.type,
         value: e.target.value,
         originEvent: e,
-      }
+      };
 
-      props.onChange(event)
-    }
-  }, [autofocus])
+      props.onChange(event);
+    };
+  }, [autofocus]);
 
   return (
     <ons-input
@@ -58,5 +58,5 @@ export default function SlideInput(_props) {
       onKeyPress={onEnter}
       onKeyDown={preventTab}
     />
-  )
+  );
 }

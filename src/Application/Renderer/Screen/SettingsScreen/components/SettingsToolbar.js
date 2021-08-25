@@ -1,18 +1,18 @@
-import { Toolbar, BackButton } from "react-onsenui"
-import { useDispatch, useSelector } from "react-redux"
-import { showScreen } from "../../../Store/appSlice"
-import { selectIsSettingsFilled } from "../../../Store/settingsSlice"
-import ScreenDict from "../../ScreenDict"
+import { Toolbar, BackButton } from 'react-onsenui';
+import { useDispatch, useSelector } from 'react-redux';
+import { showScreen } from '../../../Store/appSlice';
+import { selectIsSettingsFilled } from '../../../Store/settingsSlice';
+import ScreenDict from '../../ScreenDict';
 
 export default function SettingsToolbar() {
-  const dispatch = useDispatch()
-  const isSettingsFilled = useSelector(selectIsSettingsFilled)
+  const dispatch = useDispatch();
+  const isSettingsFilled = useSelector(selectIsSettingsFilled);
 
   const onBackClick = () => {
-    const screenName = isSettingsFilled ? ScreenDict.ISSUES : ScreenDict.WELCOME
+    const screenName = isSettingsFilled ? ScreenDict.ISSUES : ScreenDict.WELCOME;
 
-    dispatch(showScreen(screenName))
-  }
+    dispatch(showScreen(screenName));
+  };
 
   return (
     <Toolbar>
@@ -21,5 +21,5 @@ export default function SettingsToolbar() {
       </div>
       <div className="center">Settings</div>
     </Toolbar>
-  )
+  );
 }

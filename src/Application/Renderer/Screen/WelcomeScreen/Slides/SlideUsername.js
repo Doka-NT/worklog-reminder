@@ -1,17 +1,17 @@
-import { CarouselItem } from "react-onsenui"
-import { useDispatch, useSelector } from "react-redux"
-import { selectUsername, setUsername } from "../../../Store/settingsSlice"
-import NavButtons from "../Components/NavButtons"
-import SlideInput from "../Components/SlideInput"
-
+import { CarouselItem } from 'react-onsenui';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUsername, setUsername } from '../../../Store/settingsSlice';
+import NavButtons from '../Components/NavButtons';
+import SlideInput from '../Components/SlideInput';
 
 export default function SlideUsername(props) {
-  const dispatch = useDispatch()
-  const username = useSelector(selectUsername)
+  const { index } = props;
+  const dispatch = useDispatch();
+  const username = useSelector(selectUsername);
 
-  const onChange = e => {
-    dispatch(setUsername(e.value))
-  }
+  const onChange = (e) => {
+    dispatch(setUsername(e.value));
+  };
 
   return (
     <CarouselItem>
@@ -23,7 +23,7 @@ export default function SlideUsername(props) {
           <SlideInput
             value={username}
             onChange={onChange}
-            focusedOnIndex={props.index}
+            focusedOnIndex={index}
             placeholder="jsmith@examaple.com"
           />
         </div>
@@ -31,5 +31,5 @@ export default function SlideUsername(props) {
         <NavButtons />
       </div>
     </CarouselItem>
-  )
+  );
 }

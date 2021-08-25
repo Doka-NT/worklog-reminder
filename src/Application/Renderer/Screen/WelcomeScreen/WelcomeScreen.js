@@ -1,28 +1,27 @@
-import { useRef } from 'react'
-import { Carousel, Page, ProgressBar } from 'react-onsenui'
-import { useDispatch, useSelector } from 'react-redux'
-import { selectIndex, slideBecomeVisible } from './slice'
-import SlideAboutToken from './Slides/SlideAboutToken'
-import SlideBegin from './Slides/SlideBegin'
-import SlideHost from './Slides/SlideHost'
-import SlideToken from './Slides/SlideToken'
-import SlideUsername from './Slides/SlideUsername'
-import './style.less'
+import { useRef } from 'react';
+import { Carousel, Page, ProgressBar } from 'react-onsenui';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIndex, slideBecomeVisible } from './slice';
+import SlideAboutToken from './Slides/SlideAboutToken';
+import SlideBegin from './Slides/SlideBegin';
+import SlideHost from './Slides/SlideHost';
+import SlideToken from './Slides/SlideToken';
+import SlideUsername from './Slides/SlideUsername';
+import './style.less';
 
+export default function WelcomeScreen() {
+  const carouselRef = useRef(null);
+  const index = useSelector(selectIndex);
 
-export function WelcomeScreen() {
-  const carouselRef = useRef(null)
-  const index = useSelector(selectIndex)
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const onPostChange = (e) => {
-    dispatch(slideBecomeVisible(e.activeIndex))
-  }
+    dispatch(slideBecomeVisible(e.activeIndex));
+  };
 
   return (
     <Page className="screen screen__welcome">
-      <ProgressBar id="progressBar" value={0}></ProgressBar>
+      <ProgressBar id="progressBar" value={0} />
       <div className="carousel-wrapper">
         <Carousel
           id="carousel"
@@ -38,5 +37,5 @@ export function WelcomeScreen() {
         </Carousel>
       </div>
     </Page>
-  )
+  );
 }

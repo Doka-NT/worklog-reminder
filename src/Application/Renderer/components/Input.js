@@ -1,19 +1,17 @@
-import "onsenui";
-import { useEffect, useRef } from "react";
-import useAutofocus from "../Hooks/useAutofocus";
+import 'onsenui';
+import { useEffect, useRef } from 'react';
+import useAutofocus from '../Hooks/useAutofocus';
 
-const createEvent = (e) => {
-  return {
-    type: e.type,
-    value: e.target.value,
-    originEvent: e,
-  };
-};
+const createEvent = (e) => ({
+  type: e.type,
+  value: e.target.value,
+  originEvent: e,
+});
 
 export default function Input(_props) {
   const defaults = {
     isFocused: false,
-    value: "",
+    value: '',
     onChange: () => { },
     onEnter: () => { },
   };
@@ -23,7 +21,7 @@ export default function Input(_props) {
   const inputRef = useRef(null);
 
   const onEnter = (e) => {
-    if (e.code.toLowerCase() !== "enter") {
+    if (e.code.toLowerCase() !== 'enter') {
       return;
     }
 

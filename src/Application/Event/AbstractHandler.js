@@ -7,8 +7,8 @@ class AbstractHandler {
    * @param event
    */
   handle(event) {
-    throw new Error('You have to implement ::handle method')
+    throw new Error('You have to implement ::handle method');
   }
 }
 
-export default AbstractHandler
+export default AbstractHandler;

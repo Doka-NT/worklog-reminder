@@ -1,7 +1,9 @@
-import { Button, Card, Dialog } from "react-onsenui"
-import { useDispatch, useSelector } from "react-redux"
-import ProgressLine from "../../../../Components/ProgressLine"
-import { addIssueWorklogAsync, selectCurrentIssue, selectIsTimeProgressVisible, setCurrentIssue } from "../../slice"
+import { Button, Card, Dialog } from 'react-onsenui';
+import { useDispatch, useSelector } from 'react-redux';
+import ProgressLine from '../../../../Components/ProgressLine';
+import {
+  addIssueWorklogAsync, selectCurrentIssue, selectIsTimeProgressVisible, setCurrentIssue,
+} from '../../slice';
 
 const timeMap = {
   5: '5m',
@@ -19,32 +21,36 @@ const timeMap = {
   360: '6h',
   420: '7h',
   480: '8h',
-}
+};
 
 export default function TimeDialog() {
-  const dispatch = useDispatch()
-  const issue = useSelector(selectCurrentIssue)
-  const isProgressBarVisible = useSelector(selectIsTimeProgressVisible)
+  const dispatch = useDispatch();
+  const issue = useSelector(selectCurrentIssue);
+  const isProgressBarVisible = useSelector(selectIsTimeProgressVisible);
 
-  const onCancel = () => dispatch(setCurrentIssue(null))
+  const onCancel = () => dispatch(setCurrentIssue(null));
 
-  const onClick = minutes => {
-    dispatch(addIssueWorklogAsync(minutes))
-  }
+  const onClick = (minutes) => {
+    dispatch(addIssueWorklogAsync(minutes));
+  };
 
   const buttons = Object.entries(timeMap)
-    .map(entry => <Button
-      key={entry[0]}
-      modifier="outline"
-      className="time-button"
-      onClick={() => onClick(entry[0])}
-    >{entry[1]}</Button>)
+    .map((entry) => (
+      <Button
+        key={entry[0]}
+        modifier="outline"
+        className="time-button"
+        onClick={() => onClick(entry[0])}
+      >
+        {entry[1]}
+      </Button>
+    ));
 
   return (
     <Dialog
       isOpen={issue !== null}
       onCancel={onCancel}
-      isCancelable={true}
+      isCancelable
     >
       <Card>
         <ProgressLine isVisible={isProgressBarVisible} />
@@ -59,5 +65,5 @@ export default function TimeDialog() {
         </div>
       </Card>
     </Dialog>
-  )
+  );
 }

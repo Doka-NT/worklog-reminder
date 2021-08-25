@@ -1,26 +1,27 @@
-import { CarouselItem, Icon } from "react-onsenui"
-import { useDispatch, useSelector } from "react-redux"
-import JiraAPI from "../../../../../Infrastructure/JiraAPI/JiraAPI"
-import { showScreen } from "../../../Store/appSlice"
-import { selectToken, setToken } from "../../../Store/settingsSlice"
-import ScreenDict from "../../ScreenDict"
-import NavButtons from "../Components/NavButtons"
-import SlideInput from "../Components/SlideInput"
-import { resetWelcomeScreen } from "../slice"
+import { CarouselItem, Icon } from 'react-onsenui';
+import { useDispatch, useSelector } from 'react-redux';
+import JiraAPI from '../../../../../Infrastructure/JiraAPI/JiraAPI';
+import { showScreen } from '../../../Store/appSlice';
+import { selectToken, setToken } from '../../../Store/settingsSlice';
+import ScreenDict from '../../ScreenDict';
+import NavButtons from '../Components/NavButtons';
+import SlideInput from '../Components/SlideInput';
+import { resetWelcomeScreen } from '../slice';
 
 export default function SlideToken(props) {
-  const dispatch = useDispatch()
-  const token = useSelector(selectToken)
+  const { index } = props;
+  const dispatch = useDispatch();
+  const token = useSelector(selectToken);
 
-  const onChange = e => {
-    dispatch(setToken(e.value))
-  }
+  const onChange = (e) => {
+    dispatch(setToken(e.value));
+  };
 
   const onBtnClick = () => {
-    JiraAPI.flushCache()
-    dispatch(showScreen(ScreenDict.CHECK_TOKEN))
-    dispatch(resetWelcomeScreen())
-  }
+    JiraAPI.flushCache();
+    dispatch(showScreen(ScreenDict.CHECK_TOKEN));
+    dispatch(resetWelcomeScreen());
+  };
 
   return (
     <CarouselItem>
@@ -28,15 +29,16 @@ export default function SlideToken(props) {
         <div className="title">Almost done</div>
         <div className="content">
           <div className="finish-icon-block">
-            <Icon className="icon" icon="fa-thumbs-up" style={{ height: "40px" }}></Icon>
+            <Icon className="icon" icon="fa-thumbs-up" style={{ height: '40px' }} />
           </div>
           <p>Enter your newly created token bellow to finish setup</p>
           <SlideInput
             value={token}
             onChange={onChange}
-            focusedOnIndex={props.index}
+            focusedOnIndex={index}
             type="password"
-            placeholder="API Token" />
+            placeholder="API Token"
+          />
         </div>
 
         <NavButtons
@@ -47,5 +49,5 @@ export default function SlideToken(props) {
         />
       </div>
     </CarouselItem>
-  )
+  );
 }

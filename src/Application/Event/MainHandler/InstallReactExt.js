@@ -1,26 +1,25 @@
-import AbstractHandler from "../AbstractHandler";
-import isDev from 'electron-is-dev'
-
+import isDev from 'electron-is-dev';
+import AbstractHandler from '../AbstractHandler';
 
 export default class InstallReactExt extends AbstractHandler {
   handle() {
     if (!isDev) {
-      return
+      return;
     }
 
-    this.installExtensions()
+    this.installExtensions();
   }
 
   async installExtensions() {
-    const installer = require('electron-devtools-installer')
+    const installer = require('electron-devtools-installer');
     const extensions = [
       'REACT_DEVELOPER_TOOLS',
       'REDUX_DEVTOOLS',
-      'DEVTRON'
-    ]
+      'DEVTRON',
+    ];
 
     return Promise
-      .all(extensions.map(name => installer.default(installer[name], false)))
-      .catch(console.log)
+      .all(extensions.map((name) => installer.default(installer[name], false)))
+      .catch(console.log);
   }
 }
