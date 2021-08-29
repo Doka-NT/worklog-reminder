@@ -123,10 +123,14 @@ const selectIsCommentProgressVisible = (state) => state.issueList.isCommentProgr
 const selectWorklogComment = (state) => `${state.issueList.worklogComment}`.trim();
 const selectIsTimeDialogVisible = (state) => state.issueList.currentIssue !== null
 const selectIsCommentDialogVisible = (state) => state.issueList.currentWorklog !== null;
-const selectIsAllDialogHidden = (state) => !selectIsCommentDialogVisible(state) && !selectIsCommentDialogVisible(state)
 
 const {
-  setIssues, setSearchQuery, setForceReload, setCurrentIssue, setCurrentWorklog, setWorklogComment,
+  setIssues,
+  setSearchQuery,
+  setForceReload,
+  setCurrentIssue,
+  setCurrentWorklog,
+  setWorklogComment,
 } = issueListSlice.actions;
 
 export {
@@ -143,7 +147,6 @@ export {
   selectWorklogComment,
   selectIsTimeDialogVisible,
   selectIsCommentDialogVisible,
-  selectIsAllDialogHidden,
   setIssues,
   setSearchQuery,
   setForceReload,
