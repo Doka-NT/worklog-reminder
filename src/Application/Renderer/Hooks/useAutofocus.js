@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-export default function useAutofocus(inputRef, autofocus) {
+export default function useAutofocus(inputRef, autofocus, dependencies = []) {
   useEffect(() => {
     if (autofocus && inputRef.current !== null) {
       setTimeout(() => {
@@ -8,5 +8,5 @@ export default function useAutofocus(inputRef, autofocus) {
         inputRef.current._input.focus();
       }, 500);
     }
-  }, [autofocus]);
+  }, [autofocus, ...dependencies]);
 }
