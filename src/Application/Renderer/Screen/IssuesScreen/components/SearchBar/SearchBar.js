@@ -17,8 +17,9 @@ export default function SearchBar() {
   const isTimeDialogVisible = useSelector(selectIsTimeDialogVisible);
 
   const onChange = (e) => dispatch(setSearchQuery(e.target.value));
+  const isAutofocused = !isCommentDialogVisible && !isTimeDialogVisible;
 
-  useAutofocus(inputRef, true, [isCommentDialogVisible, isTimeDialogVisible]);
+  useAutofocus(inputRef, isAutofocused, [isCommentDialogVisible, isTimeDialogVisible]);
 
   useEffect(() => {
     inputRef.current.addEventListener('search', onChange);
