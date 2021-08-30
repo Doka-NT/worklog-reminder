@@ -1,6 +1,6 @@
 {
   "name": "worklog-reminder",
-  "productName": "worklog-reminder",
+  "productName": "Worklog Reminder",
   "version": "1.0.0-beta.3",
   "description": "Tool for easily search and add worklog to JIRA issues",
   "repository": {

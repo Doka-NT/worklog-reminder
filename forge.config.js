@@ -22,6 +22,7 @@ module.exports = {
         {
             name: '@electron-forge/maker-dmg',
             config: {
+                name: "Worklog Reminder",
                 background: path.join(__dirname, 'static', 'dmgBackground.jpg'),
                 icon: path.join(__dirname, 'static', 'appIconColored.png'),
                 iconSize: 128,
