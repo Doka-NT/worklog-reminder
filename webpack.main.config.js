@@ -6,7 +6,8 @@ module.exports = {
    * This is the main entry point for your application, it's the first file
    * that runs in the main process.
    */
-  entry: './src/main.js',
+  entry: './src/Application/main.js',
+  devtool: 'eval',
   // Put your normal webpack config below here
   module: {
     rules: require('./webpack.rules'),
@@ -14,12 +15,12 @@ module.exports = {
   plugins: [
     new CopyWebpackPlugin({
       patterns:
-          [
-            {
-              from: path.resolve(__dirname, 'static'),
-              to: path.resolve(__dirname, '.webpack/static')
-            },
-          ]
+        [
+          {
+            from: path.resolve(__dirname, 'static'),
+            to: path.resolve(__dirname, '.webpack/static')
+          },
+        ]
     }),
   ]
 };

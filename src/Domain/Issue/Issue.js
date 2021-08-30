@@ -1,9 +1,10 @@
 class Issue {
-    constructor(key, summary, typeIcon) {
-        this.key = key
-        this.summary = summary
-        this.typeIcon = typeIcon
-    }
+  constructor(key, summary, typeIcon, url) {
+    this.key = key;
+    this.summary = summary;
+    this.typeIcon = typeIcon;
+    this.url = url;
+  }
 }
 
-export default Issue
+export default Issue;

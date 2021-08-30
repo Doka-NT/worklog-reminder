@@ -1,0 +1,33 @@
+:root {
+  --primary-color: #0959d0;
+  --secondary-color: #6b778c;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  margin: auto;
+  max-width: 38rem;
+  padding: 2rem;
+  color: var(--secondary-color);
+}
+
+.button {
+  background-color: var(--primary-color);
+  cursor: pointer;
+
+  &--quiet {
+    background-color: transparent;
+    color: var(--primary-color);
+  }
+
+  &--outline {
+    background-color: transparent;
+    color: var(--primary-color);
+  }
+}
+
+.content {
+  font-size: 15px;
+  line-height: 120%;
+}

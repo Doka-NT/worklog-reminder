@@ -11,8 +11,8 @@ module.exports = {
                 config: './webpack.renderer.config.js',
                 entryPoints: [{
                     name: 'main_window',
-                    html: './src/index.html',
-                    js: './src/renderer.js'
+                    html: './src/Application/Renderer/index.html',
+                    js: './src/Application/Renderer/renderer.js'
                 }]
             },
             devContentSecurityPolicy: `default-src 'self' 'unsafe-inline' 'unsafe-eval' data: https://*.atlassian.net`,
@@ -22,6 +22,7 @@ module.exports = {
         {
             name: '@electron-forge/maker-dmg',
             config: {
+                name: "Worklog Reminder",
                 background: path.join(__dirname, 'static', 'dmgBackground.jpg'),
                 icon: path.join(__dirname, 'static', 'appIconColored.png'),
                 iconSize: 128,
