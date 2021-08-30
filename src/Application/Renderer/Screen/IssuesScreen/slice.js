@@ -121,7 +121,7 @@ const selectIsTimeProgressVisible = (state) => state.issueList.isTimeProgressVis
 const selectCurrentWorklog = (state) => state.issueList.currentWorklog;
 const selectIsCommentProgressVisible = (state) => state.issueList.isCommentProgressVisible;
 const selectWorklogComment = (state) => `${state.issueList.worklogComment}`.trim();
-const selectIsTimeDialogVisible = (state) => state.issueList.currentIssue !== null
+const selectIsTimeDialogVisible = (state) => state.issueList.currentIssue !== null;
 const selectIsCommentDialogVisible = (state) => state.issueList.currentWorklog !== null;
 
 const {

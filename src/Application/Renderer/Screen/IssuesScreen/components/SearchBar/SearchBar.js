@@ -2,7 +2,12 @@ import 'onsenui';
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useAutofocus from '../../../../Hooks/useAutofocus';
-import { selectIsCommentDialogVisible, selectIsTimeDialogVisible, selectSearchQuery, setSearchQuery } from '../../slice';
+import {
+  selectIsCommentDialogVisible,
+  selectIsTimeDialogVisible,
+  selectSearchQuery,
+  setSearchQuery,
+} from '../../slice';
 
 export default function SearchBar() {
   const dispatch = useDispatch();

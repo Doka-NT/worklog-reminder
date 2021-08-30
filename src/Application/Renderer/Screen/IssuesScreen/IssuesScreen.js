@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Page, PullHook } from 'react-onsenui';
+import { Page } from 'react-onsenui';
 import { useDispatch, useSelector } from 'react-redux';
 import EventDict from '../../../../Domain/Dictionary/EventDict';
 import ProgressLine from '../../Components/ProgressLine';
@@ -62,8 +62,6 @@ export default function IssuesScreen() {
   return (
     <section className="screen screen-issues">
       <Page className="issue-page" renderToolbar={() => <IssuesToolbar />}>
-        <PullHook />
-
         <SearchBar />
 
         <ProgressLine isVisible={isProgressBarVisible} />

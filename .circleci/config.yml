@@ -16,7 +16,7 @@ jobs:
 
       - run:
           name: ESLint
-          command: yarn run eslint src --quiet
+          command: yarn run lint
 
       - save_cache:
           name: Save Yarn Package Cache
