@@ -3,6 +3,8 @@ import { app, Menu, Tray } from 'electron';
 import os from 'os';
 import config from '../../app.config.main';
 import OpenInShellHandler from '../Event/RendererHandler/OpenInShellHandler';
+import About from 'electron-about'
+import pkg from '../../../package.json'
 
 class AppTray {
   /**
@@ -44,7 +46,15 @@ class AppTray {
   }
 
   _createContextMenu() {
+    console.log(`${path.join(config.assetsDir, 'appIconColored.png' )}`);
+
     const menuItems = [
+      About.makeMenuItem ('', {
+        icon: `https://github.com/Doka-NT/worklog-reminder/raw/main/static/appIconColored.png`,
+        appName: pkg.productName,
+        version: `Version ${pkg.version}`,
+        copyright: `© ${pkg.author.name}`,
+      }),
       {
         label: 'Help',
         click: () => {

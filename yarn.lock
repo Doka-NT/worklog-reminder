@@ -3243,6 +3243,11 @@ ee-first@1.1.1:
   resolved "https://registry.npmjs.org/ee-first/-/ee-first-1.1.1.tgz"
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
+electron-about@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/electron-about/-/electron-about-2.0.1.tgz#96127ceb118c1c1a2908120ac2812b725de6bf6b"
+  integrity sha512-eoZj2qfCT1j+96Vc4zw78Zx70gPdI8welNlLsuVp+S3droOHbWwvXzAxNgf1zyKUK1jupUqw3uPHfTGo8ONTEw==
+
 electron-devtools-installer@^3.2.0:
   version "3.2.0"
   resolved "https://registry.npmjs.org/electron-devtools-installer/-/electron-devtools-installer-3.2.0.tgz"
