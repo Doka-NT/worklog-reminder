@@ -5,6 +5,7 @@ const welcomeScreenSlice = createSlice({
   initialState: {
     index: 0,
     visibleSlideIndex: 0,
+    progress: 0,
   },
   reducers: {
     setSlide: (state, action) => {
@@ -23,6 +24,9 @@ const welcomeScreenSlice = createSlice({
       state.index = 0;
       state.visibleSlideIndex = 0;
     },
+    setProgress: (state, action) => {
+      state.progress = action.payload;
+    },
   },
 });
 
@@ -30,9 +34,15 @@ const welcomeScreenReducer = welcomeScreenSlice.reducer;
 
 const selectIndex = (state) => state.welcomeScreen.index;
 const selectVisibleSlide = (state) => state.welcomeScreen.visibleSlideIndex;
+const selectProgress = (state) => state.welcomeScreen.progress;
 
 const {
-  setSlide, showNext, showPrev, slideBecomeVisible, resetWelcomeScreen,
+  setSlide,
+  showNext,
+  showPrev,
+  slideBecomeVisible,
+  resetWelcomeScreen,
+  setProgress,
 } = welcomeScreenSlice.actions;
 
 export {
@@ -40,9 +50,11 @@ export {
   welcomeScreenSlice,
   selectIndex,
   selectVisibleSlide,
+  selectProgress,
   setSlide,
   showNext,
   showPrev,
   resetWelcomeScreen,
   slideBecomeVisible,
+  setProgress,
 };
