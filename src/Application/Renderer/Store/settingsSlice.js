@@ -11,6 +11,7 @@ const settingsSlice = createSlice({
     token: '',
     notificationInterval: AbstractStorage.DEFAULT_NOTIFICATION_INTERVAL,
     updateInterval: AbstractStorage.DEFAULT_UPDATE_INTERVAL,
+    isOnboardingPassed: false,
   },
   reducers: {
     setHost: (state, action) => { state.host = action.payload; },
@@ -24,6 +25,9 @@ const settingsSlice = createSlice({
       state.updateInterval = action.payload;
       new ReloadIssuesTask().restart(state.updateInterval);
     },
+    setOnboardingPassed: (state, action) => {
+      state.isOnboardingPassed = action.payload;
+    },
   },
 });
 
@@ -33,17 +37,27 @@ const selectUsername = (state) => state.settings.username;
 const selectToken = (state) => state.settings.token;
 const selectNotificationInterval = (state) => state.settings.notificationInterval;
 const selectUpdateInterval = (state) => state.settings.updateInterval;
+const selectIsOnboardingPassed = (state) => state.settings.isOnboardingPassed;
 
 const selectIsSettingsFilled = (state) => {
   const {
-    host, username, token, updateInterval, notificationInterval,
+    host,
+    username,
+    token,
+    updateInterval,
+    notificationInterval,
   } = state.settings;
 
   return host && username && token && updateInterval && notificationInterval;
 };
 
 const {
-  setHost, setUsername, setToken, setNotificationInterval, setUpdateInterval,
+  setHost,
+  setUsername,
+  setToken,
+  setNotificationInterval,
+  setUpdateInterval,
+  setOnboardingPassed,
 } = settingsSlice.actions;
 
 const settingsReducer = settingsSlice.reducer;
@@ -51,6 +65,7 @@ const settingsReducer = settingsSlice.reducer;
 export {
   settingsReducer,
   settingsSlice,
+  // Selectors
   selectSettings,
   selectHost,
   selectUsername,
@@ -58,9 +73,12 @@ export {
   selectNotificationInterval,
   selectUpdateInterval,
   selectIsSettingsFilled,
+  selectIsOnboardingPassed,
+  // Reducers
   setHost,
   setUsername,
   setToken,
   setNotificationInterval,
   setUpdateInterval,
+  setOnboardingPassed,
 };

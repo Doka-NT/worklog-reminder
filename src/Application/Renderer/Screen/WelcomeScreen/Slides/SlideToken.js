@@ -1,8 +1,17 @@
 import { CarouselItem, Icon } from 'react-onsenui';
 import { useDispatch, useSelector } from 'react-redux';
 import JiraAPI from '../../../../../Infrastructure/JiraAPI/JiraAPI';
+import StateStorage from '../../../../../Infrastructure/Storage/StateStorage';
+import {
+  showBadCredentialsNotification,
+  showConnectionNotification,
+  showSuccessfullyConnectedNotification,
+  showZeroIssuesNotifications,
+} from '../../../Notifications';
 import { showScreen } from '../../../Store/appSlice';
-import { selectToken, setToken } from '../../../Store/settingsSlice';
+import {
+  selectSettings, selectToken, setOnboardingPassed, setToken,
+} from '../../../Store/settingsSlice';
 import ScreenDict from '../../ScreenDict';
 import NavButtons from '../Components/NavButtons';
 import SlideInput from '../Components/SlideInput';
@@ -12,15 +21,44 @@ export default function SlideToken(props) {
   const { index } = props;
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
+  const settings = useSelector(selectSettings);
 
   const onChange = (e) => {
     dispatch(setToken(e.value));
   };
 
+  const loadIssues = async () => {
+    const jiraApi = new JiraAPI(new StateStorage(settings));
+    let issues = [];
+
+    try {
+      issues = await jiraApi.searchIssues('');
+    } catch (e) {
+      showBadCredentialsNotification();
+    }
+
+    return issues;
+  };
+
   const onBtnClick = () => {
     JiraAPI.flushCache();
-    dispatch(showScreen(ScreenDict.CHECK_TOKEN));
-    dispatch(resetWelcomeScreen());
+
+    showConnectionNotification();
+
+    loadIssues()
+      .then((issues) => {
+        if (issues.length > 0) {
+          showSuccessfullyConnectedNotification();
+
+          dispatch(showScreen(ScreenDict.CHECK_TOKEN));
+          dispatch(resetWelcomeScreen());
+          dispatch(setOnboardingPassed(true));
+
+          return;
+        }
+
+        showZeroIssuesNotifications();
+      });
   };
 
   return (

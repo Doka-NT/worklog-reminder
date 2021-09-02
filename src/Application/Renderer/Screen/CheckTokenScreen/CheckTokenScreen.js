@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import imgSpinner from '../../../../../static/spinner.gif';
 import JiraAPI from '../../../../Infrastructure/JiraAPI/JiraAPI';
 import StateStorage from '../../../../Infrastructure/Storage/StateStorage';
+import { showBadCredentialsNotification } from '../../Notifications';
 import { showScreen } from '../../Store/appSlice';
 import { selectSettings } from '../../Store/settingsSlice';
 import ScreenDict from '../ScreenDict';
@@ -15,11 +16,13 @@ export default function CheckTokenScreen() {
   const jiraAPI = new JiraAPI(storage);
 
   const checkToken = () => {
+    jiraAPI.flushCache();
     jiraAPI.searchIssues()
       .then(() => {
         dispatch(showScreen(ScreenDict.ISSUES));
       })
-      .catch((err) => {
+      .catch(() => {
+        showBadCredentialsNotification();
         dispatch(showScreen(ScreenDict.SETTINGS));
       });
   };

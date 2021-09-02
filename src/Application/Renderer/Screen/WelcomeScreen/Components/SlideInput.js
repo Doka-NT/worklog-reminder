@@ -36,7 +36,7 @@ export default function SlideInput(_props) {
   };
 
   useEffect(() => {
-    if (autofocus) {
+    if (autofocus && inputRef.current._input) {
       inputRef.current._input.focus();
     }
 

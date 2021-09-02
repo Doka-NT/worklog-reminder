@@ -2,20 +2,16 @@ import 'onsenui/css/onsen-css-components.css';
 import 'onsenui/css/onsenui.css';
 import { useSelector } from 'react-redux';
 import './App.less';
-import { selectScreenName } from './Store/appSlice';
 import createScreen from './Screen/factory';
-import { selectSettings } from './Store/settingsSlice';
-import StateStorage from '../../Infrastructure/Storage/StateStorage';
 import ScreenDict from './Screen/ScreenDict';
+import { selectScreenName } from './Store/appSlice';
+import { selectIsOnboardingPassed } from './Store/settingsSlice';
 
 export default function App() {
   const screenName = useSelector(selectScreenName);
-  const settings = useSelector(selectSettings);
+  const isOnboardingPassed = useSelector(selectIsOnboardingPassed);
 
-  const storage = new StateStorage(settings);
-  const isSettingsEmpty = !storage.getSchemeAndHost() || !storage.getUserName() || !storage.getApiToken();
-
-  const initialScreen = isSettingsEmpty
+  const initialScreen = !isOnboardingPassed
     ? ScreenDict.WELCOME
     : ScreenDict.CHECK_TOKEN;
 

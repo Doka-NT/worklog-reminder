@@ -6,12 +6,9 @@ import ScreenDict from '../../ScreenDict';
 
 export default function SettingsToolbar() {
   const dispatch = useDispatch();
-  const isSettingsFilled = useSelector(selectIsSettingsFilled);
 
   const onBackClick = () => {
-    const screenName = isSettingsFilled ? ScreenDict.ISSUES : ScreenDict.WELCOME;
-
-    dispatch(showScreen(screenName));
+    dispatch(showScreen(ScreenDict.CHECK_TOKEN));
   };
 
   return (
