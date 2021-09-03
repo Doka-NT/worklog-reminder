@@ -136,7 +136,6 @@ const issueListSlice = createSlice({
       const issue = state.issues[index];
 
       EventEmitter.getInstance().send(EventDict.OPEN_IN_SHELL, issue.url);
-      state.currentIssue = issue;
     },
   },
   extraReducers: (builder) => {
