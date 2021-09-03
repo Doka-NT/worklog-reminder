@@ -1,14 +1,15 @@
 import { Button, List, ListItem } from 'react-onsenui';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import EventDict from '../../../../../../Domain/Dictionary/EventDict';
 import EventEmitter from '../../../../../../Domain/EventEmitter';
 import Issue from '../../../../../../Domain/Issue/Issue';
-import { setCurrentIssue } from '../../slice';
+import { selectListItemIndex, setCurrentIssue, setListItemIndex } from '../../slice';
 
 export default function IssueList(props) {
   const { issues } = props;
 
   const dispatch = useDispatch();
+  const index = useSelector(selectListItemIndex);
 
   /**
    * @param {Issue} issue
@@ -23,15 +24,23 @@ export default function IssueList(props) {
    */
   const onClick = (issue) => {
     dispatch(setCurrentIssue(issue));
+    dispatch(setListItemIndex(issues.indexOf(issue)));
+  };
+
+  const getItemClassName = (i) => {
+    const className = 'issue-list-item ';
+
+    return className + (i === index ? 'focused' : '');
   };
 
   /**
    * @param {Issue} issue
    */
-  const createListItem = (issue) => (
+  const createListItem = (issue, i) => (
     <ListItem
       key={issue.key}
       onClick={() => onClick(issue)}
+      className={getItemClassName(i)}
     >
       <div className="content">
         <img src={issue.typeIcon} />

@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useAutofocus from '../../../../Hooks/useAutofocus';
 import {
+  resetListItemIndex,
   selectIsCommentDialogVisible,
   selectIsTimeDialogVisible,
   selectSearchQuery,
@@ -18,7 +19,9 @@ export default function SearchBar() {
   const isCommentDialogVisible = useSelector(selectIsCommentDialogVisible);
   const isTimeDialogVisible = useSelector(selectIsTimeDialogVisible);
 
-  const onChange = (e) => dispatch(setSearchQuery(e.target.value));
+  const onChange = (e) => {
+    dispatch(setSearchQuery(e.target.value));
+  };
   const isAutofocused = !isCommentDialogVisible && !isTimeDialogVisible;
 
   useAutofocus(inputRef, isAutofocused, [isCommentDialogVisible, isTimeDialogVisible]);
@@ -28,9 +31,9 @@ export default function SearchBar() {
     inputRef.current.value = searchQuery;
 
     const focusTimer = setInterval(() => {
-        if (isAutofocused) {
-          inputRef.current?._input?.focus()
-        }
+      if (isAutofocused) {
+        inputRef.current?._input?.focus();
+      }
     }, FOCUS_UPDATE_INTERVAL);
 
     return () => {
@@ -39,6 +42,16 @@ export default function SearchBar() {
     };
   });
 
+  const onKeyDown = (e) => {
+    if (e.key === 'Escape') {
+      e.preventDefault();
+    }
+
+    if (e.key.length === 1) {
+      dispatch(resetListItemIndex());
+    }
+  };
+
   return (
     <ons-search-input
       ref={inputRef}
@@ -46,6 +59,7 @@ export default function SearchBar() {
       style={{ width: '100%' }}
       value={searchQuery}
       placeholder="Search"
+      onKeyDown={onKeyDown}
     />
   );
 }

@@ -1,6 +1,6 @@
-import AbstractHandler from "../AbstractHandler";
-import { globalShortcut } from "electron";
-import WindowManager from "../../UI/WindowManager";
+import { globalShortcut } from 'electron';
+import AbstractHandler from '../AbstractHandler';
+import WindowManager from '../../UI/WindowManager';
 
 export default class ShowWindowShortcutHandler extends AbstractHandler {
   handle() {
@@ -8,6 +8,6 @@ export default class ShowWindowShortcutHandler extends AbstractHandler {
       const mainWindow = WindowManager.getInstance().getMainWindow();
 
       mainWindow.toggle();
-    })
+    });
   }
 }

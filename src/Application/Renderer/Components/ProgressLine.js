@@ -2,8 +2,10 @@ import { ProgressBar } from 'react-onsenui';
 
 const styles = {
   wrapper: {
-    background: '#FFFFFF',
+    background: 'transparent',
     height: 2,
+    position: 'relative',
+    zIndex: 5,
   },
 };
 

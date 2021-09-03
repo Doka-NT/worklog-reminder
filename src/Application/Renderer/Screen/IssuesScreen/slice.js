@@ -3,6 +3,8 @@ import Worklog from '../../../../Domain/Worklog/Worklog';
 import JiraAPI from '../../../../Infrastructure/JiraAPI/JiraAPI';
 import StateStorage from '../../../../Infrastructure/Storage/StateStorage';
 import { showCommentSavedNotification, showWorklogAddedNotification } from '../../Notifications';
+import EventEmitter from '../../../../Domain/EventEmitter';
+import EventDict from '../../../../Domain/Dictionary/EventDict';
 
 /**
  *
@@ -56,9 +58,14 @@ const issueListSlice = createSlice({
     isCommentProgressVisible: false,
     currentWorklog: null,
     worklogComment: '',
+    listItemIndex: null,
   },
   reducers: {
     setSearchQuery: (state, action) => {
+      if (action.payload === state.searchQuery) {
+        return;
+      }
+
       JiraAPI.flushCache();
       state.searchQuery = action.payload;
     },
@@ -79,6 +86,53 @@ const issueListSlice = createSlice({
     },
     setWorklogComment: (state, action) => {
       state.worklogComment = action.payload;
+    },
+    setListItemIndex: (state, action) => {
+      state.listItemIndex = action.payload;
+    },
+    incListIndex: (state) => {
+      const index = state.listItemIndex;
+      const issueList = state.issues;
+
+      let nextIndex = 0;
+
+      if (index !== null) {
+        nextIndex = index === issueList.length - 1 ? index : index + 1;
+      }
+
+      state.listItemIndex = nextIndex;
+    },
+    decListIndex: (state) => {
+      const index = state.listItemIndex;
+
+      let prevIndex = null;
+
+      if (index !== null) {
+        prevIndex = (index === 0 ? 0 : index - 1);
+      }
+
+      state.listItemIndex = prevIndex;
+    },
+    setCurrentIssueByIndex: (state) => {
+      const index = state.listItemIndex;
+      if (index === null) {
+        return;
+      }
+      const issue = state.issues[index];
+
+      state.currentIssue = issue;
+    },
+    resetListItemIndex: (state) => {
+      if (state.listItemIndex !== null) {
+        state.listItemIndex = null;
+      }
+    },
+    openFocusedIssueInBrowser: (state) => {
+      const index = state.listItemIndex;
+      const issue = state.issues[index];
+
+      EventEmitter.getInstance().send(EventDict.OPEN_IN_SHELL, issue.url);
+      state.currentIssue = issue;
     },
   },
   extraReducers: (builder) => {
@@ -123,6 +177,7 @@ const selectIsCommentProgressVisible = (state) => state.issueList.isCommentProgr
 const selectWorklogComment = (state) => `${state.issueList.worklogComment}`.trim();
 const selectIsTimeDialogVisible = (state) => state.issueList.currentIssue !== null;
 const selectIsCommentDialogVisible = (state) => state.issueList.currentWorklog !== null;
+const selectListItemIndex = (state) => state.issueList.listItemIndex;
 
 const {
   setIssues,
@@ -131,11 +186,18 @@ const {
   setCurrentIssue,
   setCurrentWorklog,
   setWorklogComment,
+  setListItemIndex,
+  incListIndex,
+  decListIndex,
+  setCurrentIssueByIndex,
+  openFocusedIssueInBrowser,
+  resetListItemIndex,
 } = issueListSlice.actions;
 
 export {
   issueListReducer,
   issueListSlice,
+  // Selectors
   selectIssues,
   selectSearchQuery,
   selectIsProgressBarVisible,
@@ -147,12 +209,21 @@ export {
   selectWorklogComment,
   selectIsTimeDialogVisible,
   selectIsCommentDialogVisible,
+  selectListItemIndex,
+  // Reducers
   setIssues,
   setSearchQuery,
   setForceReload,
   setCurrentIssue,
   setCurrentWorklog,
   setWorklogComment,
+  setListItemIndex,
+  incListIndex,
+  decListIndex,
+  setCurrentIssueByIndex,
+  openFocusedIssueInBrowser,
+  resetListItemIndex,
+  // Async Reducers
   loadIssuesAsync,
   addIssueWorklogAsync,
   saveWorklogCommentAsync,

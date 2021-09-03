@@ -39,7 +39,7 @@ class MainWindow extends BrowserWindow {
     } else {
       this.show();
     }
-  } 
+  }
 }
 
 export default MainWindow;
