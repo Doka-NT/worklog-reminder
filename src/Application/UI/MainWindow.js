@@ -29,6 +29,17 @@ class MainWindow extends BrowserWindow {
       }
     });
   }
+
+  toggle() {
+    if (this.isVisible() && !this.isFocused()) {
+      this.show();
+      this.focus();
+    } else if (this.isVisible()) {
+      this.hide();
+    } else {
+      this.show();
+    }
+  } 
 }
 
 export default MainWindow;

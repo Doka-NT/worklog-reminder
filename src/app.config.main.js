@@ -11,6 +11,7 @@ import ActivateHandler from './Application/Event/MainHandler/ActivateHandler';
 import HideMacOsDockHandler from './Application/Event/MainHandler/HideMacOsDockHandler';
 import InstallReactExt from './Application/Event/MainHandler/InstallReactExt';
 import CheckForUpdatesHandler from './Application/Event/MainHandler/CheckForUpdatesHandler';
+import ShowWindowShortcutHandler from './Application/Event/MainHandler/ShowWindowShortcutHandler';
 
 const APP_ROOT = app.getAppPath();
 
@@ -28,6 +29,7 @@ export default {
         new HideMacOsDockHandler(),
         new InstallReactExt(),
         new CheckForUpdatesHandler(),
+        new ShowWindowShortcutHandler(),
       ],
       [EventDict.APP_ACTIVATE]: [
         new ActivateHandler(),

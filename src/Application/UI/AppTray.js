@@ -85,21 +85,7 @@ class AppTray {
   }
 
   _toggleWindow() {
-    let mainWindow = this.windowManager.getMainWindow();
-
-    if (!mainWindow) {
-      this.windowManager.createMainWindow();
-      mainWindow = this.windowManager.getMainWindow();
-    }
-
-    if (mainWindow.isVisible() && !mainWindow.isFocused()) {
-      mainWindow.show();
-      mainWindow.focus();
-    } else if (mainWindow.isVisible()) {
-      mainWindow.hide();
-    } else {
-      mainWindow.show();
-    }
+    this.windowManager.getMainWindow().toggle();
   }
 }
 

@@ -75,6 +75,10 @@ class WindowManager {
    * @return {MainWindow}
    */
   getMainWindow() {
+    if (!WindowManager.__mainWindow) {
+      this.createMainWindow();
+    }
+
     return WindowManager.__mainWindow;
   }
 }
