@@ -2,6 +2,7 @@ import 'onsenui';
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useAutofocus from '../../../../Hooks/useAutofocus';
+import EventDict from '../../../../../../Domain/Dictionary/EventDict';
 import {
   resetListItemIndex,
   selectIsCommentDialogVisible,
@@ -9,6 +10,8 @@ import {
   selectSearchQuery,
   setSearchQuery,
 } from '../../slice';
+
+const { ipcRenderer } = window.require('electron');
 
 const FOCUS_UPDATE_INTERVAL = 10000;
 
@@ -31,8 +34,12 @@ export default function SearchBar() {
     inputRef.current.value = searchQuery;
 
     const focusTimer = setInterval(() => {
-      if (isAutofocused) {
-        inputRef.current?._input?.focus();
+      const searchInput = inputRef.current?._input;
+      const isWindowVisible = ipcRenderer.sendSync(EventDict.SYNC_IS_WINDOW_VISIBLE);
+
+      if (isAutofocused && searchInput && !isWindowVisible) {
+        searchInput.focus();
+        searchInput.select();
       }
     }, FOCUS_UPDATE_INTERVAL);
 
