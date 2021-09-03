@@ -21,24 +21,6 @@ class JiraAPI {
     this.storage = storage;
   }
 
-  searchByKeyOrText(searchText) {
-    if (!searchText) {
-      return this.searchIssues('');
-    }
-
-    return this
-      ._fetch(`/rest/api/2/issue/${encodeURI(searchText)}?fields=summary,issuetype`)
-      .then((result) => {
-        const summary = result.fields?.summary;
-
-        if (!summary) {
-          return this.searchIssues(searchText);
-        }
-
-        return [new Issue(result.key, summary, result.fields.issuetype.iconUrl)];
-      });
-  }
-
   /**
    * @return {Promise<*[]>}
    */
@@ -61,7 +43,7 @@ class JiraAPI {
 
         return isProjectExists
           ? this.searchIssuesByJQL(`key = ${searchText}`)
-          : this.searchByKeyOrText(jql);
+          : this.searchIssuesByJQL(jql);
       });
     }
 

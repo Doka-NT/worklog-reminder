@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import Worklog from '../../../../Domain/Worklog/Worklog';
 import JiraAPI from '../../../../Infrastructure/JiraAPI/JiraAPI';
 import StateStorage from '../../../../Infrastructure/Storage/StateStorage';
-import { showCommentSavedNotification, showWorklogAddedNotification } from '../../Notifications';
+import { showCommentSavedNotification, showRequestFailedWarning, showWorklogAddedNotification } from '../../Notifications';
 import EventEmitter from '../../../../Domain/EventEmitter';
 import EventDict from '../../../../Domain/Dictionary/EventDict';
 
@@ -143,6 +143,10 @@ const issueListSlice = createSlice({
       .addCase(loadIssuesAsync.fulfilled, (state, action) => {
         state.isProgressBarVisible = false;
         state.issues = action.payload;
+      })
+      .addCase(loadIssuesAsync.rejected, (state) => {
+        state.isProgressBarVisible = false;
+        showRequestFailedWarning();
       })
       .addCase(addIssueWorklogAsync.pending, (state) => {
         state.isTimeProgressVisible = true;
