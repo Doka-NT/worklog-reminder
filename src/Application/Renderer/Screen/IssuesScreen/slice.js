@@ -2,7 +2,11 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import Worklog from '../../../../Domain/Worklog/Worklog';
 import JiraAPI from '../../../../Infrastructure/JiraAPI/JiraAPI';
 import StateStorage from '../../../../Infrastructure/Storage/StateStorage';
-import { showCommentSavedNotification, showRequestFailedWarning, showWorklogAddedNotification } from '../../Notifications';
+import {
+  showCommentSavedNotification,
+  showRequestFailedWarning,
+  showWorklogAddedNotification,
+} from '../../Notifications';
 import EventEmitter from '../../../../Domain/EventEmitter';
 import EventDict from '../../../../Domain/Dictionary/EventDict';
 

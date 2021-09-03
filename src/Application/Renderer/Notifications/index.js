@@ -46,5 +46,5 @@ export const showCommentSavedNotification = () => {
 export const showRequestFailedWarning = () => {
   ons.notification.toast('⚠️ Request failed. Try again later, please!', {
     timeout: 1000,
-  })
-}
+  });
+};
