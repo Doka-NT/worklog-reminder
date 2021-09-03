@@ -30,3 +30,15 @@ export const showZeroIssuesNotifications = () => {
     },
   );
 };
+
+export const showWorklogAddedNotification = () => {
+  ons.notification.toast('Worklog added!', {
+    timeout: 1000,
+  });
+};
+
+export const showCommentSavedNotification = () => {
+  ons.notification.toast('Worklog comment has been saved', {
+    timeout: 2000,
+  });
+};

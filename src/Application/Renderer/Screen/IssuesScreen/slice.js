@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import ons from 'onsenui';
 import Worklog from '../../../../Domain/Worklog/Worklog';
 import JiraAPI from '../../../../Infrastructure/JiraAPI/JiraAPI';
 import StateStorage from '../../../../Infrastructure/Storage/StateStorage';
+import { showCommentSavedNotification, showWorklogAddedNotification } from '../../Notifications';
 
 /**
  *
@@ -94,7 +94,7 @@ const issueListSlice = createSlice({
         state.isTimeProgressVisible = true;
       })
       .addCase(addIssueWorklogAsync.fulfilled, (state, action) => {
-        ons.notification.toast('Worklog added!', { timeout: 1000 });
+        showWorklogAddedNotification();
         state.currentIssue = null;
         state.isTimeProgressVisible = false;
         state.currentWorklog = action.payload;
@@ -103,7 +103,7 @@ const issueListSlice = createSlice({
         state.isCommentProgressVisible = true;
       })
       .addCase(saveWorklogCommentAsync.fulfilled, (state) => {
-        ons.notification.toast('Worklog comment has been saved', { timeout: 2000 });
+        showCommentSavedNotification();
         state.isCommentProgressVisible = false;
         state.currentWorklog = null;
       });
