@@ -9,6 +9,8 @@ import {
   setSearchQuery,
 } from '../../slice';
 
+const FOCUS_UPDATE_INTERVAL = 10000;
+
 export default function SearchBar() {
   const dispatch = useDispatch();
   const inputRef = useRef(null);
@@ -25,8 +27,15 @@ export default function SearchBar() {
     inputRef.current.addEventListener('search', onChange);
     inputRef.current.value = searchQuery;
 
+    const focusTimer = setInterval(() => {
+        if (isAutofocused) {
+          inputRef.current?._input?.focus()
+        }
+    }, FOCUS_UPDATE_INTERVAL);
+
     return () => {
       inputRef.current?.removeEventListener('search', onChange);
+      clearInterval(focusTimer);
     };
   });
 
