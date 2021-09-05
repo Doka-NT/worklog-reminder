@@ -10,8 +10,9 @@ import {
   selectSearchQuery,
   setSearchQuery,
 } from '../../slice';
+import { createIpcRenderer } from '../../../../../../Infrastructure/Ipc';
 
-const { ipcRenderer } = window.require('electron');
+const ipcRenderer= createIpcRenderer();
 
 const FOCUS_UPDATE_INTERVAL = 10000;
 

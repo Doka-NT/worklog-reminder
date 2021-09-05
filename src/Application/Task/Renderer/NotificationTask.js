@@ -5,8 +5,9 @@ import EventEmitter from '../../../Domain/EventEmitter';
 import EventDict from '../../../Domain/Dictionary/EventDict';
 import { showScreen } from '../../Renderer/Store/appSlice';
 import ScreenDict from '../../Renderer/Screen/ScreenDict';
+import { createIpcRenderer } from '../../../Infrastructure/Ipc';
 
-const { ipcRenderer } = window.require('electron');
+const ipcRenderer = createIpcRenderer();
 
 class NotificationTask extends AbstractIntervalTask {
   static __interval

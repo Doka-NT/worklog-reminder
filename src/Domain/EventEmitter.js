@@ -1,4 +1,6 @@
-const { ipcRenderer } = window.require('electron');
+import { createIpcRenderer } from "../Infrastructure/Ipc";
+
+const ipcRenderer = createIpcRenderer()
 
 class EventEmitter {
   static __instance

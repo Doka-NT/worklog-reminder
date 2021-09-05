@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { Page } from 'react-onsenui';
 import { useDispatch, useSelector } from 'react-redux';
 import EventDict from '../../../../Domain/Dictionary/EventDict';
+import { createIpcRenderer } from '../../../../Infrastructure/Ipc';
 import ProgressLine from '../../Components/ProgressLine';
 import Spinner from '../../Components/Spinner';
 import CommentDialog from './Components/CommentDialog/CommentDialog';
@@ -23,7 +24,7 @@ import {
 } from './slice';
 import './style.less';
 
-const { ipcRenderer } = window.require('electron');
+const ipcRenderer = createIpcRenderer()
 
 export default function IssuesScreen() {
   const dispatch = useDispatch();
