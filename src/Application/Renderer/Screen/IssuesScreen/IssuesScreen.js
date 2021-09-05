@@ -19,6 +19,7 @@ import {
   selectSearchQuery,
   setCurrentIssueByIndex,
   openFocusedIssueInBrowser,
+  setListItemIndex,
 } from './slice';
 import './style.less';
 
@@ -106,6 +107,14 @@ export default function IssuesScreen() {
       el.removeEventListener('keydown', onKeyPress);
     };
   });
+
+  useEffect(() => {
+    if (issueList.length > 1) {
+      return;
+    }
+
+    dispatch(setListItemIndex(0));
+  }, [issueList]);
 
   return (
     <section ref={screenRef} className="screen screen-issues">

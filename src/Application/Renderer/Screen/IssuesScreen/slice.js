@@ -146,6 +146,7 @@ const issueListSlice = createSlice({
       .addCase(loadIssuesAsync.fulfilled, (state, action) => {
         state.isProgressBarVisible = false;
         state.issues = action.payload;
+        state.listItemIndex = null;
       })
       .addCase(loadIssuesAsync.rejected, (state) => {
         state.isProgressBarVisible = false;
