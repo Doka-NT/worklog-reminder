@@ -1,9 +1,22 @@
 import { Button, Card, Dialog } from 'react-onsenui';
 import { useDispatch, useSelector } from 'react-redux';
+import Input from '../../../../Components/Input';
 import ProgressLine from '../../../../Components/ProgressLine';
+import { selectNotificationInterval } from '../../../../Store/settingsSlice';
 import {
-  addIssueWorklogAsync, selectCurrentIssue, selectIsTimeProgressVisible, setCurrentIssue,
+  addIssueWorklogAsync,
+  selectCurrentIssue,
+  selectIsTimeProgressVisible,
+  setCurrentIssue,
 } from '../../slice';
+import {
+  resetTime,
+  selectHours,
+  selectMinutes,
+  setHours,
+  setMinutes,
+} from './slice';
+import './style.less';
 
 const timeMap = {
   5: '5m',
@@ -18,20 +31,38 @@ const timeMap = {
   210: '3h 30m',
   240: '4h',
   300: '5h',
-  360: '6h',
-  420: '7h',
-  480: '8h',
 };
 
 export default function TimeDialog() {
   const dispatch = useDispatch();
+
   const issue = useSelector(selectCurrentIssue);
   const isProgressBarVisible = useSelector(selectIsTimeProgressVisible);
+  const notificationInterval = useSelector(selectNotificationInterval) / 1000 / 60;
+
+  const hours = useSelector(selectHours);
+  const minutes = useSelector(selectMinutes);
+
+  const notificationHours = Math.floor(notificationInterval / 60);
+  const notificationMinutes = notificationInterval - (notificationHours * 60);
+
+  const isOpen = issue !== null;
 
   const onCancel = () => dispatch(setCurrentIssue(null));
 
-  const onClick = (minutes) => {
-    dispatch(addIssueWorklogAsync(minutes));
+  const onClick = (btnMinutes) => {
+    dispatch(addIssueWorklogAsync(btnMinutes));
+  };
+
+  const onMinutesChange = (value) => {
+    dispatch(setMinutes(value));
+  };
+
+  const saveMinutesToWorklog = () => {
+    const resMinutes = !hours && !minutes ? notificationInterval : Number(minutes) + Number(hours) * 60;
+
+    dispatch(addIssueWorklogAsync(resMinutes));
+    dispatch(resetTime());
   };
 
   const buttons = Object.entries(timeMap)
@@ -48,7 +79,7 @@ export default function TimeDialog() {
 
   return (
     <Dialog
-      isOpen={issue !== null}
+      isOpen={isOpen}
       onCancel={onCancel}
       isCancelable
     >
@@ -62,6 +93,37 @@ export default function TimeDialog() {
           <div style={{ textAlign: 'justify' }}>
             {buttons}
           </div>
+
+          <div className="input-block">
+            <Input
+              isFocused={isOpen}
+              type="number"
+              min="0"
+              modifier="underbar"
+              placeholder={`${notificationHours}h`}
+              onChange={(e) => dispatch(setHours(e.value))}
+              value={hours || ''}
+            />
+            <span className="input-suffix">h</span>
+            <Input
+              type="number"
+              min="0"
+              modifier="underbar"
+              placeholder={`${notificationMinutes}m`}
+              onEnter={saveMinutesToWorklog}
+              onChange={(e) => onMinutesChange(e.value)}
+              onKeyUp={(e) => onMinutesChange(e.target.value)}
+              value={minutes || ''}
+            />
+            <span className="input-suffix">min</span>
+          </div>
+
+          <Button
+            onClick={saveMinutesToWorklog}
+            className="button button--large"
+          >
+            Save
+          </Button>
         </div>
       </Card>
     </Dialog>

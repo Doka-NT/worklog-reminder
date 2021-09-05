@@ -5,6 +5,7 @@ import { appReducer } from './appSlice';
 import { issueListReducer } from '../Screen/IssuesScreen/slice';
 import { welcomeScreenReducer } from '../Screen/WelcomeScreen/slice';
 import { settingsReducer } from './settingsSlice';
+import { timeDialogReducer } from '../Screen/IssuesScreen/Components/TimeDialog/slice';
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     settings: settingsReducer,
     welcomeScreen: welcomeScreenReducer,
     issueList: issueListReducer,
+    timeDialog: timeDialogReducer,
   },
   middleware: [
     save({ states: ['settings'] }),
