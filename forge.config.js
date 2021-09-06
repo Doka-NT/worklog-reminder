@@ -3,6 +3,7 @@ const path = require('path')
 module.exports = {
     packagerConfig: {
         icon: path.join(__dirname, 'static', 'appIconColored'),
+        executableName: 'worklog-reminder',
     },
     plugins: [
         ['@electron-forge/plugin-webpack', {
