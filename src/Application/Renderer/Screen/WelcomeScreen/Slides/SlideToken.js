@@ -35,6 +35,7 @@ export default function SlideToken(props) {
       issues = await jiraApi.searchIssues('');
     } catch (e) {
       showBadCredentialsNotification();
+      console.error(e)
     }
 
     return issues;

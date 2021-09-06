@@ -1,4 +1,5 @@
 import hash from 'object-hash';
+import { encode } from 'js-base64';
 import Issue from '../../Domain/Issue/Issue';
 import AbstractStorage from '../../Domain/AbstractStorage';
 import Project from '../../Domain/Project/Project';
@@ -143,8 +144,10 @@ class JiraAPI {
     const userName = this.storage.getUserName();
     const apiToken = this.storage.getApiToken();
 
+    const encodedAuth = encode(`${userName}:${apiToken}`)
+
     const headers = new Headers({
-      Authorization: `Basic ${Buffer.from(`${userName}:${apiToken}`).toString('base64')}`,
+      Authorization: `Basic ${encodedAuth}`,
       Accept: 'application/json',
       'Content-Type': 'application/json',
     });

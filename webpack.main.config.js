@@ -10,7 +10,19 @@ module.exports = {
   devtool: 'eval',
   // Put your normal webpack config below here
   module: {
-    rules: require('./webpack.rules'),
+    rules: [
+      ...require('./webpack.rules'),
+      {
+        test: /\.(m?js|node)$/,
+        parser: { amd: false },
+        use: {
+          loader: '@vercel/webpack-asset-relocator-loader',
+          options: {
+            outputAssetBase: 'native_modules',
+          },
+        },
+      },
+    ],
   },
   plugins: [
     new CopyWebpackPlugin({

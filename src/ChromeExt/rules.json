@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "priority": 2,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        { "header": "User-Agent", "operation": "set", "value": "WorklogReminder" }
+      ]
+    },
+    "condition": { "resourceTypes": ["main_frame"] }
+  }
+]

@@ -1,0 +1,35 @@
+{
+  "name": "Worklog Reminder",
+  "description": "Tool for easily search and add worklog to JIRA issues",
+  "version": "1.0.0.3",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "webRequest",
+    "declarativeNetRequest",
+    "storage",
+    "tabs",
+    "notifications"
+  ],
+  "host_permissions": [
+    "https://*.atlassian.net/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "128": "/static/appIconColored.png"
+    }
+  },
+  "icons": {
+    "128": "/static/appIconColored.png"
+  },
+  "declarative_net_request": {
+    "rule_resources": [{
+      "id": "ruleset_1",
+      "enabled": true,
+      "path": "rules.json"
+    }]
+  }
+}
