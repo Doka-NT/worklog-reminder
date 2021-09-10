@@ -63,6 +63,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.1",
+    "@sentry/browser": "^6.12.0",
     "@sentry/react": "^6.12.0",
     "@sentry/tracing": "^6.12.0",
     "electron-about": "^2.0.1",
