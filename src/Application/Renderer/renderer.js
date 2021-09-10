@@ -6,7 +6,7 @@ import { store } from './Store';
 import NotificationTask from '../Task/Renderer/NotificationTask';
 import ReloadIssuesTask from '../Task/Renderer/ReloadIssuesTask';
 import StateStorage from '../../Infrastructure/Storage/StateStorage';
-import { createAgent } from '../../Infrastructure/Monitoring';
+import createAgent from '../../Infrastructure/Monitoring';
 
 createAgent().startRendererAgent();
 

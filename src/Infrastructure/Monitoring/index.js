@@ -1,5 +1,5 @@
-import SentryAgent from "./SentryAgent";
+import SentryAgent from './SentryAgent';
 
-export function createAgent() {
+export default function createAgent() {
   return new SentryAgent();
 }

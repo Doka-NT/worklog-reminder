@@ -1,5 +1,5 @@
 import { app } from 'electron';
-import { createAgent } from '../Infrastructure/Monitoring';
+import createAgent from '../Infrastructure/Monitoring';
 import EventHandler from './Event/EventHandler';
 
 createAgent().startMainAgent();
