@@ -16,7 +16,7 @@ module.exports = {
                     js: './src/Application/Renderer/renderer.js'
                 }]
             },
-            devContentSecurityPolicy: `default-src 'self' 'unsafe-inline' 'unsafe-eval' data: https://*.atlassian.net`,
+            devContentSecurityPolicy: `default-src 'self' 'unsafe-inline' 'unsafe-eval' data: https://*.atlassian.net https://*.sentry.io`,
         }]
     ],
     makers: [

@@ -13,7 +13,8 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "eslint src --quiet"
+    "lint": "eslint src --quiet && stylelint **/*.{css,less,scss,sass} --quiet",
+    "lint:fix": "eslint src --quiet --fix && stylelint **/*.{css,less,scss,sass} --quiet --fix"
   },
   "keywords": [],
   "author": {
@@ -56,10 +57,14 @@
     "less-loader": "^10.0.1",
     "node-loader": "^2.0.0",
     "react-devtools-electron": "^4.7.0",
-    "style-loader": "^3.0.0"
+    "style-loader": "^3.0.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^22.0.0"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.1",
+    "@sentry/react": "^6.12.0",
+    "@sentry/tracing": "^6.12.0",
     "electron-about": "^2.0.1",
     "electron-is-dev": "^2.0.0",
     "electron-squirrel-startup": "^1.0.0",

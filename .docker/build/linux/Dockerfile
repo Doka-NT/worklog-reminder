@@ -1,16 +1,16 @@
 FROM ubuntu:20.04
 
-RUN apt update && apt -y install curl
+RUN apt-get update && apt-get -y install curl
 
-RUN apt update && \
+RUN apt-get update && \
     curl -sL https://deb.nodesource.com/setup_14.x | bash - &&\
-    apt -y install nodejs &&\
+    apt-get -y install nodejs &&\
     npm install -g yarn
 
 # Install build dependencies
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Moscow
 
-RUN apt update && apt -y install git dpkg fakeroot
-RUN apt update && apt -y install rpm
-RUN apt update && apt -y install zip
+RUN apt-get update && apt-get -y install git dpkg fakeroot
+RUN apt-get update && apt-get -y install rpm
+RUN apt-get update && apt-get -y install zip
