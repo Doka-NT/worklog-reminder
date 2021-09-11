@@ -6,12 +6,12 @@
 
 # Worklog Reminder for JIRA
 <img src="./static/appIconColored.png" height="64"/><br/>
-This app will help you with:
-
-- Watch through your last issues
-- Track time in 1-2 clicks
-- **Scheduled notifications**
-- Runs on Windows, MacOS and Linux
+## Main features
+- 2 click to log your time
+- Quick issue search
+- Scheduled worklog reminder notifications
+- Cross-platform (MacOS, Windows, Linux)
+- Completely FREE
 
 <a href="https://github.com/Doka-NT/worklog-reminder/releases/latest">
   <img src="./docs/images/platforms.png"/>  
