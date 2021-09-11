@@ -54,41 +54,22 @@ Work with issues in 2 clicks:
   
 <br/>
 
-## Main Features
-
-- You need only 2 clicks to track time
-- Search through last viewed issues
-- Tray based application
-- Minimalistic interface
-- Schedule interval notifications as you want (1, 2, 3, .., 60 minutes and etc)
-- Auto update issue list in background
-- Electron based application works on every desktop platform: Windows, Linux and MacOS
-
 ## Development
 
-### Requirements
-
-- NodeJS >= 12
-- Yarn
-
-### Install
+### Run in dev mode
 
 ```bash
-git clone git@github.com:Doka-NT/worklog-reminder.git
-cd worklog-reminder
-yarn
+yarn install
 yarn start
 ```
 
-### Compile ready-to-use app
-
-To create ready-to-use application run the following command
+### Create production build
 
 ```bash
 yarn make
 ```
 
-After that go to the `out/make` directory and find a version for your platform
+Generated assets will be created in `out/make` directory
 
 ## Support
 
