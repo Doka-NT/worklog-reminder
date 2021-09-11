@@ -1,11 +1,13 @@
-<p align="left">
-  <a href="https://circleci.com/gh/Doka-NT/worklog-reminder/tree/main"><img src="https://circleci.com/gh/Doka-NT/worklog-reminder/tree/main.svg?style=svg"/></a>
-  <a href="https://www.codefactor.io/repository/github/doka-nt/worklog-reminder"><img src="https://www.codefactor.io/repository/github/doka-nt/worklog-reminder/badge" alt="CodeFactor" /></a>
-  <a href="https://codeclimate.com/github/Doka-NT/worklog-reminder/maintainability"><img src="https://api.codeclimate.com/v1/badges/b4adc73b9d1510cddb63/maintainability" /></a>
-</p>
-
 # Worklog Reminder for JIRA
-<img src="./static/appIconColored.png" height="64"/><br/>
+<img src="./static/appIconColored.png" height="64" align="left"/>
+App for tracking time and search JIRA issues
+<br/><br/>
+
+<a href="https://circleci.com/gh/Doka-NT/worklog-reminder/tree/main"><img src="https://circleci.com/gh/Doka-NT/worklog-reminder/tree/main.svg?style=svg"/></a>
+<a href="https://www.codefactor.io/repository/github/doka-nt/worklog-reminder"><img src="https://www.codefactor.io/repository/github/doka-nt/worklog-reminder/badge" alt="CodeFactor" /></a>
+<a href="https://codeclimate.com/github/Doka-NT/worklog-reminder/maintainability"><img src="https://api.codeclimate.com/v1/badges/b4adc73b9d1510cddb63/maintainability" /></a>
+<br/>
+
 ## Main features
 - 2 click to log your time
 - Quick issue search
