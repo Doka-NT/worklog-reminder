@@ -7,6 +7,7 @@ App for tracking time and search JIRA issues
 <a href="https://circleci.com/gh/Doka-NT/worklog-reminder/tree/main"><img src="https://circleci.com/gh/Doka-NT/worklog-reminder/tree/main.svg?style=svg"/></a>
 <a href="https://www.codefactor.io/repository/github/doka-nt/worklog-reminder"><img src="https://www.codefactor.io/repository/github/doka-nt/worklog-reminder/badge" alt="CodeFactor" /></a>
 <a href="https://codeclimate.com/github/Doka-NT/worklog-reminder/maintainability"><img src="https://api.codeclimate.com/v1/badges/b4adc73b9d1510cddb63/maintainability" /></a>
+<a href="https://www.codacy.com/gh/Doka-NT/worklog-reminder/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Doka-NT/worklog-reminder&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/883eed4f353f483488703313bdefa494"/></a>
 <br/>
 
 ## Main features
