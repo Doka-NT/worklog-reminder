@@ -26,31 +26,33 @@ App for tracking time and search JIRA issues
 
 ## Overview
 
+<img src="./docs/images/welcome-screen.gif" height="250" align="left"/>
+
 ### Easy setup
 
 Setup **Worklog Reminder** in 4 simple steps:
 
-<ul>
-  <li>Provide your JIRA URL</li>
-  <li>Enter your username</li>
-  <li>Create or paste API token</li>
-  <li>Done!</li>
-</ul>
-<img src="./docs/images/welcome-screen.gif" height="250"/>
+  • Provide your JIRA URL<br/>
+  • Enter your username<br/>
+  • Create or paste API token<br/>
+  • Done!</br>
+
+<br/><br/><br/><br/>
+
+<img src="./docs/images/issues-screen.gif" height="250" align="left"/>
 
 ### Easy to use
 
 Work with issues in 2 clicks:
 
-<ul>
-  <li>Look through last viewed</li>
-  <li>Search for issues</li>
-  <li>Open issues in browser</li>
-  <li>Click on issue and choose time</li>
-  <li>Optionaly: provide a comment</li>
-  <li>Done!</li>
-</ul>
-<img src="./docs/images/issues-screen.gif" height="250"/>
+  • Look through last viewed<br/>
+  • Search for issues<br/>
+  • Open issues in browser<br/>
+  • Click on issue and choose time<br/>
+  • Optionaly: provide a comment<br/>
+  • Done!<br/>
+  
+<br/>
 
 ## Main Features
 
