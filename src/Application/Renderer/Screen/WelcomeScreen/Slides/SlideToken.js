@@ -5,6 +5,7 @@ import StateStorage from '../../../../../Infrastructure/Storage/StateStorage';
 import {
   showBadCredentialsNotification,
   showConnectionNotification,
+  showSetupCompleteNotification,
   showSuccessfullyConnectedNotification,
   showZeroIssuesNotifications,
 } from '../../../Notifications';
@@ -53,6 +54,8 @@ export default function SlideToken(props) {
           dispatch(showScreen(ScreenDict.CHECK_TOKEN));
           dispatch(resetWelcomeScreen());
           dispatch(setOnboardingPassed(true));
+
+          showSetupCompleteNotification();
 
           return;
         }

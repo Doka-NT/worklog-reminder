@@ -1,4 +1,6 @@
 import ons from 'onsenui';
+import EventEmitter from '../../../Domain/EventEmitter';
+import EventDict from '../../../Domain/Dictionary/EventDict';
 
 export const showConnectionNotification = () => {
   ons.notification.toast('💡 Trying to connect to JIRA....', {
@@ -46,5 +48,18 @@ export const showCommentSavedNotification = () => {
 export const showRequestFailedWarning = () => {
   ons.notification.toast('⚠️ Request failed. Try again later, please!', {
     timeout: 1000,
+  });
+};
+
+export const showSetupCompleteNotification = () => {
+  const notification = new Notification(
+    'Worklog Reminder',
+    {
+      body: 'Setup is finished! I hope this app will be useful for you!',
+    },
+  );
+
+  notification.addEventListener('click', () => {
+    EventEmitter.getInstance().send(EventDict.SHOW_MAIN_WINDOW);
   });
 };
