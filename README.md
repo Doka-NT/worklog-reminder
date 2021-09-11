@@ -1,4 +1,5 @@
 # Worklog Reminder for JIRA
+
 <img src="./static/appIconColored.png" height="64" align="left"/>
 App for tracking time and search JIRA issues
 <br/><br/>
@@ -9,19 +10,39 @@ App for tracking time and search JIRA issues
 <br/>
 
 ## Main features
+
 - 2 click to log your time
 - Quick issue search
 - Scheduled worklog reminder notifications
 - Cross-platform (MacOS, Windows, Linux)
 - Completely FREE
 
-<a href="https://github.com/Doka-NT/worklog-reminder/releases/latest">
-  <img src="./docs/images/platforms.png"/>  
-</a>
-
 ## Download
 
-To [download](https://github.com/Doka-NT/worklog-reminder/releases) the application please visit [latest release page](https://github.com/Doka-NT/worklog-reminder/releases) and click on file for your platform
+<table border="0">
+  <tr>
+    <td align="left">
+      <a href="https://github.com/Doka-NT/worklog-reminder/releases/latest/download/worklog-reminder.dmg">
+        <img src="./docs/images/btn-mac.png" height="35"/>
+      </a>
+    </td>
+    <td>
+      <a href="https://github.com/Doka-NT/worklog-reminder/releases/latest/download/Worklog.Reminder.Setup.exe">
+        <img src="./docs/images/btn-win.png" height="35"/>
+      </a>
+    </td>
+    <td>
+      <a href="https://github.com/Doka-NT/worklog-reminder/releases/latest/download/worklog-reminder.amd64.deb">
+        <img src="./docs/images/btn-linux.png" height="35"/>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <a href="https://github.com/Doka-NT/worklog-reminder/releases/latest/">See all available download options</a>
+    </td>
+  </tr>
+</table>
 
 ## Overview
 
