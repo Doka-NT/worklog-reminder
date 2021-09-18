@@ -64,7 +64,7 @@ class MainWindow extends BrowserWindow {
       // https://nodejs.org/docs/latest-v14.x/api/child_process.html
       currentDesktop = execSync('echo $XDG_CURRENT_DESKTOP').toString().toLowerCase().trim();
     } catch (e) {
-      console.error(e);
+      // todo: send error to monitoring agent
     }
 
     return availableDesktops.indexOf(currentDesktop) !== -1;
