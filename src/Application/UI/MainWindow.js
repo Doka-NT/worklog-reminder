@@ -57,9 +57,15 @@ class MainWindow extends BrowserWindow {
       'kde',
     ];
 
-    // nodejs 14 lts
-    // https://nodejs.org/docs/latest-v14.x/api/child_process.html#child_process_child_process_execsync_command_options
-    const currentDesktop = execSync('echo $XDG_CURRENT_DESKTOP').toString().toLowerCase().trim();
+    let currentDesktop;
+
+    try {
+      // nodejs 14 lts
+      // https://nodejs.org/docs/latest-v14.x/api/child_process.html#child_process_child_process_execsync_command_options
+      currentDesktop = execSync('echo $XDG_CURRENT_DESKTOP').toString().toLowerCase().trim();
+    } catch (e) {
+      console.error(e);
+    }
 
     return availableDesktops.indexOf(currentDesktop) !== -1;
   }
