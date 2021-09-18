@@ -55,6 +55,7 @@ class MainWindow extends BrowserWindow {
       'x-cinnamon',
       'unity',
       'kde',
+      'xfce',
     ];
 
     let currentDesktop;
