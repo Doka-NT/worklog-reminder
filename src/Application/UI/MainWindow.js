@@ -53,6 +53,7 @@ class MainWindow extends BrowserWindow {
 
     const availableDesktops = [
       'x-cinnamon',
+      'unity',
     ];
 
     // nodejs 14 lts
