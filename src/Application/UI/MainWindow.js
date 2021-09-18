@@ -61,7 +61,7 @@ class MainWindow extends BrowserWindow {
 
     try {
       // nodejs 14 lts
-      // https://nodejs.org/docs/latest-v14.x/api/child_process.html#child_process_child_process_execsync_command_options
+      // https://nodejs.org/docs/latest-v14.x/api/child_process.html
       currentDesktop = execSync('echo $XDG_CURRENT_DESKTOP').toString().toLowerCase().trim();
     } catch (e) {
       console.error(e);
