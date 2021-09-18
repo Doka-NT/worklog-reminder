@@ -1,5 +1,6 @@
 import { BrowserWindow } from 'electron';
 import positioner from 'electron-traywindow-positioner';
+import { execSync } from 'child_process';
 
 class MainWindow extends BrowserWindow {
   /**
@@ -21,7 +22,7 @@ class MainWindow extends BrowserWindow {
   setHandlers() {
     this.on('blur', () => {
       if (!this.webContents.isDevToolsOpened()) {
-        if (process.platform === 'linux') {
+        if (!this.isHideAvailable()) {
           this.minimize();
         } else {
           this.hide();
@@ -35,10 +36,30 @@ class MainWindow extends BrowserWindow {
       this.show();
       this.focus();
     } else if (this.isVisible()) {
-      this.hide();
+      if (this.isHideAvailable()) {
+        this.hide();
+      } else {
+        this.minimize();
+      }
     } else {
       this.show();
     }
+  }
+
+  isHideAvailable() {
+    if (process.platform !== 'linux') {
+      return true;
+    }
+
+    const availableDesktops = [
+      'x-cinnamon',
+    ];
+
+    // nodejs 14 lts
+    // https://nodejs.org/docs/latest-v14.x/api/child_process.html#child_process_child_process_execsync_command_options
+    const currentDesktop = execSync('echo $XDG_CURRENT_DESKTOP').toString().toLowerCase().trim();
+
+    return availableDesktops.indexOf(currentDesktop) !== -1;
   }
 }
 
