@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Button, Card, Dialog } from 'react-onsenui';
 import { useDispatch, useSelector } from 'react-redux';
 import Input from '../../../../Components/Input';
@@ -6,9 +7,7 @@ import {
   saveWorklogCommentAsync,
   selectCurrentWorklog,
   selectIsCommentProgressVisible,
-  selectWorklogComment,
   setCurrentWorklog,
-  setWorklogComment,
 } from '../../slice';
 import './style.less';
 
@@ -17,21 +16,23 @@ export default function CommentDialog() {
 
   const currentWorklog = useSelector(selectCurrentWorklog);
   const isProgressBarVisible = useSelector(selectIsCommentProgressVisible);
-  const worklogComment = useSelector(selectWorklogComment);
+
+  const [comment, setComment] = useState('');
+
   const isOpen = currentWorklog !== null;
 
-  const buttonText = worklogComment.length > 0 ? 'Add comment' : 'Ok';
+  const buttonText = comment.length > 0 ? 'Add comment' : 'Ok';
 
   const onChange = (value) => {
-    dispatch(setWorklogComment(value));
+    setComment(value)
   };
 
   const onClose = () => {
     dispatch(setCurrentWorklog(null));
-    dispatch(setWorklogComment(''));
+    setComment('');
   };
 
-  const onSave = (comment) => {
+  const onSave = () => {
     if (comment.length > 0) {
       dispatch(saveWorklogCommentAsync(comment));
     }
@@ -66,13 +67,13 @@ export default function CommentDialog() {
             class="comment-input"
             placeholder="Type some comment here"
             modifier="underbar"
-            value={worklogComment}
+            value={comment}
             onChange={(e) => onChange(e.value)}
             onEnter={onEnter}
             onKeyUp={(e) => onChange(e.target.value)}
           />
           <p />
-          <Button modifier="large" onClick={() => onSave(worklogComment)}>{buttonText}</Button>
+          <Button modifier="large" onClick={onSave}>{buttonText}</Button>
         </div>
       </Card>
     </Dialog>
