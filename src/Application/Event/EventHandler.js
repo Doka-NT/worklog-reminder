@@ -1,5 +1,8 @@
 import { ipcMain } from 'electron';
 import config from '../../app.config.main';
+import EventDict from '../../Domain/Dictionary/EventDict';
+import SetAgentEnabledHandler from './RendererHandler/SetAgentEnabledHandler';
+import SyncIsAgentEnabled from './RendererHandler/SyncIsAgentEnabled';
 
 class EventHandler {
   initAppHandlers(app) {
@@ -22,6 +25,19 @@ class EventHandler {
         });
       });
     }
+
+    ipcMain.on(EventDict.SYNC_IS_AGENT_ENABLED, (event, payload) => {
+      const handler = new SyncIsAgentEnabled();
+      
+      event.returnValue = handler.handle({payload, originEvent: event });
+    });
+
+    ipcMain.on(EventDict.SET_AGENT_ENABLED, (event, payload) => {
+      const handler = new SetAgentEnabledHandler();
+      
+      event.returnValue = handler.handle({payload, originEvent: event });
+    });
+
   }
 }
 

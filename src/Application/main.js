@@ -1,14 +1,19 @@
 import { app } from 'electron';
 import createAgent from '../Infrastructure/Monitoring';
 import EventHandler from './Event/EventHandler';
-
-createAgent().startMainAgent();
+import { createSettings, KEY_IS_AGENT_ENABLED } from './Settings';
 
 const eventHandler = new EventHandler();
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
   app.quit();
+}
+
+const settings = createSettings();
+
+if (settings.get(KEY_IS_AGENT_ENABLED)) {
+  createAgent().startMainAgent();
 }
 
 eventHandler.initAppHandlers(app);

@@ -1,16 +1,25 @@
 import 'onsenui';
-import { ListHeader, ListItem } from 'react-onsenui';
+import { ListHeader, ListItem, Switch } from 'react-onsenui';
 import { useSelector, useDispatch } from 'react-redux';
 import { getMilliseconds } from '../../../../../Domain/AbstractStorage';
+import EventDict from '../../../../../Domain/Dictionary/EventDict';
 import StateStorage from '../../../../../Infrastructure/Storage/StateStorage';
 import { selectSettings, setNotificationInterval, setUpdateInterval } from '../../../Store/settingsSlice';
 import TextInput from './TextInput';
+
+const { ipcRenderer } = window.require('electron');
 
 export default function OtherSettings() {
   const dispatch = useDispatch();
 
   const state = useSelector(selectSettings);
   const storage = new StateStorage(state);
+
+  const isAgentEnabled = ipcRenderer.sendSync(EventDict.SYNC_IS_AGENT_ENABLED);
+
+  const onChangeAgent = (event) => {
+    ipcRenderer.send(EventDict.SET_AGENT_ENABLED, event.value);
+  }
 
   const onNotificationIntervalChange = (e) => {
     dispatch(setNotificationInterval(getMilliseconds(e.value)));
@@ -41,6 +50,12 @@ export default function OtherSettings() {
             value={storage.getUpdateInterval(true)}
             onChange={onUpdateIntervalChange}
           />
+        </div>
+      </ListItem>
+      <ListItem>
+        <div className="center">Send analytics data:</div>
+        <div className="right">
+          <Switch checked={isAgentEnabled} onChange={onChangeAgent}/>
         </div>
       </ListItem>
     </>

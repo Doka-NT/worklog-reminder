@@ -1,5 +1,5 @@
 import 'onsenui';
-import { Button, List, Page } from 'react-onsenui';
+import { List, Page } from 'react-onsenui';
 import { useDispatch } from 'react-redux';
 import JiraAPI from '../../../../Infrastructure/JiraAPI/JiraAPI';
 import { showScreen } from '../../Store/appSlice';
@@ -25,13 +25,6 @@ export default function SettingsScreen() {
           <CredentialsSettings />
           <OtherSettings />
         </List>
-
-        <Button
-          className="btn-extra-large"
-          onClick={onSaveClick}
-        >
-          Save
-        </Button>
       </Page>
     </section>
   );

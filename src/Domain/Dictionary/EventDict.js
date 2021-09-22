@@ -15,6 +15,10 @@ class EventDict {
   static RELOAD_ISSUES = 'reload-issues'
 
   static SYNC_IS_WINDOW_VISIBLE = 'sync-is-window-visible'
+
+  static SYNC_IS_AGENT_ENABLED = 'sync-is-agent-enabled'
+
+  static SET_AGENT_ENABLED = 'set-agent-enabled'
 }
 
 export default EventDict;

@@ -1,3 +1,4 @@
+import isDev from 'electron-is-dev';
 import { Integrations } from '@sentry/tracing';
 import AbstractMonitoringAgent from './AbstractMonitoringAgent';
 
@@ -5,11 +6,19 @@ export default class SentryAgent extends AbstractMonitoringAgent {
   startMainAgent() {
     super.startMainAgent();
 
+    if (isDev) {
+      return;
+    }
+
     this.initSentry(require('@sentry/browser'));
   }
 
   startRendererAgent() {
     super.startRendererAgent();
+
+    if (isDev) {
+      return;
+    }
 
     this.initSentry(require('@sentry/react'));
   }
