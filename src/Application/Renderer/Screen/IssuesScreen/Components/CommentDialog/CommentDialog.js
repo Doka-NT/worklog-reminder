@@ -24,7 +24,7 @@ export default function CommentDialog() {
   const buttonText = comment.length > 0 ? 'Add comment' : 'Ok';
 
   const onChange = (value) => {
-    setComment(value)
+    setComment(value);
   };
 
   const onClose = () => {
