@@ -88,9 +88,6 @@ const issueListSlice = createSlice({
       state.currentWorklog = action.payload;
       state.worklogComment = '';
     },
-    setWorklogComment: (state, action) => {
-      state.worklogComment = action.payload;
-    },
     setListItemIndex: (state, action) => {
       state.listItemIndex = action.payload;
     },
@@ -182,7 +179,6 @@ const selectCurrentIssue = (state) => state.issueList.currentIssue;
 const selectIsTimeProgressVisible = (state) => state.issueList.isTimeProgressVisible;
 const selectCurrentWorklog = (state) => state.issueList.currentWorklog;
 const selectIsCommentProgressVisible = (state) => state.issueList.isCommentProgressVisible;
-const selectWorklogComment = (state) => `${state.issueList.worklogComment}`.trim();
 const selectIsTimeDialogVisible = (state) => state.issueList.currentIssue !== null;
 const selectIsCommentDialogVisible = (state) => state.issueList.currentWorklog !== null;
 const selectListItemIndex = (state) => state.issueList.listItemIndex;
@@ -193,7 +189,6 @@ const {
   setForceReload,
   setCurrentIssue,
   setCurrentWorklog,
-  setWorklogComment,
   setListItemIndex,
   incListIndex,
   decListIndex,
@@ -214,7 +209,6 @@ export {
   selectCurrentIssue,
   selectCurrentWorklog,
   selectIsCommentProgressVisible,
-  selectWorklogComment,
   selectIsTimeDialogVisible,
   selectIsCommentDialogVisible,
   selectListItemIndex,
@@ -224,7 +218,6 @@ export {
   setForceReload,
   setCurrentIssue,
   setCurrentWorklog,
-  setWorklogComment,
   setListItemIndex,
   incListIndex,
   decListIndex,
