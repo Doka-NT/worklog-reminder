@@ -19,6 +19,8 @@ class EventDict {
   static SYNC_IS_AGENT_ENABLED = 'sync-is-agent-enabled'
 
   static SET_AGENT_ENABLED = 'set-agent-enabled'
+
+  static SYNC_IS_DEV = 'sync-is-dev'
 }
 
 export default EventDict;

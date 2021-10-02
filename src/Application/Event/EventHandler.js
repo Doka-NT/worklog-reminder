@@ -28,16 +28,15 @@ class EventHandler {
 
     ipcMain.on(EventDict.SYNC_IS_AGENT_ENABLED, (event, payload) => {
       const handler = new SyncIsAgentEnabled();
-      
-      event.returnValue = handler.handle({payload, originEvent: event });
+
+      event.returnValue = handler.handle({ payload, originEvent: event });
     });
 
     ipcMain.on(EventDict.SET_AGENT_ENABLED, (event, payload) => {
       const handler = new SetAgentEnabledHandler();
-      
-      event.returnValue = handler.handle({payload, originEvent: event });
-    });
 
+      event.returnValue = handler.handle({ payload, originEvent: event });
+    });
   }
 }
 

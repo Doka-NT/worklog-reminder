@@ -1,4 +1,5 @@
 import { app } from 'electron';
+import isDev from 'electron-is-dev';
 import createAgent from '../Infrastructure/Monitoring';
 import EventHandler from './Event/EventHandler';
 import { createSettings, KEY_IS_AGENT_ENABLED } from './Settings';
@@ -12,7 +13,7 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 
 const settings = createSettings();
 
-if (settings.get(KEY_IS_AGENT_ENABLED)) {
+if (settings.get(KEY_IS_AGENT_ENABLED) && !isDev) {
   createAgent().startMainAgent();
 }
 

@@ -1,5 +1,5 @@
-import { createSettings, KEY_IS_AGENT_ENABLED } from "../../Settings";
-import AbstractHandler from "../AbstractHandler";
+import { createSettings, KEY_IS_AGENT_ENABLED } from '../../Settings';
+import AbstractHandler from '../AbstractHandler';
 
 export default class SetAgentEnabledHandler extends AbstractHandler {
   handle(event) {

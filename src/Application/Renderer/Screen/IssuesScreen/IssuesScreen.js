@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Page } from 'react-onsenui';
 import { useDispatch, useSelector } from 'react-redux';
+import { ipcRenderer } from 'electron';
 import EventDict from '../../../../Domain/Dictionary/EventDict';
 import ProgressLine from '../../Components/ProgressLine';
 import Spinner from '../../Components/Spinner';
@@ -22,8 +23,6 @@ import {
   setListItemIndex,
 } from './slice';
 import './style.less';
-
-const { ipcRenderer } = window.require('electron');
 
 export default function IssuesScreen() {
   const dispatch = useDispatch();

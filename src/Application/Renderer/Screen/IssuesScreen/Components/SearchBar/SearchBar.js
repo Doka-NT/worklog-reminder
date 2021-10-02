@@ -1,6 +1,7 @@
 import 'onsenui';
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { ipcRenderer } from 'electron';
 import useAutofocus from '../../../../Hooks/useAutofocus';
 import EventDict from '../../../../../../Domain/Dictionary/EventDict';
 import {
@@ -10,8 +11,6 @@ import {
   selectSearchQuery,
   setSearchQuery,
 } from '../../slice';
-
-const { ipcRenderer } = window.require('electron');
 
 const FOCUS_UPDATE_INTERVAL = 10000;
 

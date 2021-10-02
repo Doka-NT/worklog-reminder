@@ -12,6 +12,4 @@ const schema = {
 /**
  * @returns {Store}
  */
-export const createSettings = () => {
-  return new Store({schema});
-}
+export const createSettings = () => new Store({ schema });
