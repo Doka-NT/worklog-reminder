@@ -4,8 +4,7 @@ import AbstractMonitoringAgent from './AbstractMonitoringAgent';
 export default class SentryAgent extends AbstractMonitoringAgent {
   startMainAgent() {
     super.startMainAgent();
-
-    this.initSentry(require('@sentry/browser'));
+    this.initSentry(require('@sentry/node'));
   }
 
   startRendererAgent() {

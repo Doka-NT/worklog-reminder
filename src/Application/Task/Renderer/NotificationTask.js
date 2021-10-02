@@ -1,3 +1,4 @@
+import { ipcRenderer } from 'electron';
 import AbstractIntervalTask from '../AbstractIntervalTask';
 import StateStorage from '../../../Infrastructure/Storage/StateStorage';
 import JiraAPI from '../../../Infrastructure/JiraAPI/JiraAPI';
@@ -5,8 +6,6 @@ import EventEmitter from '../../../Domain/EventEmitter';
 import EventDict from '../../../Domain/Dictionary/EventDict';
 import { showScreen } from '../../Renderer/Store/appSlice';
 import ScreenDict from '../../Renderer/Screen/ScreenDict';
-
-const { ipcRenderer } = window.require('electron');
 
 class NotificationTask extends AbstractIntervalTask {
   static __interval

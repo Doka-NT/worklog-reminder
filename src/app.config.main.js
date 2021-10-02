@@ -12,6 +12,9 @@ import HideMacOsDockHandler from './Application/Event/MainHandler/HideMacOsDockH
 import InstallReactExt from './Application/Event/MainHandler/InstallReactExt';
 import CheckForUpdatesHandler from './Application/Event/MainHandler/CheckForUpdatesHandler';
 import ShowWindowShortcutHandler from './Application/Event/MainHandler/ShowWindowShortcutHandler';
+import SyncIsAgentEnabled from './Application/Event/RendererHandler/SyncIsAgentEnabled';
+import SyncIsDevHandler from './Application/Event/RendererHandler/SyncIsDevHandler';
+import SetAgentEnabledHandler from './Application/Event/RendererHandler/SetAgentEnabledHandler';
 
 const APP_ROOT = app.getAppPath();
 
@@ -51,6 +54,15 @@ export default {
       ],
       [EventDict.SYNC_IS_WINDOW_VISIBLE]: [
         new SyncIsWindowVisible(),
+      ],
+      [EventDict.SYNC_IS_AGENT_ENABLED]: [
+        new SyncIsAgentEnabled(),
+      ],
+      [EventDict.SET_AGENT_ENABLED]: [
+        new SetAgentEnabledHandler(),
+      ],
+      [EventDict.SYNC_IS_DEV]: [
+        new SyncIsDevHandler(),
       ],
     },
   },

@@ -10,6 +10,7 @@ module.exports = {
             mainConfig: './webpack.main.config.js',
             renderer: {
                 config: './webpack.renderer.config.js',
+                nodeIntegration: true,
                 entryPoints: [{
                     name: 'main_window',
                     html: './src/Application/Renderer/index.html',

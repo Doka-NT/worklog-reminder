@@ -52,9 +52,5 @@ module.exports = {
         new webpack.ProvidePlugin({
             'React': 'react',
         }),
-        new webpack.IgnorePlugin({
-            resourceRegExp: /electron/,
-            contextRegExp: /.*/,
-        }),
     ]
 };
