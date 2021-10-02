@@ -1,8 +1,5 @@
 import { ipcMain } from 'electron';
 import config from '../../app.config.main';
-import EventDict from '../../Domain/Dictionary/EventDict';
-import SetAgentEnabledHandler from './RendererHandler/SetAgentEnabledHandler';
-import SyncIsAgentEnabled from './RendererHandler/SyncIsAgentEnabled';
 
 class EventHandler {
   initAppHandlers(app) {
