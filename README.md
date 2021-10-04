@@ -12,7 +12,7 @@ App for tracking time and search JIRA issues
 
 ## Main features
 
-- 2 click to log your time
+- 2 click for log your time
 - Quick issue search
 - Scheduled worklog reminder notifications
 - Cross-platform (MacOS, Windows, Linux)
