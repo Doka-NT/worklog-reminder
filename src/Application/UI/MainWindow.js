@@ -19,11 +19,15 @@ class MainWindow extends BrowserWindow {
     if (storedBounds) {
       this.setBounds(storedBounds);
     } else {
-      positioner.position(this, this.windowManager.getTray().tray.getBounds());
+      this.moveToDefaultPosition();
     }
 
     super.show();
     this.focus();
+  }
+
+  moveToDefaultPosition() {
+    positioner.position(this, this.windowManager.getTray().tray.getBounds());
   }
 
   setHandlers() {
