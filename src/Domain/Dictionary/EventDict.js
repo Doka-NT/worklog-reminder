@@ -21,6 +21,8 @@ class EventDict {
   static SET_AGENT_ENABLED = 'set-agent-enabled'
 
   static SYNC_IS_DEV = 'sync-is-dev'
+
+  static RESTORE_WINDOW_POSITION = 'restore-window-position'
 }
 
 export default EventDict;

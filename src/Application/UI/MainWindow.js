@@ -1,6 +1,7 @@
 import { BrowserWindow } from 'electron';
 import positioner from 'electron-traywindow-positioner';
 import { execSync } from 'child_process';
+import { createSettings, KEY_WINDOW_BOUNDS } from '../Settings';
 
 class MainWindow extends BrowserWindow {
   /**
@@ -13,10 +14,20 @@ class MainWindow extends BrowserWindow {
   }
 
   show() {
-    positioner.position(this, this.windowManager.getTray().tray.getBounds());
+    const storedBounds = createSettings().get(KEY_WINDOW_BOUNDS);
+
+    if (storedBounds) {
+      this.setBounds(storedBounds);
+    } else {
+      this.moveToDefaultPosition();
+    }
 
     super.show();
     this.focus();
+  }
+
+  moveToDefaultPosition() {
+    positioner.position(this, this.windowManager.getTray().tray.getBounds());
   }
 
   setHandlers() {
@@ -28,6 +39,10 @@ class MainWindow extends BrowserWindow {
           this.hide();
         }
       }
+    });
+
+    this.on('moved', (event) => {
+      createSettings().set(KEY_WINDOW_BOUNDS, event.sender.getBounds());
     });
   }
 

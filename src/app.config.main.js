@@ -15,6 +15,7 @@ import ShowWindowShortcutHandler from './Application/Event/MainHandler/ShowWindo
 import SyncIsAgentEnabled from './Application/Event/RendererHandler/SyncIsAgentEnabled';
 import SyncIsDevHandler from './Application/Event/RendererHandler/SyncIsDevHandler';
 import SetAgentEnabledHandler from './Application/Event/RendererHandler/SetAgentEnabledHandler';
+import RestoreWindowPositionHandler from './Application/Event/RendererHandler/RestoreWindowPositionHandler';
 
 const APP_ROOT = app.getAppPath();
 
@@ -63,6 +64,9 @@ export default {
       ],
       [EventDict.SYNC_IS_DEV]: [
         new SyncIsDevHandler(),
+      ],
+      [EventDict.RESTORE_WINDOW_POSITION]: [
+        new RestoreWindowPositionHandler(),
       ],
     },
   },

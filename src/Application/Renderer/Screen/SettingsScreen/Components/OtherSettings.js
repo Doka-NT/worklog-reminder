@@ -1,5 +1,7 @@
 import 'onsenui';
-import { ListHeader, ListItem, Switch } from 'react-onsenui';
+import {
+  ListHeader, ListItem, Switch, Button,
+} from 'react-onsenui';
 import { useSelector, useDispatch } from 'react-redux';
 import { ipcRenderer } from 'electron';
 import { getMilliseconds } from '../../../../../Domain/AbstractStorage';
@@ -26,6 +28,10 @@ export default function OtherSettings() {
 
   const onUpdateIntervalChange = (e) => {
     dispatch(setUpdateInterval(getMilliseconds(e.value)));
+  };
+
+  const restoreWindowPosition = () => {
+    ipcRenderer.send(EventDict.RESTORE_WINDOW_POSITION);
   };
 
   return (
@@ -55,6 +61,12 @@ export default function OtherSettings() {
         <div className="center">Send analytics data:</div>
         <div className="right">
           <Switch checked={isAgentEnabled} onChange={onChangeAgent} />
+        </div>
+      </ListItem>
+      <ListItem>
+        <div className="left" style={{ width: 'auto' }} />
+        <div className="center">
+          <Button modifier="quiet" class="btn-link" onClick={restoreWindowPosition}>Restore window position</Button>
         </div>
       </ListItem>
     </>
