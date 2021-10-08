@@ -26,9 +26,6 @@ jobs:
             - .yarn/unplugged
 
   build-linux:
-    filters:
-      branches:
-        only: master
     working_directory: ~/repo
     docker:
       - image: skobka/worklog-reminder-ci:linux
@@ -56,9 +53,6 @@ jobs:
           path: ~/repo/out/make
 
   build-win32:
-    filters:
-      branches:
-        only: master
     working_directory: ~/repo
     docker:
       - image: skobka/worklog-reminder-ci:win32
@@ -86,10 +80,18 @@ jobs:
           path: ~/repo/out/make
 
 workflows:
+  version: 2
   check-code:
     jobs:
       - eslint
+
   build-packages:
     jobs:
-      - build-linux
-      - build-win32
+      - build-linux:
+          filters:
+            branches:
+              only: master
+      - build-win32:
+          filters:
+            branches:
+              only: master
