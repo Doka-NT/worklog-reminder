@@ -30,5 +30,19 @@
                 "make",
             ],
         },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "publish",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "cwd": "${workspaceRoot}",
+            "runtimeExecutable": "yarn",
+            "runtimeArgs": [
+                "run",
+                "make",
+            ],
+        },
     ]
 }
