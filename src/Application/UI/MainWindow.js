@@ -1,4 +1,4 @@
-import { BrowserWindow } from 'electron';
+import { BrowserWindow, screen } from 'electron';
 import positioner from 'electron-traywindow-positioner';
 import { execSync } from 'child_process';
 import { createSettings, KEY_WINDOW_BOUNDS } from '../Settings';
@@ -14,7 +14,10 @@ class MainWindow extends BrowserWindow {
   }
 
   show() {
-    const storedBounds = createSettings().get(KEY_WINDOW_BOUNDS);
+    const allBounds = createSettings().get(KEY_WINDOW_BOUNDS);
+    const display = this.getCurrentDisplay();
+
+    const storedBounds = allBounds && allBounds[display.id] ? allBounds[display.id] : null;
 
     if (storedBounds) {
       this.setBounds(storedBounds);
@@ -42,7 +45,12 @@ class MainWindow extends BrowserWindow {
     });
 
     this.on('moved', (event) => {
-      createSettings().set(KEY_WINDOW_BOUNDS, event.sender.getBounds());
+      const display = this.getCurrentDisplay();
+      const stored = createSettings().get(KEY_WINDOW_BOUNDS);
+
+      const combined = { ...(stored || {}), [display.id]: event.sender.getBounds() };
+
+      createSettings().set(KEY_WINDOW_BOUNDS, combined);
     });
   }
 
@@ -84,6 +92,15 @@ class MainWindow extends BrowserWindow {
     }
 
     return availableDesktops.indexOf(currentDesktop) !== -1;
+  }
+
+  /**
+   * @returns {Display}
+   */
+  getCurrentDisplay() {
+    const trayBound = this.windowManager.getTray().tray.getBounds();
+
+    return screen.getDisplayNearestPoint({ x: trayBound.x, y: trayBound.y });
   }
 }
 

@@ -11,26 +11,6 @@ const schema = {
   windowBounds: {
     type: ['object', 'null'],
     default: null,
-    properties: {
-      x: {
-        type: 'number',
-      },
-      y: {
-        type: 'number',
-      },
-      width: {
-        type: 'number',
-      },
-      height: {
-        type: 'number',
-      },
-    },
-    required: [
-      'x',
-      'y',
-      'width',
-      'height',
-    ],
   },
 };
 
