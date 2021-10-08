@@ -90,8 +90,8 @@ workflows:
       - build-linux:
           filters:
             branches:
-              only: master
+              only: main
       - build-win32:
           filters:
             branches:
-              only: master
+              only: main
