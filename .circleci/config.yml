@@ -47,7 +47,7 @@ jobs:
             - .yarn/unplugged
       - run:
           name: Generate Linux packages
-          command: yarn make --platform=linux
+          command: yarn run publish --platform=linux
 
       - store_artifacts:
           path: ~/repo/out/make
@@ -74,7 +74,7 @@ jobs:
             - .yarn/unplugged
       - run:
           name: Generate Windows packages
-          command: yarn make --platform=win32 --targets=@electron-forge/maker-squirrel
+          command: yarn run publish --platform=win32 --targets=@electron-forge/maker-squirrel
 
       - store_artifacts:
           path: ~/repo/out/make
