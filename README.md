@@ -57,16 +57,30 @@ Work with issues in 2 clicks:
 
 ## Install via package manager
 ### Debian/Ubuntu
-First you need to add repository
+Add repository
 ```
 curl -1sLf \
   'https://dl.cloudsmith.io/public/doka-nt/worklog-reminder/setup.deb.sh' \
   | sudo -E bash
 ```
-After that you are able to install Worklog Reminder
-```
+
+Install package
+```bash
 sudo apt-get update
 sudo apt-get install worklog-reminder
+```
+
+### RPM-based Linux
+Add repository
+```bash
+curl -1sLf \
+  'https://dl.cloudsmith.io/public/doka-nt/worklog-reminder/setup.rpm.sh' \
+  | sudo -E bash
+```
+
+Install package
+```bash
+yum install worklog-reminder
 ```
 
 ## Development
