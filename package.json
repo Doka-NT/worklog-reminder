@@ -1,7 +1,7 @@
 {
   "name": "worklog-reminder",
   "productName": "Worklog Reminder",
-  "version": "1.0.0-beta.5",
+  "version": "1.0.0-beta.6",
   "description": "Tool for easily search and add worklog to JIRA issues",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
     "babel-loader": "^8.2.2",
     "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^6.0.0",
-    "electron": "~13.5.1",
+    "electron": "~15.3.1",
     "electron-devtools-installer": "^3.2.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",

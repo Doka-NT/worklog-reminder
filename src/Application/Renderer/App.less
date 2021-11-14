@@ -42,8 +42,13 @@ body {
   zoom: 0.7;
 }
 
-.toolbar {
+.window-drag-area {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 12px;
   user-select: none;
-  -webkit-user-select: none;
   -webkit-app-region: drag;
+  z-index: 9999;
 }

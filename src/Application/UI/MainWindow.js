@@ -44,7 +44,7 @@ class MainWindow extends BrowserWindow {
       }
     });
 
-    this.on('moved', (event) => {
+    this.on('move', (event) => {
       const display = this.getCurrentDisplay();
       const stored = createSettings().get(KEY_WINDOW_BOUNDS);
 
