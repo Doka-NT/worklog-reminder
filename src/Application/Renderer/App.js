@@ -19,7 +19,7 @@ export default function App() {
 
   return (
     <div>
-      <div class="window-drag-area"></div>
+      <div className="window-drag-area" />
       {screen}
     </div>
   );
