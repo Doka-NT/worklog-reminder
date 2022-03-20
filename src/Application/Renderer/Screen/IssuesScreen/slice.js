@@ -29,6 +29,12 @@ const loadIssuesAsync = createAsyncThunk(
     .searchIssues(searchQuery, true),
 );
 
+const loadIssuesQuiteAsync = createAsyncThunk(
+  'IssueScreen/loadIssuesQuite',
+  async (searchQuery, thunkApi) => createJiraApiFromThunkApi(thunkApi)
+    .searchIssues(searchQuery, true),
+);
+
 const addIssueWorklogAsync = createAsyncThunk(
   'IssueScreen/saveWorklog',
   async (minutes, thunkApi) => {
@@ -149,6 +155,12 @@ const issueListSlice = createSlice({
         state.isProgressBarVisible = false;
         showRequestFailedWarning();
       })
+      .addCase(loadIssuesQuiteAsync.fulfilled, (state, action) => {
+        state.issues = action.payload;
+      })
+      .addCase(loadIssuesQuiteAsync.rejected, () => {
+        console.debug('Issues failed to load, but it is normal case when there are problems with internet connection.');
+      })
       .addCase(addIssueWorklogAsync.pending, (state) => {
         state.isTimeProgressVisible = true;
       })
@@ -226,6 +238,7 @@ export {
   resetListItemIndex,
   // Async Reducers
   loadIssuesAsync,
+  loadIssuesQuiteAsync,
   addIssueWorklogAsync,
   saveWorklogCommentAsync,
 };

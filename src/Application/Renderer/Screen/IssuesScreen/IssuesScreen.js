@@ -14,6 +14,7 @@ import {
   decListIndex,
   incListIndex,
   loadIssuesAsync,
+  loadIssuesQuiteAsync,
   selectIsProgressBarVisible,
   selectIssues,
   selectLastForceReloaded,
@@ -59,7 +60,7 @@ export default function IssuesScreen() {
       return;
     }
 
-    dispatch(loadIssuesAsync(searchQuery));
+    dispatch(loadIssuesQuiteAsync(searchQuery));
   };
 
   useEffect(() => {
