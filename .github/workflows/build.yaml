@@ -14,14 +14,10 @@ jobs:
         uses: actions/checkout@v2
   
       - name: Install dependencies
-        uses: borales/actions-yarn@v3.0.0
-        with:
-          cmd: install
+        run: yarn install --immutable
 
       - name: Build packages
-        uses: borales/actions-yarn@v3.0.0
-        with:
-          cmd: make --platform=linux
+        run: yarn make --platform=linux
       
       - name: Store artifacts
         uses: actions/upload-artifact@v3
