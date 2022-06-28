@@ -11,6 +11,4 @@ RUN apt-get update && \
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Moscow
 
-RUN apt-get update && apt-get -y install git dpkg fakeroot
-RUN apt-get update && apt-get -y install rpm
-RUN apt-get update && apt-get -y install zip
+RUN apt-get update && apt-get -y install git dpkg fakeroot rpm zip build-essential
