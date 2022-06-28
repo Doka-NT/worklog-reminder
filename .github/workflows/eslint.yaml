@@ -9,13 +9,11 @@ jobs:
     runs-on: ubuntu-20.04
     container: skobka/worklog-reminder-ci-linux:1.0.0
     steps:
-      - uses: actions/checkout@v2
-        name: Checkout repository
-      - uses: borales/actions-yarn@v3.0.0
-        name: yarn install
-        with:
-          cmd: install
-      - uses: borales/actions-yarn@v3.0.0
-        name: yarn lint
-        with:
-          cmd: lint
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Check code
+        run: yarn lint
