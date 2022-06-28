@@ -89,3 +89,4 @@ typings/
 out/
 
 .idea/
+.vscode/settings.json
