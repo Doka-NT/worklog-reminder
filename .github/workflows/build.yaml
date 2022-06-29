@@ -12,13 +12,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-  
+
       - name: Install dependencies
         run: yarn install --immutable
 
       - name: Build packages
         run: yarn make --platform=linux
-      
+
       - name: Store artifacts
         uses: actions/upload-artifact@v3
         with:
@@ -34,32 +34,32 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-  
+
       - name: Install dependencies
         run: yarn install --immutable
 
       - name: Build packages
         run: mkdir -p /tmp/wr-wine && WINEPREFIX=/tmp/wr-wine yarn run make --platform=win32 --targets=@electron-forge/maker-squirrel
-      
+
       - name: Store artifacts
         uses: actions/upload-artifact@v3
         with:
           name: Windows packages
           path: |
                 out/make/**/*.exe
-  
+
   build-macos:
     runs-on: macos-12
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-  
+
       - name: Install dependencies
         run: yarn install --immutable
 
       - name: Build packages
         run: yarn make --platform=darwin
-      
+
       - name: Store artifacts
         uses: actions/upload-artifact@v3
         with:

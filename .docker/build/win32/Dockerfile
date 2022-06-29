@@ -19,4 +19,6 @@ RUN apt-get install gnupg ca-certificates &&\
     apt-get update &&\
     apt-get -y install wine mono-devel
 
-RUN dpkg --add-architecture i386 && apt-get update && apt-get -y install wine32
+RUN dpkg --add-architecture i386 && apt-get update && apt-get -y install wine32 \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
