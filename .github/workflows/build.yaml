@@ -22,7 +22,7 @@ jobs:
       - name: Store artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: Packages
+          name: Linux packages
           path: |
                 out/make/**/*.deb
                 out/make/**/*.rpm
@@ -39,7 +39,7 @@ jobs:
         run: yarn install --immutable
 
       - name: Build packages
-        run: yarn run make --platform=win32 --targets=@electron-forge/maker-squirrel
+        run: mkdir -p /tmp/wr-wine && WINEPREFIX=/tmp/wr-wine yarn run make --platform=win32 --targets=@electron-forge/maker-squirrel
       
       - name: Store artifacts
         uses: actions/upload-artifact@v3
