@@ -65,5 +65,5 @@ jobs:
         with:
           name: MacOS packages
           path: |
-                out/make/**/*.dmh
+                out/make/**/*.dmg
                 out/make/**/*.zip
